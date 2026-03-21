@@ -1,0 +1,45 @@
+{
+  "name": "ws-research-connect-ghc",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu-24.04",
+
+  "features": {
+    "ghcr.io/devcontainers/features/dotnet:2": {
+      "version": "10.0"
+    },
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "lts",
+      "pnpmVersion": "latest"
+    },
+    "ghcr.io/devcontainers/features/github-cli:1": {
+      "version": "latest"
+    }
+  },
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-dotnettools.csharp",
+        "ms-dotnettools.csdevkit",
+        "dbaeumer.vscode-eslint",
+        "GitHub.copilot",
+        "GitHub.copilot-chat"
+      ],
+      "settings": {
+        "dotnet.defaultSolution": "disable"
+      }
+    }
+  },
+
+  // MSAL トークンキャッシュを DevContainer 再ビルド後も維持
+  "mounts": [
+    {
+      "type": "volume",
+      "source": "m365-comm-cache",
+      "target": "/home/vscode/.m365-comm"
+    }
+  ],
+
+  "postCreateCommand": "npm install -g @github/copilot && dotnet tool install -g dotnet-script && cd tools/m365-communication-app && dotnet restore",
+
+  "remoteUser": "vscode"
+}
