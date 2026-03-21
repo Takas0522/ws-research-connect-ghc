@@ -50,6 +50,9 @@ publish/
 ## MSAL token cache
 .m365-comm/
 
+## Generated scripts and files (dotnet-script output)
+[Gg]enerated/
+
 ## OS
 .DS_Store
 Thumbs.db

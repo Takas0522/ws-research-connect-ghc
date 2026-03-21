@@ -11,6 +11,7 @@
 
   <ItemGroup>
     <PackageReference Include="ConsoleAppFramework" Version="5.*" />
+    <PackageReference Include="DocumentFormat.OpenXml" Version="3.2.0" />
     <PackageReference Include="GitHub.Copilot.SDK" Version="*" />
     <PackageReference Include="Microsoft.Identity.Client" Version="4.*" />
     <PackageReference Include="Microsoft.Identity.Client.Extensions.Msal" Version="4.*" />

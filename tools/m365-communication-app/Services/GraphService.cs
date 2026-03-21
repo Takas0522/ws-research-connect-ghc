@@ -184,6 +184,54 @@ public class GraphService
         return result.GetProperty("id").GetString()!;
     }
 
+    // ── チャンネルファイルフォルダ ──
+
+    /// <summary>
+    /// チャンネルのファイルフォルダ（SharePoint ドキュメントライブラリ）のdriveIdとfolderIdを取得します
+    /// </summary>
+    public async Task<(string DriveId, string FolderId)> GetChannelFilesFolderAsync(
+        string accessToken,
+        string teamId,
+        string channelId)
+    {
+        SetAuth(accessToken);
+
+        var url = $"{GraphBaseUrl}/teams/{teamId}/channels/{channelId}/filesFolder";
+        var response = await _httpClient.GetAsync(url);
+        await EnsureSuccessAsync(response, "GetChannelFilesFolder");
+
+        var result = await response.Content.ReadFromJsonAsync<JsonElement>();
+        var driveId = result.GetProperty("parentReference").GetProperty("driveId").GetString()!;
+        var folderId = result.GetProperty("id").GetString()!;
+        return (driveId, folderId);
+    }
+
+    /// <summary>
+    /// チャンネルのファイルフォルダにファイルをアップロードし、webUrlを返します
+    /// </summary>
+    public async Task<(string ItemId, string WebUrl)> UploadToChannelAsync(
+        string accessToken,
+        string teamId,
+        string channelId,
+        string fileName,
+        Stream fileContent)
+    {
+        var (driveId, folderId) = await GetChannelFilesFolderAsync(accessToken, teamId, channelId);
+
+        SetAuth(accessToken);
+        var url = $"{GraphBaseUrl}/drives/{driveId}/items/{folderId}:/{fileName}:/content";
+        var streamContent = new StreamContent(fileContent);
+        streamContent.Headers.ContentType = new MediaTypeHeaderValue("application/octet-stream");
+
+        var response = await _httpClient.PutAsync(url, streamContent);
+        await EnsureSuccessAsync(response, "UploadToChannel");
+
+        var result = await response.Content.ReadFromJsonAsync<JsonElement>();
+        var itemId = result.GetProperty("id").GetString()!;
+        var webUrl = result.GetProperty("webUrl").GetString()!;
+        return (itemId, webUrl);
+    }
+
     // ── SharePoint アップロード ──
 
     /// <summary>

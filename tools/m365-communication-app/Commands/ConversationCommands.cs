@@ -182,24 +182,55 @@ public class ConversationCommands
         string theme,
         string model)
     {
+        // シナリオ作成ではスキルやツールは不要 — JSON出力に集中させる
         await using var session = await client.CreateSessionAsync(new SessionConfig
         {
             Model = model,
-            SkillDirectories = [_skillsSettings.Directory],
             OnPermissionRequest = PermissionHandler.ApproveAll,
             SystemMessage = new SystemMessageConfig
             {
                 Mode = SystemMessageMode.Append,
                 Content = """
-                scenario-creator スキルの指示に従い、シナリオをJSON形式のみで出力してください。
-                JSONの前後に説明文やMarkdownコードブロック記号(```)を含めないでください。
-                純粋なJSONのみを返してください。
+                あなたはシナリオ作成専用のアシスタントです。
+                与えられたテーマに基づき、3人のペルソナ（大川貴志・ワタナベタナカ・サトウスズキ）による会話シナリオを作成してください。
+
+                【ペルソナ】
+                - 大川貴志: 開発担当者（28歳）。TypeScript/Python/React。フレンドリーだが敬語。技術への興奮が先走りがち。
+                - ワタナベタナカ: システム課長（38歳）。システム設計・技術選定。フラットな議論を好む。バランスで判断。
+                - サトウスズキ: 営業課長（42歳）。顧客ヒアリング・ユースケース分析。丁寧で落ち着いた話し方。
+
+                【intentの種類】 propose / respond / question / challenge / summarize / conclude
+
+                【シナリオ作成ルール】
+                - テーマに最もふさわしいペルソナが話題提起する
+                - ラリー数は3〜10の範囲
+                - shouldConverge=true なら最後の1〜2ラリーでワタナベが結論にまとめる
+                - 必要に応じて attachFile=true と fileDescription を設定
+                - 自然な議論の流れ: 提案→質問→回答→別視点→整理→結論
+
+                【メッセージの長さ】
+                - これはTeamsチャットでの会話シミュレーションです
+                - actionフィールドには短い行動指示のみ記載してください（1〜2文程度）
+                - 実際のメッセージは2〜4文の短いやりとりになるよう想定してください
+                - 長文の説明や演説のような発言は避けてください
+
+                ★★★ 最重要ルール ★★★
+                あなたの出力は純粋なJSONオブジェクトのみでなければなりません。
+                説明文、見出し、テーブル、Markdownコードブロック(```)は絶対に含めないでください。
+                レスポンスの最初の文字は必ず { で、最後の文字は } にしてください。
                 """
             }
         });
 
+        // 初回試行
+        var initialPrompt = "次のテーマで会話シナリオをJSON形式で作成してください。\n"
+            + "出力は純粋なJSONのみです。説明文は不要です。最初の文字は { で始めてください。\n\n"
+            + "テーマ: " + theme + "\n\n"
+            + "出力するJSONの形式:\n"
+            + """{"theme":"...","initiator":"...","totalRallies":N,"shouldConverge":true,"rallies":[{"rallyNumber":1,"speaker":"...","action":"...","intent":"...","attachFile":false,"fileDescription":null}]}""";
+
         var response = await session.SendAndWaitAsync(
-            new MessageOptions { Prompt = $"次のテーマでシナリオを作成してください: {theme}" },
+            new MessageOptions { Prompt = initialPrompt },
             timeout: TimeSpan.FromMinutes(5));
 
         var content = response?.Data.Content
@@ -210,38 +241,40 @@ public class ConversationCommands
         var scenario = TryParseScenario(content);
         if (scenario != null) return scenario;
 
-        // JSON が含まれていない場合、同一セッションでリトライ
-        _logger.LogWarning("初回レスポンスにJSONが含まれていないため、再要求します");
+        // リトライ: 同一セッションでJSONを明示的に再要求
+        for (var attempt = 2; attempt <= 3; attempt++)
+        {
+            _logger.LogWarning("シナリオJSONパース失敗（試行{Attempt}/3）。再要求します", attempt);
 
-        var retryResponse = await session.SendAndWaitAsync(
-            new MessageOptions
-            {
-                Prompt = """
-                    シナリオの内容は理解しました。
-                    そのシナリオを以下のJSON形式のみで出力してください。説明文は不要です。
-                    {
-                      "theme": "...",
-                      "initiator": "...",
-                      "totalRallies": N,
-                      "shouldConverge": true/false,
-                      "rallies": [
-                        { "rallyNumber": 1, "speaker": "...", "action": "...", "intent": "...", "attachFile": false, "fileDescription": null }
-                      ]
-                    }
+            var retryResponse = await session.SendAndWaitAsync(
+                new MessageOptions
+                {
+                    Prompt = """
+                    あなたの前回のレスポンスはJSONとして解析できませんでした。
+                    前回の内容をもとに、以下の条件で再出力してください:
+
+                    1. レスポンスの最初の文字は { (開き波括弧)にすること
+                    2. レスポンスの最後の文字は } (閉じ波括弧)にすること
+                    3. 説明文、見出し、テーブル、コードブロック記号は一切含めないこと
+                    4. 有効なJSONとして解析可能であること
+
+                    必須フィールド: theme, initiator, totalRallies, shouldConverge, rallies
+                    rallies の各要素: rallyNumber, speaker, action, intent, attachFile, fileDescription
                     """
-            },
-            timeout: TimeSpan.FromMinutes(3));
+                },
+                timeout: TimeSpan.FromMinutes(3));
 
-        var retryContent = retryResponse?.Data.Content
-            ?? throw new InvalidOperationException("シナリオの再取得に失敗しました");
+            var retryContent = retryResponse?.Data.Content
+                ?? throw new InvalidOperationException("シナリオの再取得に失敗しました");
 
-        _logger.LogDebug("シナリオリトライレスポンス: {RawContent}", retryContent);
+            _logger.LogDebug("シナリオリトライ{Attempt}レスポンス: {RawContent}", attempt, retryContent);
 
-        scenario = TryParseScenario(retryContent);
-        if (scenario != null) return scenario;
+            scenario = TryParseScenario(retryContent);
+            if (scenario != null) return scenario;
+        }
 
-        _logger.LogError("リトライ後もシナリオのパースに失敗。内容: {Content}", ExtractJson(retryContent));
-        throw new InvalidOperationException("シナリオのパースに失敗しました（リトライ後も失敗）");
+        _logger.LogError("全試行後もシナリオのパースに失敗しました");
+        throw new InvalidOperationException("シナリオのパースに失敗しました（全試行後も失敗）");
     }
 
     private Scenario? TryParseScenario(string rawContent)
@@ -268,13 +301,16 @@ public class ConversationCommands
         string model)
     {
         string? lastPostedMessageId = null;
+        var generatedDir = Path.Combine(AppContext.BaseDirectory, "generated");
 
         var tools = new List<Microsoft.Extensions.AI.AIFunction>
         {
             ToolDefinitions.ResolveTeamsChannelTool(_authService, _graphService),
             ToolDefinitions.PostTeamsMessageTool(_authService, _graphService, id => lastPostedMessageId = id),
-            ToolDefinitions.PostTeamsMessageWithAttachmentTool(_authService, _graphService, id => lastPostedMessageId = id),
+            ToolDefinitions.PostTeamsMessageWithAttachmentTool(_authService, _graphService, id => lastPostedMessageId = id, _logger),
             ToolDefinitions.GetPersonaInfoTool(_personaSettings.Directory),
+            ToolDefinitions.RunDotnetScriptTool(generatedDir, _logger),
+            ToolDefinitions.UploadToChannelTool(_authService, _graphService, generatedDir, _logger),
         };
 
         if (siteId != null)
@@ -295,6 +331,13 @@ public class ConversationCommands
                 あなたはTeamsでのチーム会話をシミュレーションするアシスタントです。
                 各ラリーの指示に従い、適切なペルソナとして振る舞い、ツールを使って実際にTeamsにメッセージを投稿してください。
 
+                【メッセージの長さ】
+                これはTeamsチャットでの日常的なやりとりです。メッセージは短く簡潔にしてください。
+                - 1回の投稿は2〜4文（100〜200文字程度）に収めること
+                - 箇条書きを使う場合も3項目以内
+                - 長文の説明や論文調の文章は禁止
+                - チャットらしいテンポの良いやりとりを心がけてください
+
                 Teams情報:
                 - チームID: {teamId}
                 - チャネルID: {channelId}
@@ -307,7 +350,15 @@ public class ConversationCommands
                 3. post_teams_message にペルソナ名を指定して投稿してください（認証は自動で行われます）
                 4. 最初のラリー（rallyNumber=1）は新規スレッド作成（replyToMessageId は空文字列）
                 5. 2番目以降のラリーは最初のメッセージへの返信（replyToMessageId にスレッドのメッセージIDを指定）
-                6. attachFile=true の場合は sharepoint-upload スキルでファイルをアップロードしてから添付
+                6. attachFile=true の場合は以下の手順を必ず実行してください:
+                   ① run_dotnet_script でファイルを生成（powerpoint-openxml スキルのサンプルコードを参考に）
+                   ② upload_to_channel でチャネルのファイルフォルダにアップロード（webUrlが返されます）
+                   ③ post_teams_message_with_attachment で添付付きメッセージを投稿（attachmentUrl に ② のwebUrlを指定）
+                   ※ この3ステップを必ず全て実行してください。ファイル添付をスキップしないでください。
+                7. ExcelやPowerPointファイルの作成・読み込み・解析が必要な場合は run_dotnet_script ツールを使用してください
+                8. PowerPoint作成時は必ず Svg.Skia + SkiaSharp を使ってSVG図表（構成図・フロー図・グラフ等）を作成し、
+                   PNG画像としてスライドに埋め込んでください。powerpoint-openxml スキルの SvgToPng / AddImageToSlide ヘルパーを使用してください。
+                   テキストのみのスライドは禁止です。各スライドに最低1つの図表を含めてください。
                 """
             }
         });
@@ -321,14 +372,18 @@ public class ConversationCommands
             _logger.LogInformation("     内容: {Action}", rally.Action);
 
             lastPostedMessageId = null;
-            var prompt = BuildRallyPrompt(rally, threadMessageId);
+            var prompt = BuildRallyPrompt(rally, threadMessageId, siteId != null);
             _logger.LogDebug("Rally {RallyNumber} プロンプト: {Prompt}", rally.RallyNumber, prompt);
 
             try
             {
+                var rallyTimeout = rally.AttachFile
+                    ? TimeSpan.FromMinutes(10)
+                    : TimeSpan.FromMinutes(5);
+
                 var response = await session.SendAndWaitAsync(
                     new MessageOptions { Prompt = prompt },
-                    timeout: TimeSpan.FromMinutes(3));
+                    timeout: rallyTimeout);
 
                 if (response?.Data.Content != null)
                 {
@@ -365,15 +420,48 @@ public class ConversationCommands
         }
     }
 
-    private static string BuildRallyPrompt(Rally rally, string? threadMessageId)
+    private static string BuildRallyPrompt(Rally rally, string? threadMessageId, bool hasSharePoint)
     {
         var replyInstruction = threadMessageId != null
             ? $"このメッセージはスレッドへの返信です。replyToMessageId には \"{threadMessageId}\" を使用してください。"
             : "これは新規スレッドの最初のメッセージです。replyToMessageId には空文字列を使用してください。投稿後、返されたmessageIdを報告してください。";
 
-        var fileInstruction = rally.AttachFile
-            ? $"\nこのラリーではファイルの添付が必要です。内容: {rally.FileDescription}\nsharepoint-upload スキルを使用してファイルをアップロードし、post_teams_message_with_attachment で添付してください。"
-            : "";
+        var fileInstruction = "";
+        if (rally.AttachFile)
+        {
+            fileInstruction = $"""
+
+                ★★★ このラリーではファイルの添付が必須です ★★★
+                ファイル内容: {rally.FileDescription}
+
+                以下の手順を必ず全て実行してください:
+                ① run_dotnet_script でファイルを生成（powerpoint-openxml / excel-openxml スキル参照）
+                ② upload_to_channel で生成したファイルをチャネルにアップロード（webUrlが返されます）
+                ③ post_teams_message_with_attachment でwebUrlを使って添付付きメッセージを投稿
+                ※ ファイル添付をスキップしたりHTML埋め込みで代替しないでください
+                """;
+        }
+
+        if (rally.AttachFile)
+        {
+            return $"""
+                Rally {rally.RallyNumber} を実行してください。
+
+                発言者: {rally.Speaker}
+                意図: {rally.Intent}
+                実施内容: {rally.Action}
+                {replyInstruction}
+                {fileInstruction}
+
+                手順:
+                1. get_persona_info で「{rally.Speaker}」の情報を取得
+                2. ペルソナの口調に合わせた短いメッセージを生成（2〜4文、100〜200文字程度。チャットらしく簡潔に）
+                3. run_dotnet_script でファイルを生成
+                4. upload_to_channel でチャネルにアップロード
+                5. post_teams_message_with_attachment にペルソナ名「{rally.Speaker}」を指定して添付付きで投稿（認証は自動）
+                6. 投稿したメッセージIDを報告
+                """;
+        }
 
         return $"""
             Rally {rally.RallyNumber} を実行してください。
@@ -382,11 +470,10 @@ public class ConversationCommands
             意図: {rally.Intent}
             実施内容: {rally.Action}
             {replyInstruction}
-            {fileInstruction}
 
             手順:
             1. get_persona_info で「{rally.Speaker}」の情報を取得
-            2. ペルソナの口調に合わせたメッセージを生成
+            2. ペルソナの口調に合わせた短いメッセージを生成（2〜4文、100〜200文字程度。チャットらしく簡潔に）
             3. post_teams_message にペルソナ名「{rally.Speaker}」を指定してTeamsに投稿（認証は自動）
             4. 投稿したメッセージIDを報告
             """;
