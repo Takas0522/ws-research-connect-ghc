@@ -1,6 +1,8 @@
 {
   "name": "ws-research-connect-ghc",
-  "image": "mcr.microsoft.com/devcontainers/base:ubuntu-24.04",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "app",
+  "workspaceFolder": "/workspaces/ws-research-connect-ghc",
 
   "features": {
     "ghcr.io/devcontainers/features/dotnet:2": {
@@ -49,15 +51,6 @@
     "5432": { "label": "PostgreSQL", "onAutoForward": "silent" },
     "9323": { "label": "Playwright Report", "onAutoForward": "notify" }
   },
-
-  // MSAL トークンキャッシュを DevContainer 再ビルド後も維持
-  "mounts": [
-    {
-      "type": "volume",
-      "source": "m365-comm-cache",
-      "target": "/home/vscode/.m365-comm"
-    }
-  ],
 
   "postCreateCommand": "bash .devcontainer/post-create.sh",
 
