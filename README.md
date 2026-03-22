@@ -55,7 +55,7 @@ cd src/backend
 dotnet run
 ```
 
-バックエンドが `http://localhost:5010` で起動します。
+バックエンドが `http://0.0.0.0:5010` で起動します（`launchSettings.json` で設定済み）。
 
 ### 4. フロントエンドの起動
 
@@ -65,9 +65,10 @@ npm install   # 初回のみ
 npm run dev
 ```
 
-フロントエンドが `http://localhost:5173` で起動します。
-ブラウザで **http://localhost:5173** にアクセスしてください。
+フロントエンドが `http://0.0.0.0:5173` で起動します（`vite.config.ts` で設定済み）。
+ブラウザでポートフォワード先の URL にアクセスしてください。
 
+> DevContainer / Codespaces ではホストからアクセスするために `0.0.0.0` バインドが必要です。
 > フロントエンドの `/api` リクエストは Vite のプロキシ経由でバックエンド（`localhost:5010`）に転送されます。
 
 ## 接続情報
@@ -86,10 +87,10 @@ npm run dev
 
 | サービス | URL |
 |---|---|
-| フロントエンド | http://localhost:5173 |
-| バックエンド API | http://localhost:5010 |
-| OpenAPI (Swagger) | http://localhost:5010/openapi/v1.json |
-| ヘルスチェック | http://localhost:5010/healthz |
+| フロントエンド | http://0.0.0.0:5173 |
+| バックエンド API | http://0.0.0.0:5010 |
+| OpenAPI (Swagger) | http://0.0.0.0:5010/openapi/v1.json |
+| ヘルスチェック | http://0.0.0.0:5010/healthz |
 
 ## API エンドポイント一覧
 
