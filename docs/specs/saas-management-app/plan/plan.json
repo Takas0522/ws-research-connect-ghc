@@ -10,7 +10,7 @@
       "execution": "local",
       "depends_on": [],
       "parallel_group": "A",
-      "status": "pending",
+      "status": "in_progress",
       "issue_number": 16,
       "pr_number": null,
       "notes": "Phase 1: 全テーブル・ENUM・トリガー・シードデータ"
