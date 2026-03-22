@@ -1,11 +1,28 @@
 using Backend.Data;
+using Backend.Endpoints;
+using Backend.Models;
+using Backend.Services;
 using Microsoft.EntityFrameworkCore;
+using Npgsql;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Npgsql enum mapping
+var dataSourceBuilder = new NpgsqlDataSourceBuilder(
+    builder.Configuration.GetConnectionString("DefaultConnection"));
+dataSourceBuilder.MapEnum<ProductStatus>("product_status");
+dataSourceBuilder.MapEnum<ContractType>("contract_type");
+dataSourceBuilder.MapEnum<ContractStatus>("contract_status");
+dataSourceBuilder.MapEnum<ContractChangeType>("contract_change_type");
+dataSourceBuilder.MapEnum<TrialRestriction>("trial_restriction");
+dataSourceBuilder.MapEnum<TrialStatus>("trial_status");
+var dataSource = dataSourceBuilder.Build();
+
 // PostgreSQL via EF Core
 builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+    options.UseNpgsql(dataSource));
+
+builder.Services.AddScoped<BillingService>();
 
 builder.Services.AddOpenApi();
 builder.Services.AddHealthChecks();
@@ -30,27 +47,16 @@ app.UseCors();
 
 app.MapHealthChecks("/healthz");
 
-app.MapGet("/api/weatherforecast", () =>
-{
-    var summaries = new[]
-    {
-        "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-    };
-    var forecast = Enumerable.Range(1, 5).Select(index =>
-        new WeatherForecast(
-            DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-            Random.Shared.Next(-20, 55),
-            summaries[Random.Shared.Next(summaries.Length)]
-        )).ToArray();
-    return forecast;
-}).WithName("GetWeatherForecast");
+// Map all endpoint groups
+app.MapProductEndpoints();
+app.MapPlanEndpoints();
+app.MapCustomerEndpoints();
+app.MapContractEndpoints();
+app.MapUsageEndpoints();
+app.MapTrialEndpoints();
+app.MapDashboardEndpoints();
 
 app.Run();
-
-record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
-{
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-}
 
 // WebApplicationFactory からアクセスするためのマーカー
 public partial class Program { }
