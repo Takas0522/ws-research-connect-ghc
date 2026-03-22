@@ -46,11 +46,11 @@ graph LR
 1. `docs/specs/{作業名}/` の存在を確認する。存在しない場合はエラー終了
 2. 作業名が日本語の場合は英語に翻訳する
 3. ブランチ名を `feature/<英語作業名>` の形式で作成する（kebab-case）
-4. `main` ブランチから作業ブランチを作成・チェックアウトする
+4. 現在のブランチから作業ブランチを作成・チェックアウトする
 5. リモートにプッシュする
 
 ```bash
-git checkout main && git pull
+git pull
 git checkout -b feature/<英語作業名>
 git push -u origin feature/<英語作業名>
 ```
