@@ -24,7 +24,7 @@
         "task-001"
       ],
       "parallel_group": "A",
-      "status": "pending",
+      "status": "done",
       "issue_number": 17,
       "pr_number": null,
       "notes": "Phase 1: 全7エンティティ + ENUM マッピング"
@@ -38,7 +38,7 @@
         "task-002"
       ],
       "parallel_group": "B",
-      "status": "pending",
+      "status": "done",
       "issue_number": 18,
       "pr_number": null,
       "notes": "Phase 1: 6エンドポイント"
@@ -52,7 +52,7 @@
         "task-002"
       ],
       "parallel_group": "B",
-      "status": "pending",
+      "status": "done",
       "issue_number": 19,
       "pr_number": null,
       "notes": "Phase 1: 4エンドポイント"
@@ -64,7 +64,7 @@
       "execution": "delegate",
       "depends_on": [],
       "parallel_group": "C",
-      "status": "pending",
+      "status": "done",
       "issue_number": 20,
       "pr_number": null,
       "notes": "Phase 1: react-router-dom + Layout + 共通コンポーネント + 型定義"
@@ -79,7 +79,7 @@
         "task-005"
       ],
       "parallel_group": "D",
-      "status": "pending",
+      "status": "done",
       "issue_number": 21,
       "pr_number": null,
       "notes": "Phase 1: ProductsPage + ProductDetailPage"
@@ -94,7 +94,7 @@
         "task-005"
       ],
       "parallel_group": "D",
-      "status": "pending",
+      "status": "done",
       "issue_number": 22,
       "pr_number": null,
       "notes": "Phase 1: CustomersPage + CustomerDetailPage"
@@ -108,7 +108,7 @@
         "task-002"
       ],
       "parallel_group": "B",
-      "status": "pending",
+      "status": "done",
       "issue_number": 23,
       "pr_number": null,
       "notes": "Phase 2: 5エンドポイント、トランザクション管理"
@@ -122,7 +122,7 @@
         "task-002"
       ],
       "parallel_group": "B",
-      "status": "pending",
+      "status": "done",
       "issue_number": 24,
       "pr_number": null,
       "notes": "Phase 2: 固定・従量・ハイブリッド + 年契割引 + トライアル判定"
@@ -137,7 +137,7 @@
         "task-009"
       ],
       "parallel_group": "E",
-      "status": "pending",
+      "status": "done",
       "issue_number": 25,
       "pr_number": null,
       "notes": "Phase 2: UPSERT + 自動請求額計算"
@@ -152,7 +152,7 @@
         "task-005"
       ],
       "parallel_group": "D",
-      "status": "pending",
+      "status": "done",
       "issue_number": 26,
       "pr_number": null,
       "notes": "Phase 2: ContractsPage + ContractDetailPage"
@@ -167,7 +167,7 @@
         "task-005"
       ],
       "parallel_group": "E",
-      "status": "pending",
+      "status": "done",
       "issue_number": 27,
       "pr_number": null,
       "notes": "Phase 2: UsagePage + リアルタイム請求額プレビュー"
@@ -181,7 +181,7 @@
         "task-010"
       ],
       "parallel_group": "G",
-      "status": "pending",
+      "status": "done",
       "issue_number": 28,
       "pr_number": null,
       "notes": "Phase 3: 月次売上推移 + 顧客別サマリ"
@@ -195,7 +195,7 @@
         "task-005"
       ],
       "parallel_group": "F",
-      "status": "pending",
+      "status": "done",
       "issue_number": 29,
       "pr_number": null,
       "notes": "Phase 3: LineChart + BarChart + PieChart"
@@ -210,7 +210,7 @@
         "task-014"
       ],
       "parallel_group": "H",
-      "status": "pending",
+      "status": "done",
       "issue_number": 30,
       "pr_number": null,
       "notes": "Phase 3: DashboardPage"
@@ -225,7 +225,7 @@
         "task-014"
       ],
       "parallel_group": "I",
-      "status": "pending",
+      "status": "done",
       "issue_number": 31,
       "pr_number": null,
       "notes": "Phase 3: CustomerDetailPage 拡張"
@@ -240,7 +240,7 @@
         "task-009"
       ],
       "parallel_group": "G",
-      "status": "pending",
+      "status": "done",
       "issue_number": 32,
       "pr_number": null,
       "notes": "Phase 4: 5エンドポイント + BillingService 統合"
@@ -255,7 +255,7 @@
         "task-013"
       ],
       "parallel_group": "J",
-      "status": "pending",
+      "status": "done",
       "issue_number": 33,
       "pr_number": null,
       "notes": "Phase 4: 転換率・期限間近トライアル"
@@ -270,7 +270,7 @@
         "task-005"
       ],
       "parallel_group": "J",
-      "status": "pending",
+      "status": "done",
       "issue_number": 34,
       "pr_number": null,
       "notes": "Phase 4: TrialsPage + 残日数色分け"
@@ -285,7 +285,7 @@
         "task-015"
       ],
       "parallel_group": "K",
-      "status": "pending",
+      "status": "done",
       "issue_number": 35,
       "pr_number": null,
       "notes": "Phase 4: DashboardPage 拡張"
