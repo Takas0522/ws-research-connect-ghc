@@ -15,6 +15,7 @@ DevContainer は **Docker Compose** で構成されている。
 - `app` と `db` は `network_mode: service:db` でネットワーク名前空間を共有しているため、アプリからは **`localhost:5432`** で PostgreSQL に接続できる
 - DB の初期化 SQL は `src/database/init/` に配置し、PostgreSQL 初回起動時に自動実行される
 - MSAL トークンキャッシュは `m365-comm-cache` named volume で永続化されている
+- Pythonはインストールされていないためコマンド実行が必要な場合は `dotnet-script` または Node.js のスクリプトを使用すること
 
 ### 接続情報
 
