@@ -46,15 +46,16 @@ public static class DashboardEndpoints
             var activeCustomers = await db.Customers
                 .CountAsync(c => c.Contracts.Any(ct => ct.Status == ContractStatus.Active));
 
-            // New customers this month
-            var thisMonth = DateTime.UtcNow.ToString("yyyy-MM");
-            var newCustomersThisMonth = await db.Customers
-                .CountAsync(c => c.CreatedAt.ToString("yyyy-MM") == thisMonth);
+            var now = DateTime.UtcNow;
+            var startOfThisMonth = new DateTime(now.Year, now.Month, 1, 0, 0, 0, DateTimeKind.Utc);
+            var startOfNextMonth = startOfThisMonth.AddMonths(1);
+            var startOfLastMonth = startOfThisMonth.AddMonths(-1);
 
-            // New customers last month for trend
-            var lastMonth = DateTime.UtcNow.AddMonths(-1).ToString("yyyy-MM");
+            var newCustomersThisMonth = await db.Customers
+                .CountAsync(c => c.CreatedAt >= startOfThisMonth && c.CreatedAt < startOfNextMonth);
+
             var newCustomersLastMonth = await db.Customers
-                .CountAsync(c => c.CreatedAt.ToString("yyyy-MM") == lastMonth);
+                .CountAsync(c => c.CreatedAt >= startOfLastMonth && c.CreatedAt < startOfThisMonth);
 
             var trend = newCustomersLastMonth > 0
                 ? Math.Round((double)(newCustomersThisMonth - newCustomersLastMonth) / newCustomersLastMonth * 100, 1)
