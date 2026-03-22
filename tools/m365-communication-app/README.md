@@ -182,10 +182,18 @@ Team名とチャネル名を指定すると、`teams-channel-resolver` スキル
 
 ```bash
 dotnet run -- conversation start \
-  --theme ../scenario/雑談.md \
+  --theme ../scenario/企画.md \
   --persona 大川貴志 \
   --team-name "製品開発チーム" \
-  --channel-name "雑談"
+  --channel-name "製品企画"
+```
+
+```bash
+dotnet run -- conversation start \
+  --theme ../scenario/企画.md \
+  --persona 大川貴志 \
+  --team-name "製品開発チーム" \
+  --channel-name "製品企画"
 ```
 
 複数回の会話を実行する場合は `--count` を指定します。それぞれ別のシナリオ・別スレッドとして作成されます。
