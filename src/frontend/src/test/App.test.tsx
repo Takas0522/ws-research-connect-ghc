@@ -1,6 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import { describe, it, expect, beforeEach } from 'vitest';
-import App from '../App';
+import { MemoryRouter } from 'react-router-dom';
+import Layout from '../components/Layout';
 
 describe('App', () => {
   beforeEach(() => {
@@ -11,15 +12,23 @@ describe('App', () => {
       });
   });
 
-  it('renders the heading', () => {
-    render(<App />);
-    expect(screen.getByText('Research Connect')).toBeInTheDocument();
+  it('renders the app title', () => {
+    render(
+      <MemoryRouter>
+        <Layout />
+      </MemoryRouter>
+    );
+    expect(screen.getByText('SaaS Manager')).toBeInTheDocument();
   });
 
-  it('renders the description', () => {
-    render(<App />);
-    expect(
-      screen.getByText(/Frontend.*Backend.*Database/)
-    ).toBeInTheDocument();
+  it('renders navigation links', () => {
+    render(
+      <MemoryRouter>
+        <Layout />
+      </MemoryRouter>
+    );
+    expect(screen.getByText('Dashboard')).toBeInTheDocument();
+    expect(screen.getByText('製品')).toBeInTheDocument();
+    expect(screen.getByText('顧客')).toBeInTheDocument();
   });
 });
