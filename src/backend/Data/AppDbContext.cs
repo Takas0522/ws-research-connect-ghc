@@ -19,13 +19,6 @@ public class AppDbContext : DbContext
     {
         base.OnModelCreating(modelBuilder);
 
-        modelBuilder.HasPostgresEnum<ProductStatus>("public", "product_status");
-        modelBuilder.HasPostgresEnum<ContractType>("public", "contract_type");
-        modelBuilder.HasPostgresEnum<ContractStatus>("public", "contract_status");
-        modelBuilder.HasPostgresEnum<ContractChangeType>("public", "contract_change_type");
-        modelBuilder.HasPostgresEnum<TrialRestriction>("public", "trial_restriction");
-        modelBuilder.HasPostgresEnum<TrialStatus>("public", "trial_status");
-
         // Products
         modelBuilder.Entity<Product>(entity =>
         {

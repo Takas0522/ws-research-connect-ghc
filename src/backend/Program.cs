@@ -1,28 +1,34 @@
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using Backend.Data;
 using Backend.Endpoints;
 using Backend.Models;
 using Backend.Services;
 using Microsoft.EntityFrameworkCore;
-using Npgsql;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Npgsql enum mapping
-var dataSourceBuilder = new NpgsqlDataSourceBuilder(
-    builder.Configuration.GetConnectionString("DefaultConnection"));
-dataSourceBuilder.MapEnum<ProductStatus>("product_status");
-dataSourceBuilder.MapEnum<ContractType>("contract_type");
-dataSourceBuilder.MapEnum<ContractStatus>("contract_status");
-dataSourceBuilder.MapEnum<ContractChangeType>("contract_change_type");
-dataSourceBuilder.MapEnum<TrialRestriction>("trial_restriction");
-dataSourceBuilder.MapEnum<TrialStatus>("trial_status");
-var dataSource = dataSourceBuilder.Build();
-
-// PostgreSQL via EF Core
+// PostgreSQL via EF Core — MapEnum inside UseNpgsql configures both EF and Npgsql layers (EF 9+)
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection")
+    ?? throw new InvalidOperationException("DefaultConnection is not configured.");
 builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseNpgsql(dataSource));
+    options.UseNpgsql(connectionString, o =>
+    {
+        o.MapEnum<ProductStatus>("product_status");
+        o.MapEnum<ContractType>("contract_type");
+        o.MapEnum<ContractStatus>("contract_status");
+        o.MapEnum<ContractChangeType>("contract_change_type");
+        o.MapEnum<TrialRestriction>("trial_restriction");
+        o.MapEnum<TrialStatus>("trial_status");
+    }));
 
 builder.Services.AddScoped<BillingService>();
+
+builder.Services.ConfigureHttpJsonOptions(options =>
+{
+    options.SerializerOptions.Converters.Add(
+        new JsonStringEnumConverter(JsonNamingPolicy.SnakeCaseLower));
+});
 
 builder.Services.AddOpenApi();
 builder.Services.AddHealthChecks();
