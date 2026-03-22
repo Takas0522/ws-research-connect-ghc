@@ -1,3 +1,8 @@
+---
+description: '変更・参照を禁止するディレクトリの指定'
+applyTo: '**'
+---
+
 # Excluded Directories
 
 以下のディレクトリ配下のファイルは参照・変更しないでください。

@@ -1,0 +1,45 @@
+# === OS ===
+.DS_Store
+Thumbs.db
+
+# === Editor / IDE ===
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+*.user
+
+# === Node.js ===
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+# === .NET ===
+bin/
+obj/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+[Dd]ebug/
+[Rr]elease/
+
+# === Frontend (Vite) ===
+dist/
+dist-ssr/
+*.local
+
+# === E2E (Playwright) ===
+test-results/
+playwright-report/
+blob-report/
+
+# === Database ===
+pgdata/
+
+# === Logs ===
+logs/
+*.log
