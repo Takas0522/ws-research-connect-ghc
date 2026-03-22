@@ -15,6 +15,11 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: appdb
+    ports:
+      - "5173:5173"
+      - "5010:5010"
+      - "5432:5432"
+      - "9323:9323"
     volumes:
       - pgdata:/var/lib/postgresql/data
       - ../src/database/init:/docker-entrypoint-initdb.d
