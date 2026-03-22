@@ -44,6 +44,7 @@ public class ConversationCommands
     /// <param name="teamName">Teams チーム名</param>
     /// <param name="channelName">Teams チャネル名</param>
     /// <param name="count">会話シナリオの実行回数（それぞれ別スレッドとして作成）</param>
+    /// <param name="threadId">既存スレッドのメッセージID（指定すると既存スレッドに返信として会話を継続）</param>
     /// <param name="siteId">SharePoint サイトID（ファイルアップロード用）</param>
     /// <param name="parentItemId">SharePoint 親アイテムID（アップロード先フォルダ）</param>
     /// <param name="model">使用するAIモデル</param>
@@ -54,6 +55,7 @@ public class ConversationCommands
         string teamName,
         string channelName,
         int count = 1,
+        string? threadId = null,
         string? siteId = null,
         string? parentItemId = null,
         string model = "claude-opus-4.6")
@@ -66,6 +68,8 @@ public class ConversationCommands
         _logger.LogInformation("   テーマ: {Theme}", theme);
         _logger.LogInformation("   モデル: {Model}", model);
         _logger.LogInformation("   会話回数: {Count}", count);
+        if (threadId != null)
+            _logger.LogInformation("   📌 既存スレッドに継続: {ThreadId}", threadId);
         _logger.LogInformation("");
 
         // ── Phase 0: Team / チャネル解決（teams-channel-resolver スキル相当） ──
@@ -121,7 +125,7 @@ public class ConversationCommands
             // ── Phase 2: ラリーごとに会話実行 ──
             _logger.LogInformation("💬 Phase 2: 会話を実行中...");
             await ExecuteRalliesAsync(
-                client, scenario, teamId, channelId, siteId, parentItemId, model);
+                client, scenario, teamId, channelId, siteId, parentItemId, model, threadId);
 
             _logger.LogInformation("");
 
@@ -298,7 +302,8 @@ public class ConversationCommands
         string channelId,
         string? siteId,
         string? parentItemId,
-        string model)
+        string model,
+        string? existingThreadId = null)
     {
         string? lastPostedMessageId = null;
         var generatedDir = Path.Combine(AppContext.BaseDirectory, "generated");
@@ -348,8 +353,12 @@ public class ConversationCommands
                 1. 各ラリーごとに、まず get_persona_info でペルソナ情報を取得してください
                 2. ペルソナの口調・性格に合わせた自然な日本語メッセージを生成してください
                 3. post_teams_message にペルソナ名を指定して投稿してください（認証は自動で行われます）
-                4. 最初のラリー（rallyNumber=1）は新規スレッド作成（replyToMessageId は空文字列）
-                5. 2番目以降のラリーは最初のメッセージへの返信（replyToMessageId にスレッドのメッセージIDを指定）
+                4. {(existingThreadId != null
+                    ? $"既存スレッドへの継続です。全てのラリーで replyToMessageId に \"{existingThreadId}\" を指定してください"
+                    : "最初のラリー（rallyNumber=1）は新規スレッド作成（replyToMessageId は空文字列）")}
+                5. {(existingThreadId != null
+                    ? "既存スレッドの文脈を考慮し、会話の流れに自然に合うメッセージを作成してください"
+                    : "2番目以降のラリーは最初のメッセージへの返信（replyToMessageId にスレッドのメッセージIDを指定）")}
                 6. attachFile=true の場合は以下の手順を必ず実行してください:
                    ① run_dotnet_script でファイルを生成（powerpoint-openxml スキルのサンプルコードを参考に）
                    ② upload_to_channel でチャネルのファイルフォルダにアップロード（webUrlが返されます）
@@ -359,11 +368,14 @@ public class ConversationCommands
                 8. PowerPoint作成時は必ず Svg.Skia + SkiaSharp を使ってSVG図表（構成図・フロー図・グラフ等）を作成し、
                    PNG画像としてスライドに埋め込んでください。powerpoint-openxml スキルの SvgToPng / AddImageToSlide ヘルパーを使用してください。
                    テキストのみのスライドは禁止です。各スライドに最低1つの図表を含めてください。
+                9. SVGの全ての <text> 要素に font-family="'Noto Sans CJK JP', sans-serif" を必ず指定してください。
+                   指定しないと日本語テキストが表示されません。
                 """
             }
         });
 
-        string? threadMessageId = null;
+        // 既存スレッドIDが指定されている場合はそれを使用
+        string? threadMessageId = existingThreadId;
 
         foreach (var rally in scenario.Rallies)
         {
@@ -390,8 +402,8 @@ public class ConversationCommands
                     _logger.LogDebug("Rally {RallyNumber} レスポンス: {Content}",
                         rally.RallyNumber, response.Data.Content);
 
-                    // 最初のラリーのメッセージIDをスレッドIDとして保持
-                    if (rally.RallyNumber == 1)
+                    // 最初のラリーでスレッドIDが未設定の場合、投稿結果からキャプチャ
+                    if (rally.RallyNumber == 1 && existingThreadId == null)
                     {
                         threadMessageId = lastPostedMessageId
                             ?? TryExtractMessageId(response.Data.Content);

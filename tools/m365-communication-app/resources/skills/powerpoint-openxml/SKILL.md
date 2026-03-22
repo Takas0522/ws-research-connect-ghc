@@ -26,6 +26,7 @@ dotnet-scriptを使用してC#スクリプトを実行し、OpenXML SDKでPowerP
 2. スクリプトの先頭に必ずNuGetディレクティブを記述してください
 3. **各スライドに1つ以上のSVG図表を挿入して、資料としてのクオリティを高めてください**
 4. 実行後、PPTXファイルは自動修復・バリデーションされます。validationErrorsが空でない場合はスクリプトを修正して再実行してください
+5. **SVGの全ての `<text>` 要素に `font-family="'Noto Sans CJK JP', sans-serif"` を必ず指定してください。指定しないと日本語テキストが表示されません。**
 
 ## SVG → PNG → PPTX パイプライン
 
@@ -98,11 +99,11 @@ void AddImageToSlide(SlidePart slidePart, byte[] pngBytes, long x, long y, long 
 ```csharp
 var archSvg = @"<svg xmlns=""http://www.w3.org/2000/svg"" width=""600"" height=""250"">
   <rect x=""10"" y=""90"" width=""130"" height=""60"" rx=""8"" fill=""#4472C4""/>
-  <text x=""75"" y=""125"" text-anchor=""middle"" fill=""white"" font-size=""13"">React Frontend</text>
+  <text x=""75"" y=""125"" text-anchor=""middle"" fill=""white"" font-size=""13"" font-family=""'Noto Sans CJK JP', sans-serif"">React Frontend</text>
   <rect x=""235"" y=""90"" width=""130"" height=""60"" rx=""8"" fill=""#ED7D31""/>
-  <text x=""300"" y=""125"" text-anchor=""middle"" fill=""white"" font-size=""13"">ASP.NET Core</text>
+  <text x=""300"" y=""125"" text-anchor=""middle"" fill=""white"" font-size=""13"" font-family=""'Noto Sans CJK JP', sans-serif"">ASP.NET Core</text>
   <rect x=""460"" y=""90"" width=""130"" height=""60"" rx=""8"" fill=""#70AD47""/>
-  <text x=""525"" y=""125"" text-anchor=""middle"" fill=""white"" font-size=""13"">SQL Database</text>
+  <text x=""525"" y=""125"" text-anchor=""middle"" fill=""white"" font-size=""13"" font-family=""'Noto Sans CJK JP', sans-serif"">SQL Database</text>
   <line x1=""140"" y1=""120"" x2=""233"" y2=""120"" stroke=""#555"" stroke-width=""2""/>
   <polygon points=""231,115 241,120 231,125"" fill=""#555""/>
   <line x1=""365"" y1=""120"" x2=""458"" y2=""120"" stroke=""#555"" stroke-width=""2""/>
@@ -114,13 +115,13 @@ var archSvg = @"<svg xmlns=""http://www.w3.org/2000/svg"" width=""600"" height="
 ```csharp
 var flowSvg = @"<svg xmlns=""http://www.w3.org/2000/svg"" width=""600"" height=""120"">
   <rect x=""10"" y=""30"" width=""100"" height=""50"" rx=""25"" fill=""#4472C4""/>
-  <text x=""60"" y=""60"" text-anchor=""middle"" fill=""white"" font-size=""12"">企画</text>
+  <text x=""60"" y=""60"" text-anchor=""middle"" fill=""white"" font-size=""12"" font-family=""'Noto Sans CJK JP', sans-serif"">企画</text>
   <rect x=""150"" y=""30"" width=""100"" height=""50"" rx=""25"" fill=""#5B9BD5""/>
-  <text x=""200"" y=""60"" text-anchor=""middle"" fill=""white"" font-size=""12"">設計</text>
+  <text x=""200"" y=""60"" text-anchor=""middle"" fill=""white"" font-size=""12"" font-family=""'Noto Sans CJK JP', sans-serif"">設計</text>
   <rect x=""290"" y=""30"" width=""100"" height=""50"" rx=""25"" fill=""#ED7D31""/>
-  <text x=""340"" y=""60"" text-anchor=""middle"" fill=""white"" font-size=""12"">開発</text>
+  <text x=""340"" y=""60"" text-anchor=""middle"" fill=""white"" font-size=""12"" font-family=""'Noto Sans CJK JP', sans-serif"">開発</text>
   <rect x=""430"" y=""30"" width=""100"" height=""50"" rx=""25"" fill=""#70AD47""/>
-  <text x=""480"" y=""60"" text-anchor=""middle"" fill=""white"" font-size=""12"">リリース</text>
+  <text x=""480"" y=""60"" text-anchor=""middle"" fill=""white"" font-size=""12"" font-family=""'Noto Sans CJK JP', sans-serif"">リリース</text>
   <line x1=""110"" y1=""55"" x2=""148"" y2=""55"" stroke=""#555"" stroke-width=""2""/>
   <polygon points=""146,50 156,55 146,60"" fill=""#555""/>
   <line x1=""250"" y1=""55"" x2=""288"" y2=""55"" stroke=""#555"" stroke-width=""2""/>
@@ -133,19 +134,19 @@ var flowSvg = @"<svg xmlns=""http://www.w3.org/2000/svg"" width=""600"" height="
 #### 横棒グラフ
 ```csharp
 var barSvg = @"<svg xmlns=""http://www.w3.org/2000/svg"" width=""500"" height=""250"">
-  <text x=""10"" y=""20"" font-size=""14"" fill=""#333"" font-weight=""bold"">SaaSアプリ利用者数</text>
-  <text x=""10"" y=""55"" font-size=""11"" fill=""#666"">Slack</text>
+  <text x=""10"" y=""20"" font-size=""14"" fill=""#333"" font-weight=""bold"" font-family=""'Noto Sans CJK JP', sans-serif"">SaaSアプリ利用者数</text>
+  <text x=""10"" y=""55"" font-size=""11"" fill=""#666"" font-family=""'Noto Sans CJK JP', sans-serif"">Slack</text>
   <rect x=""80"" y=""40"" width=""350"" height=""22"" rx=""3"" fill=""#4472C4""/>
-  <text x=""440"" y=""56"" font-size=""11"" fill=""#333"">350名</text>
-  <text x=""10"" y=""95"" font-size=""11"" fill=""#666"">Teams</text>
+  <text x=""440"" y=""56"" font-size=""11"" fill=""#333"" font-family=""'Noto Sans CJK JP', sans-serif"">350名</text>
+  <text x=""10"" y=""95"" font-size=""11"" fill=""#666"" font-family=""'Noto Sans CJK JP', sans-serif"">Teams</text>
   <rect x=""80"" y=""80"" width=""280"" height=""22"" rx=""3"" fill=""#ED7D31""/>
-  <text x=""370"" y=""96"" font-size=""11"" fill=""#333"">280名</text>
-  <text x=""10"" y=""135"" font-size=""11"" fill=""#666"">Zoom</text>
+  <text x=""370"" y=""96"" font-size=""11"" fill=""#333"" font-family=""'Noto Sans CJK JP', sans-serif"">280名</text>
+  <text x=""10"" y=""135"" font-size=""11"" fill=""#666"" font-family=""'Noto Sans CJK JP', sans-serif"">Zoom</text>
   <rect x=""80"" y=""120"" width=""200"" height=""22"" rx=""3"" fill=""#70AD47""/>
-  <text x=""290"" y=""136"" font-size=""11"" fill=""#333"">200名</text>
-  <text x=""10"" y=""175"" font-size=""11"" fill=""#666"">Notion</text>
+  <text x=""290"" y=""136"" font-size=""11"" fill=""#333"" font-family=""'Noto Sans CJK JP', sans-serif"">200名</text>
+  <text x=""10"" y=""175"" font-size=""11"" fill=""#666"" font-family=""'Noto Sans CJK JP', sans-serif"">Notion</text>
   <rect x=""80"" y=""160"" width=""120"" height=""22"" rx=""3"" fill=""#FFC000""/>
-  <text x=""210"" y=""176"" font-size=""11"" fill=""#333"">120名</text>
+  <text x=""210"" y=""176"" font-size=""11"" fill=""#333"" font-family=""'Noto Sans CJK JP', sans-serif"">120名</text>
 </svg>";
 ```
 
@@ -159,13 +160,13 @@ var pieSvg = @"<svg xmlns=""http://www.w3.org/2000/svg"" width=""300"" height=""
     stroke-dasharray=""188.5 440"" stroke-dashoffset=""-251.3"" transform=""rotate(-90 150 150)""/>
   <circle cx=""150"" cy=""150"" r=""100"" fill=""none"" stroke=""#70AD47"" stroke-width=""40""
     stroke-dasharray=""125.7 503"" stroke-dashoffset=""-439.8"" transform=""rotate(-90 150 150)""/>
-  <text x=""150"" y=""155"" text-anchor=""middle"" font-size=""18"" fill=""#333"" font-weight=""bold"">利用状況</text>
+  <text x=""150"" y=""155"" text-anchor=""middle"" font-size=""18"" fill=""#333"" font-weight=""bold"" font-family=""'Noto Sans CJK JP', sans-serif"">利用状況</text>
   <rect x=""10"" y=""270"" width=""12"" height=""12"" fill=""#4472C4""/>
-  <text x=""28"" y=""281"" font-size=""11"" fill=""#333"">業務系 40%</text>
+  <text x=""28"" y=""281"" font-size=""11"" fill=""#333"" font-family=""'Noto Sans CJK JP', sans-serif"">業務系 40%</text>
   <rect x=""110"" y=""270"" width=""12"" height=""12"" fill=""#ED7D31""/>
-  <text x=""128"" y=""281"" font-size=""11"" fill=""#333"">分析系 30%</text>
+  <text x=""128"" y=""281"" font-size=""11"" fill=""#333"" font-family=""'Noto Sans CJK JP', sans-serif"">分析系 30%</text>
   <rect x=""210"" y=""270"" width=""12"" height=""12"" fill=""#70AD47""/>
-  <text x=""228"" y=""281"" font-size=""11"" fill=""#333"">その他 20%</text>
+  <text x=""228"" y=""281"" font-size=""11"" fill=""#333"" font-family=""'Noto Sans CJK JP', sans-serif"">その他 20%</text>
 </svg>";
 ```
 

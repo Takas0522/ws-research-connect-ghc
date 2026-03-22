@@ -22,7 +22,8 @@
         "ms-dotnettools.csdevkit",
         "dbaeumer.vscode-eslint",
         "GitHub.copilot",
-        "GitHub.copilot-chat"
+        "GitHub.copilot-chat",
+        "bierner.markdown-mermaid"
       ],
       "settings": {
         "dotnet.defaultSolution": "disable"
