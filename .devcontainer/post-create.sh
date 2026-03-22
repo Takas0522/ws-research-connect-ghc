@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 set -e
 
+# PostgreSQL client
+sudo apt-get update && sudo apt-get install -y --no-install-recommends postgresql-client && sudo rm -rf /var/lib/apt/lists/*
+
 # Global tools
 npm install -g @github/copilot
 dotnet tool install -g dotnet-script

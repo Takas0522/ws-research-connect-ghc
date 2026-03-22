@@ -4,6 +4,7 @@
 
 ## DevContainer 構成
 
+特に指定がない限りDevContainer内からチャットは実行される。
 DevContainer は **Docker Compose** で構成されている。
 
 | サービス | イメージ | 説明 |
