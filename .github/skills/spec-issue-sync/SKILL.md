@@ -2,19 +2,19 @@
 name: spec-issue-sync
 description: >-
   作業プランから GitHub Issue を一括登録し、依存関係を設定するスキル。
-  TRIGGER: ユーザーが「/spec-issues <作業名>」と明示的にコマンドを入力した場合のみ実行する。
+  TRIGGER: ユーザーが「[spec-issues] <作業名>」と明示的にコマンドを入力した場合のみ実行する。
   docs/specs/{作業名}/plan/ 配下のファイルから Issue を作成し、
   依存関係の相互リンクと plan.json への Issue 番号反映を行う。
-  /spec ワークフローの Phase 3 としても使用される。
-  DO NOT USE unless the user explicitly types "/spec-issues <name>" or this skill is invoked as part of /spec workflow.
+  [spec] ワークフローの Phase 3 としても使用される。
+  DO NOT USE unless the user explicitly types "[spec-issues] <name>" or this skill is invoked as part of [spec] workflow.
 ---
 
 # GitHub Issue 一括登録スキル
 
 ## トリガー条件
 
-> **このスキルは `/spec-issues <作業名>` と明示的に入力された場合のみ実行する。**
-> `/spec` ワークフローの Phase 3 として呼び出される場合も有効。
+> **このスキルは `[spec-issues] <作業名>` と明示的に入力された場合のみ実行する。**
+> `[spec]` ワークフローの Phase 3 として呼び出される場合も有効。
 
 ## 前提条件
 

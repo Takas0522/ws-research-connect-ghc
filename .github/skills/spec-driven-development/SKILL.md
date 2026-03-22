@@ -2,20 +2,20 @@
 name: spec-driven-development
 description: >-
   仕様書ドリブンの開発ワークフロー全体を制御するオーケストレータースキル。
-  TRIGGER: ユーザーが「/spec <作業名>」と明示的にコマンドを入力した場合のみ実行する。
+  TRIGGER: ユーザーが「[spec] <作業名>」と明示的にコマンドを入力した場合のみ実行する。
   雑な依頼や曖昧な指示では絶対に実行しない。
   docs/specs/{作業名} に記載された仕様をもとに、ブランチ作成 → 作業プラン策定 →
   GitHub Issue 登録 → タスク実行・監視 までの一連の開発フローをサブスキルに委譲しながら制御する。
-  DO NOT USE unless the user explicitly types "/spec <name>".
+  DO NOT USE unless the user explicitly types "[spec] <name>".
 ---
 
 # 仕様書ドリブン開発ワークフロー（オーケストレーター）
 
 ## トリガー条件
 
-> **このスキルは `/spec <作業名>` と明示的に入力された場合のみ実行する。**
+> **このスキルは `[spec] <作業名>` と明示的に入力された場合のみ実行する。**
 > 「仕様を実装して」「specを見て作って」等の曖昧な指示では実行しない。
-> トリガー例: `/spec ユーザー管理`, `/spec search-feature`
+> トリガー例: `[spec] ユーザー管理`, `[spec] search-feature`
 
 ## 概要
 
@@ -35,9 +35,9 @@ graph LR
 
 | スキル | 担当 | 単独トリガー |
 |---|---|---|
-| `spec-plan-builder` | Phase 2: 仕様→作業プラン分解・plan.json 生成 | `/spec-plan <作業名>` |
-| `spec-issue-sync` | Phase 3: plan/ → GitHub Issue 登録・依存関係設定 | `/spec-issues <作業名>` |
-| `spec-task-runner` | Phase 4: plan.json に基づくタスク実行・監視 | `/spec-run <作業名>` |
+| `spec-plan-builder` | Phase 2: 仕様→作業プラン分解・plan.json 生成 | `[spec-plan] <作業名>` |
+| `spec-issue-sync` | Phase 3: plan/ → GitHub Issue 登録・依存関係設定 | `[spec-issues] <作業名>` |
+| `spec-task-runner` | Phase 4: plan.json に基づくタスク実行・監視 | `[spec-run] <作業名>` |
 
 ## Phase 1: 作業ブランチの作成（本スキルが直接実行）
 

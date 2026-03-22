@@ -2,20 +2,20 @@
 name: spec-task-runner
 description: >-
   作業プラン（plan.json）に基づいてタスクを実行・監視するスキル。
-  TRIGGER: ユーザーが「/spec-run <作業名>」と明示的にコマンドを入力した場合のみ実行する。
+  TRIGGER: ユーザーが「[spec-run] <作業名>」と明示的にコマンドを入力した場合のみ実行する。
   ローカル実行タスクは直接実行し、delegate タスクは /delegate コマンドで
   GitHub Coding Agent に委任する。進捗を plan.json で管理し、
   全タスク完了後に main への PR を作成する。
-  /spec ワークフローの Phase 4 としても使用される。
-  DO NOT USE unless the user explicitly types "/spec-run <name>" or this skill is invoked as part of /spec workflow.
+  [spec] ワークフローの Phase 4 としても使用される。
+  DO NOT USE unless the user explicitly types "[spec-run] <name>" or this skill is invoked as part of [spec] workflow.
 ---
 
 # タスク実行・監視スキル
 
 ## トリガー条件
 
-> **このスキルは `/spec-run <作業名>` と明示的に入力された場合のみ実行する。**
-> `/spec` ワークフローの Phase 4 として呼び出される場合も有効。
+> **このスキルは `[spec-run] <作業名>` と明示的に入力された場合のみ実行する。**
+> `[spec]` ワークフローの Phase 4 として呼び出される場合も有効。
 
 ## 前提条件
 
@@ -139,4 +139,4 @@ $(cat docs/specs/{作業名}/plan/plan.json | jq -r '.tasks[] | "- [x] \(.id): \
 
 - `plan.json` の `status` を確認し、`pending` または `failed` のタスクから処理を再開する
 - `delegated` のタスクは PR の状態を確認して `done` / `failed` に更新してから次に進む
-- `/spec-run <作業名>` を再度実行すれば、未完了タスクのみ処理される
+- `[spec-run] <作業名>` を再度実行すれば、未完了タスクのみ処理される

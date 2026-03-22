@@ -2,24 +2,24 @@
 name: spec-plan-builder
 description: >-
   仕様書から作業プランを策定するスキル。
-  TRIGGER: ユーザーが「/spec-plan <作業名>」と明示的にコマンドを入力した場合のみ実行する。
+  TRIGGER: ユーザーが「[spec-plan] <作業名>」と明示的にコマンドを入力した場合のみ実行する。
   docs/specs/{作業名} の仕様を読み込み、作業項目の分解、plan.json の生成、
   サマリファイルの作成までを担当する。
-  /spec ワークフローの Phase 2 としても使用される。
-  DO NOT USE unless the user explicitly types "/spec-plan <name>" or this skill is invoked as part of /spec workflow.
+  [spec] ワークフローの Phase 2 としても使用される。
+  DO NOT USE unless the user explicitly types "[spec-plan] <name>" or this skill is invoked as part of [spec] workflow.
 ---
 
 # 仕様書→作業プラン策定スキル
 
 ## トリガー条件
 
-> **このスキルは `/spec-plan <作業名>` と明示的に入力された場合のみ実行する。**
-> `/spec` ワークフローの Phase 2 として呼び出される場合も有効。
+> **このスキルは `[spec-plan] <作業名>` と明示的に入力された場合のみ実行する。**
+> `[spec]` ワークフローの Phase 2 として呼び出される場合も有効。
 
 ## 前提条件
 
 - `docs/specs/{作業名}/` が存在すること
-- 作業ブランチがチェックアウトされていること（`/spec` から呼ばれた場合は Phase 1 で作成済み）
+- 作業ブランチがチェックアウトされていること（`[spec]` から呼ばれた場合は Phase 1 で作成済み）
 
 ## 手順
 
