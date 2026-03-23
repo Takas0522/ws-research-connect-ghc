@@ -28,74 +28,137 @@ public static class DashboardEndpoints
                 .Select(g => new
                 {
                     yearMonth = g.Key.YearMonth,
-                    productId = g.Key.ProductId,
                     productName = g.Key.Name,
-                    totalRevenue = g.Sum(u => u.BillingAmount),
-                    contractCount = g.Select(u => u.ContractId).Distinct().Count()
+                    revenue = g.Sum(u => u.BillingAmount)
                 })
                 .OrderBy(r => r.yearMonth)
                 .ThenBy(r => r.productName)
                 .ToListAsync();
 
-            return Results.Ok(revenue);
+            var response = new
+            {
+                months = revenue
+                    .GroupBy(r => r.yearMonth)
+                    .Select(g => new
+                    {
+                        yearMonth = g.Key,
+                        totalRevenue = g.Sum(x => x.revenue),
+                        byProduct = g.Select(x => new
+                        {
+                            x.productName,
+                            x.revenue
+                        }).ToList()
+                    })
+                    .OrderBy(r => r.yearMonth)
+                    .ToList()
+            };
+
+            return Results.Ok(response);
         }).WithName("GetDashboardRevenue");
 
         group.MapGet("/customers", async (AppDbContext db) =>
         {
-            var totalCustomers = await db.Customers.CountAsync();
-            var activeCustomers = await db.Customers
-                .CountAsync(c => c.Contracts.Any(ct => ct.Status == ContractStatus.Active));
+            var customers = await db.Customers
+                .AsNoTracking()
+                .Select(c => new
+                {
+                    customerId = c.Id,
+                    customerName = c.Name,
+                    contractCount = c.Contracts.Count(ct => ct.Status == ContractStatus.Active),
+                    monthlyTotals = c.Contracts
+                        .Where(ct => ct.Status == ContractStatus.Active)
+                        .SelectMany(ct => ct.MonthlyUsages)
+                        .GroupBy(u => u.YearMonth)
+                        .Select(g => new
+                        {
+                            yearMonth = g.Key,
+                            total = g.Sum(u => u.BillingAmount)
+                        })
+                        .OrderByDescending(g => g.yearMonth)
+                        .Take(2)
+                        .ToList()
+                })
+                .ToListAsync();
 
-            var now = DateTime.UtcNow;
-            var startOfThisMonth = new DateTime(now.Year, now.Month, 1, 0, 0, 0, DateTimeKind.Utc);
-            var startOfNextMonth = startOfThisMonth.AddMonths(1);
-            var startOfLastMonth = startOfThisMonth.AddMonths(-1);
+            var response = customers
+                .Select(c =>
+                {
+                    var latestMonthlyTotal = c.monthlyTotals.FirstOrDefault()?.total ?? 0m;
+                    var previousMonthlyTotal = c.monthlyTotals.Skip(1).FirstOrDefault()?.total ?? latestMonthlyTotal;
+                    var trend = latestMonthlyTotal.CompareTo(previousMonthlyTotal) switch
+                    {
+                        > 0 => "increasing",
+                        < 0 => "decreasing",
+                        _ => "stable"
+                    };
 
-            var newCustomersThisMonth = await db.Customers
-                .CountAsync(c => c.CreatedAt >= startOfThisMonth && c.CreatedAt < startOfNextMonth);
+                    return new
+                    {
+                        c.customerId,
+                        c.customerName,
+                        c.contractCount,
+                        latestMonthlyTotal,
+                        trend
+                    };
+                })
+                .OrderByDescending(c => c.latestMonthlyTotal)
+                .ThenBy(c => c.customerName)
+                .ToList();
 
-            var newCustomersLastMonth = await db.Customers
-                .CountAsync(c => c.CreatedAt >= startOfLastMonth && c.CreatedAt < startOfThisMonth);
-
-            var trend = newCustomersLastMonth > 0
-                ? Math.Round((double)(newCustomersThisMonth - newCustomersLastMonth) / newCustomersLastMonth * 100, 1)
-                : newCustomersThisMonth > 0 ? 100.0 : 0.0;
-
-            return Results.Ok(new
-            {
-                totalCustomers,
-                activeCustomers,
-                newCustomersThisMonth,
-                newCustomersLastMonth,
-                trend
-            });
+            return Results.Ok(response);
         }).WithName("GetDashboardCustomers");
 
         group.MapGet("/trials", async (AppDbContext db) =>
         {
             var today = DateOnly.FromDateTime(DateTime.UtcNow);
             var sevenDaysLater = today.AddDays(7);
+            var startOfThisMonth = new DateOnly(today.Year, today.Month, 1);
+            var startOfNextMonth = startOfThisMonth.AddMonths(1);
 
             var activeTrials = await db.Trials
                 .CountAsync(t => t.Status == TrialStatus.Active);
 
-            var totalCompleted = await db.Trials
-                .CountAsync(t => t.Status == TrialStatus.Converted || t.Status == TrialStatus.Expired);
-            var converted = await db.Trials
+            var convertedThisMonth = await db.Trials
+                .CountAsync(t => t.Status == TrialStatus.Converted &&
+                                 t.UpdatedAt >= startOfThisMonth.ToDateTime(TimeOnly.MinValue, DateTimeKind.Utc) &&
+                                 t.UpdatedAt < startOfNextMonth.ToDateTime(TimeOnly.MinValue, DateTimeKind.Utc));
+
+            var expiredThisMonth = await db.Trials
+                .CountAsync(t => t.Status == TrialStatus.Expired &&
+                                 t.UpdatedAt >= startOfThisMonth.ToDateTime(TimeOnly.MinValue, DateTimeKind.Utc) &&
+                                 t.UpdatedAt < startOfNextMonth.ToDateTime(TimeOnly.MinValue, DateTimeKind.Utc));
+
+            var convertedTotal = await db.Trials
                 .CountAsync(t => t.Status == TrialStatus.Converted);
+            var expiredTotal = await db.Trials
+                .CountAsync(t => t.Status == TrialStatus.Expired);
+
+            var totalCompleted = convertedTotal + expiredTotal;
 
             var conversionRate = totalCompleted > 0
-                ? Math.Round((double)converted / totalCompleted * 100, 1)
+                ? Math.Round((double)convertedTotal / totalCompleted, 4)
                 : 0.0;
 
             var expiringWithin7Days = await db.Trials
-                .CountAsync(t => t.Status == TrialStatus.Active &&
-                                 t.EndDate >= today &&
-                                 t.EndDate <= sevenDaysLater);
+                .AsNoTracking()
+                .Where(t => t.Status == TrialStatus.Active &&
+                            t.EndDate >= today &&
+                            t.EndDate <= sevenDaysLater)
+                .OrderBy(t => t.EndDate)
+                .Select(t => new
+                {
+                    customerName = t.Customer.Name,
+                    productName = t.Product.Name,
+                    remainingDays = t.EndDate.DayNumber - today.DayNumber,
+                    usageLevel = "medium"
+                })
+                .ToListAsync();
 
             return Results.Ok(new
             {
                 activeTrials,
+                convertedThisMonth,
+                expiredThisMonth,
                 conversionRate,
                 expiringWithin7Days
             });

@@ -55,7 +55,8 @@ cd src/backend
 dotnet run
 ```
 
-バックエンドが `http://0.0.0.0:5010` で起動します（`launchSettings.json` で設定済み）。
+バックエンドはコンテナ内で `0.0.0.0:5010` にバインドされます。
+ホストからは `http://localhost:5010` にアクセスしてください。
 
 ### 4. フロントエンドの起動
 
@@ -65,11 +66,12 @@ npm install   # 初回のみ
 npm run dev
 ```
 
-フロントエンドが `http://0.0.0.0:5173` で起動します（`vite.config.ts` で設定済み）。
-ブラウザでポートフォワード先の URL にアクセスしてください。
+フロントエンドはコンテナ内で `0.0.0.0:5173` にバインドされます。
+ホストからは `http://localhost:5173` にアクセスしてください。
 
 > DevContainer / Codespaces ではホストからアクセスするために `0.0.0.0` バインドが必要です。
 > フロントエンドの `/api` リクエストは Vite のプロキシ経由でバックエンド（`localhost:5010`）に転送されます。
+> `5173` が使用中の場合、Vite は自動で別ポートへ切り替えずエラー終了します。公開済みポートとズレないよう、競合プロセスを停止してから再起動してください。
 
 ## 接続情報
 
@@ -87,10 +89,10 @@ npm run dev
 
 | サービス | URL |
 |---|---|
-| フロントエンド | http://0.0.0.0:5173 |
-| バックエンド API | http://0.0.0.0:5010 |
-| OpenAPI (Swagger) | http://0.0.0.0:5010/openapi/v1.json |
-| ヘルスチェック | http://0.0.0.0:5010/healthz |
+| フロントエンド | http://localhost:5173 |
+| バックエンド API | http://localhost:5010 |
+| OpenAPI (Swagger) | http://localhost:5010/openapi/v1.json |
+| ヘルスチェック | http://localhost:5010/healthz |
 
 ## API エンドポイント一覧
 

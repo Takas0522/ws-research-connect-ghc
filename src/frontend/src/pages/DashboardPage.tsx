@@ -21,34 +21,35 @@ export default function DashboardPage(): ReactNode {
 
   const loading = revenue.loading || customers.loading || trials.loading;
   const error = revenue.error || customers.error || trials.error;
+  const revenueMonths = revenue.data?.months ?? [];
 
-  const latestMonth = revenue.data?.months.at(-1);
+  const latestMonth = revenueMonths.at(-1);
   const totalRevenue = latestMonth?.totalRevenue ?? 0;
 
   const lineData = useMemo(() => {
-    if (!revenue.data) return [];
+    if (revenueMonths.length === 0) return [];
     const productNames = new Set<string>();
-    revenue.data.months.forEach((m) => m.byProduct.forEach((p) => productNames.add(p.productName)));
-    return revenue.data.months.map((m) => {
+    revenueMonths.forEach((m) => m.byProduct.forEach((p) => productNames.add(p.productName)));
+    return revenueMonths.map((m) => {
       const row: Record<string, unknown> = { month: formatYearMonth(m.yearMonth) };
       m.byProduct.forEach((p) => {
         row[p.productName] = p.revenue;
       });
       return row;
     });
-  }, [revenue.data]);
+  }, [revenueMonths]);
 
   const lineSeries = useMemo(() => {
-    if (!revenue.data) return [];
+    if (revenueMonths.length === 0) return [];
     const names = new Set<string>();
-    revenue.data.months.forEach((m) => m.byProduct.forEach((p) => names.add(p.productName)));
+    revenueMonths.forEach((m) => m.byProduct.forEach((p) => names.add(p.productName)));
     const colors = ['#2563eb', '#16a34a', '#ea580c', '#7c3aed', '#db2777', '#0891b2'];
     return Array.from(names).map((name, i) => ({
       dataKey: name,
       name,
       color: colors[i % colors.length],
     }));
-  }, [revenue.data]);
+  }, [revenueMonths]);
 
   const pieData = useMemo(() => {
     if (!latestMonth) return [];
