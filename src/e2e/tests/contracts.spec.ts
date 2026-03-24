@@ -30,19 +30,20 @@ test.describe('Contracts', () => {
     // Verify the new customer appears in the list
     await expect(page.locator('table')).toContainText(newCustomerName);
 
-    // Step 2: Retrieve the new customer ID via the API to create a contract
-    const response = await page.request.get('/api/customers');
+    // Step 2: Retrieve the new customer ID via the backend API
+    const response = await page.request.get('http://localhost:5010/api/customers');
     expect(response.ok()).toBeTruthy();
     const customers = await response.json() as Array<{ id: string; code: string }>;
     const newCustomer = customers.find((c) => c.code === newCustomerCode);
     expect(newCustomer).toBeDefined();
     const newCustomerId = newCustomer!.id;
 
-    // Step 3: Create a contract via the API
+    // Step 3: Create a contract via the backend API directly
     // (The UI sends product IDs as planId placeholders, so we use the API directly)
-    const contractResponse = await page.request.post('/api/contracts', {
+    const contractResponse = await page.request.post('http://localhost:5010/api/contracts', {
       data: {
         customerId: newCustomerId,
+        productId: 'e2e00001-0000-0000-0000-000000000001', // E2Eテスト製品Alpha
         planId: PLAN_STANDARD_ID,
         contractType: 'monthly',
         startDate: '2026-03-24',

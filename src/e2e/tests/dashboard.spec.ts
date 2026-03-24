@@ -18,9 +18,9 @@ test.describe('Dashboard', () => {
     await expect(dashboardPage.conversionRateCard).toBeVisible();
 
     // Verify the monthly revenue card displays a non-zero value
-    // (seed data has usage records for Jan-Mar 2026)
+    // (seed data has usage records for Jan-Mar 2026; app uses fullwidth yen ￥)
     const revenueText = await dashboardPage.monthlyRevenueCard.textContent();
-    expect(revenueText).toMatch(/¥/);
+    expect(revenueText).toMatch(/[¥￥]/);
 
     // Verify chart headings are visible
     await expect(dashboardPage.revenueChartHeading).toBeVisible();

@@ -36,11 +36,10 @@ test.describe('Usage', () => {
     await expect(usagePage.tableRows).toHaveCount(initialRowCount + 1);
 
     // Verify the billing amount is displayed for the new usage record
-    // (The billing amount is calculated by the backend based on the plan)
+    // The app uses the fullwidth yen sign (￥, U+FFE5)
     const billingAmounts = await usagePage.getBillingAmounts();
-    // The new row should have a non-zero billing amount
     const hasNonZeroBilling = billingAmounts.some((amount) =>
-      amount.includes('¥') && !amount.includes('¥0'),
+      /[¥￥]/.test(amount) && !amount.endsWith('0'),
     );
     expect(hasNonZeroBilling).toBeTruthy();
   });

@@ -4,35 +4,35 @@ import { Client } from 'pg';
 import * as fs from 'fs';
 import * as path from 'path';
 
+// Must match the fixed port configured in playwright.config.ts webServer.env
+const E2E_DB_PORT = 54320;
+
 async function globalSetup(_config: FullConfig): Promise<void> {
+  // Start PostgreSQL on a fixed host port so that the backend web server
+  // (which starts before globalSetup) can use a static connection string.
   const container = await new PostgreSqlContainer('postgres:17')
     .withDatabase('appdb')
     .withUsername('postgres')
     .withPassword('postgres')
+    .withExposedPorts({ container: 5432, host: E2E_DB_PORT })
     .start();
-
-  const port = container.getMappedPort(5432);
-  const host = container.getHost();
 
   // Store the container reference for global teardown (same process)
   (globalThis as Record<string, unknown>)['__E2E_PG_CONTAINER__'] = container;
 
-  // Expose DB connection details for test workers and the backend web server
-  process.env['TEST_DB_HOST'] = host;
-  process.env['TEST_DB_PORT'] = String(port);
+  // Expose DB connection details for test workers (resetDatabase helper)
+  // Note: these are distinct from the backend webServer env vars set in playwright.config.ts
+  process.env['TEST_DB_HOST'] = 'localhost';
+  process.env['TEST_DB_PORT'] = String(E2E_DB_PORT);
   process.env['TEST_DB_NAME'] = 'appdb';
   process.env['TEST_DB_USER'] = 'postgres';
   process.env['TEST_DB_PASSWORD'] = 'postgres';
+  process.env['TEST_SEED_SQL_PATH'] = path.join(__dirname, 'fixtures/seed.sql');
 
-  // Override the .NET backend connection string so the backend web server
-  // (started after globalSetup) connects to the Testcontainers database.
-  process.env['ConnectionStrings__DefaultConnection'] =
-    `Host=${host};Port=${port};Database=appdb;Username=postgres;Password=postgres`;
-
-  // Apply schema and seed data
+  // Apply schema and seed data to the Testcontainers database
   const client = new Client({
-    host,
-    port,
+    host: 'localhost',
+    port: E2E_DB_PORT,
     database: 'appdb',
     user: 'postgres',
     password: 'postgres',
@@ -41,25 +41,18 @@ async function globalSetup(_config: FullConfig): Promise<void> {
   await client.connect();
 
   const schemaSQL = fs.readFileSync(
-    path.join(__dirname, '../../database/init/001_init.sql'),
+    path.join(__dirname, '../database/init/001_init.sql'),
     'utf-8',
   );
   await client.query(schemaSQL);
 
   const seedSQL = fs.readFileSync(
-    path.join(__dirname, '../fixtures/seed.sql'),
+    path.join(__dirname, 'fixtures/seed.sql'),
     'utf-8',
   );
   await client.query(seedSQL);
 
   await client.end();
-
-  // Persist the seed SQL path so test workers can reset the database
-  process.env['TEST_SEED_SQL_PATH'] = path.join(__dirname, '../fixtures/seed.sql');
-  process.env['TEST_SCHEMA_SQL_PATH'] = path.join(
-    __dirname,
-    '../../database/init/001_init.sql',
-  );
 }
 
 export default globalSetup;
