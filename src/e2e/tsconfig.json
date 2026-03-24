@@ -9,5 +9,12 @@
     "forceConsistentCasingInFileNames": true,
     "outDir": "./dist"
   },
-  "include": ["tests/**/*.ts", "playwright.config.ts"]
+  "include": [
+    "tests/**/*.ts",
+    "pages/**/*.ts",
+    "fixtures/**/*.ts",
+    "global-setup.ts",
+    "global-teardown.ts",
+    "playwright.config.ts"
+  ]
 }
