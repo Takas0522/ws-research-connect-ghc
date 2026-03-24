@@ -1,0 +1,63 @@
+## .NET
+bin/
+obj/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+## NuGet
+*.nupkg
+**/[Pp]ackages/*
+!**/[Pp]ackages/build/
+*.nuget.props
+*.nuget.targets
+project.lock.json
+
+## IDE
+.vs/
+.vscode/
+*.swp
+*~
+.idea/
+
+## Build results
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Ww][Ii][Nn]32/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+
+## User-specific
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+
+## Publish
+publish/
+
+## MSAL token cache
+.m365-comm/
+
+## Generated scripts and files (dotnet-script output)
+[Gg]enerated/
+
+## OS
+.DS_Store
+Thumbs.db
+
+## appsettings overrides (keep base, ignore local secrets)
+appsettings.Development.json
+appsettings.Local.json
+appsettings.Production.json

@@ -1,0 +1,58 @@
+{
+  "name": "ws-research-connect-ghc",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "app",
+  "workspaceFolder": "/workspaces/ws-research-connect-ghc",
+
+  "features": {
+    "ghcr.io/devcontainers/features/dotnet:2": {
+      "version": "10.0"
+    },
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "lts",
+      "pnpmVersion": "latest"
+    },
+    "ghcr.io/devcontainers/features/github-cli:1": {
+      "version": "latest"
+    },
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {
+      "version": "latest",
+      "dockerDashComposeVersion": "v2"
+    }
+  },
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-dotnettools.csharp",
+        "ms-dotnettools.csdevkit",
+        "dbaeumer.vscode-eslint",
+        "GitHub.copilot",
+        "GitHub.copilot-chat",
+        "bierner.markdown-mermaid",
+        "ms-playwright.playwright",
+        "bradlc.vscode-tailwindcss"
+      ],
+      "settings": {
+        "dotnet.defaultSolution": "disable"
+      }
+    }
+  },
+
+  // ポートフォワーディング
+  // 5173: Frontend (Vite dev server)
+  // 5010: Backend (ASP.NET Core WebAPI)
+  // 5432: PostgreSQL
+  // 9323: Playwright HTML report
+  "forwardPorts": [5173, 5010, 5432, 9323],
+  "portsAttributes": {
+    "5173": { "label": "Frontend (Vite)", "onAutoForward": "notify" },
+    "5010": { "label": "Backend (API)", "onAutoForward": "notify" },
+    "5432": { "label": "PostgreSQL", "onAutoForward": "silent" },
+    "9323": { "label": "Playwright Report", "onAutoForward": "notify" }
+  },
+
+  "postCreateCommand": "bash .devcontainer/post-create.sh",
+
+  "remoteUser": "vscode"
+}
