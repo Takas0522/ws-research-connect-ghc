@@ -1,0 +1,10 @@
+<Solution>
+  <Folder Name="/src/" />
+  <Folder Name="/src/backend/">
+    <Project Path="src/backend/SaasManagement.csproj" />
+  </Folder>
+  <Folder Name="/tests/" />
+  <Folder Name="/tests/backend/">
+    <Project Path="tests/backend/SaasManagement.Tests.csproj" />
+  </Folder>
+</Solution>
