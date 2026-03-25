@@ -120,7 +120,7 @@ def get_client() -> AsyncIOMotorClient:
     return _client
 
 
-async def get_db() -> AsyncIOMotorDatabase:
+async def get_database() -> AsyncIOMotorDatabase:
     return get_client()[settings.database_name]
 ```
 
@@ -163,7 +163,7 @@ from fastapi import Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordBearer
 from jose import JWTError
 from motor.motor_asyncio import AsyncIOMotorDatabase
-from ..core.database import get_db
+from ..core.database import get_database
 from ..core.security import decode_token
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/api/auth/token")
@@ -171,7 +171,7 @@ oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/api/auth/token")
 
 async def get_current_user(
     token: str = Depends(oauth2_scheme),
-    db: AsyncIOMotorDatabase = Depends(get_db),
+    db: AsyncIOMotorDatabase = Depends(get_database),
 ) -> dict:
     credentials_exception = HTTPException(
         status_code=status.HTTP_401_UNAUTHORIZED,
@@ -320,7 +320,7 @@ async def delete_product(db: AsyncIOMotorDatabase, product_id: str) -> None:
 # app/routers/products.py
 from fastapi import APIRouter, Depends, status
 from motor.motor_asyncio import AsyncIOMotorDatabase
-from ..core.database import get_db
+from ..core.database import get_database
 from ..dependencies.auth import get_current_user, require_admin
 from ..schemas.product import ProductCreate, ProductUpdate, ProductResponse
 from ..services import product as product_service
@@ -330,7 +330,7 @@ router = APIRouter(prefix="/api/products", tags=["products"])
 
 @router.get("/", response_model=list[ProductResponse])
 async def list_products(
-    db: AsyncIOMotorDatabase = Depends(get_db),
+    db: AsyncIOMotorDatabase = Depends(get_database),
     _: dict = Depends(get_current_user),
 ) -> list[dict]:
     return await product_service.get_all_products(db)
@@ -339,7 +339,7 @@ async def list_products(
 @router.get("/{product_id}", response_model=ProductResponse)
 async def get_product(
     product_id: str,
-    db: AsyncIOMotorDatabase = Depends(get_db),
+    db: AsyncIOMotorDatabase = Depends(get_database),
     _: dict = Depends(get_current_user),
 ) -> dict:
     return await product_service.get_product_by_id(db, product_id)
@@ -348,7 +348,7 @@ async def get_product(
 @router.post("/", response_model=ProductResponse, status_code=status.HTTP_201_CREATED)
 async def create_product(
     data: ProductCreate,
-    db: AsyncIOMotorDatabase = Depends(get_db),
+    db: AsyncIOMotorDatabase = Depends(get_database),
     _: dict = Depends(require_admin),
 ) -> dict:
     return await product_service.create_product(db, data)
@@ -358,7 +358,7 @@ async def create_product(
 async def update_product(
     product_id: str,
     data: ProductUpdate,
-    db: AsyncIOMotorDatabase = Depends(get_db),
+    db: AsyncIOMotorDatabase = Depends(get_database),
     _: dict = Depends(require_admin),
 ) -> dict:
     return await product_service.update_product(db, product_id, data)
@@ -367,7 +367,7 @@ async def update_product(
 @router.delete("/{product_id}", status_code=status.HTTP_204_NO_CONTENT)
 async def delete_product(
     product_id: str,
-    db: AsyncIOMotorDatabase = Depends(get_db),
+    db: AsyncIOMotorDatabase = Depends(get_database),
     _: dict = Depends(require_admin),
 ) -> None:
     await product_service.delete_product(db, product_id)
