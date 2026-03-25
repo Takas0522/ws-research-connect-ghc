@@ -1,11 +1,12 @@
 ---
 name: graph-search-analyze
 description: >-
-  Microsoft Graph Search APIで組織内のファイル・Teams会話・メールをテーマベースで横断検索し、
-  Office文書（Word/Excel/PowerPoint）をOpenXML SDKで解析してMarkdownに変換するスキル。
-  dotnet-scriptとMSAL.NETのDevice Codeフローで認証する。
+  Microsoft Graph Search API で組織内のファイル・Teams 会話・メールをテーマベースで横断検索し、
+  Office 文書 (Word/Excel/PowerPoint) を OpenXML SDK で解析して Markdown に変換するスキル。
+  dotnet-script と MSAL.NET の Device Code フローで認証する。
   Use when asked to search SharePoint files, analyze Office documents, extract Teams conversations,
   research a topic across M365, or gather related documents by theme keyword.
+  Keywords: SharePoint, Teams, Graph API, Office, Word, Excel, PowerPoint, M365 search.
   Outputs analysis results to /temp/docs as Markdown.
 ---
 
