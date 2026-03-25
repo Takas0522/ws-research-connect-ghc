@@ -5,12 +5,12 @@
   "workspaceFolder": "/workspaces/ws-research-connect-ghc",
 
   "features": {
-    "ghcr.io/devcontainers/features/dotnet:2": {
-      "version": "10.0"
-    },
     "ghcr.io/devcontainers/features/node:1": {
       "version": "lts",
       "pnpmVersion": "latest"
+    },
+    "ghcr.io/devcontainers/features/dotnet:2": {
+      "version": "10.0"
     },
     "ghcr.io/devcontainers/features/github-cli:1": {
       "version": "latest"
@@ -24,14 +24,15 @@
   "customizations": {
     "vscode": {
       "extensions": [
-        "ms-dotnettools.csharp",
-        "ms-dotnettools.csdevkit",
+        "ms-python.python",
+        "ms-python.vscode-pylance",
         "dbaeumer.vscode-eslint",
         "GitHub.copilot",
         "GitHub.copilot-chat",
         "bierner.markdown-mermaid",
         "ms-playwright.playwright",
-        "bradlc.vscode-tailwindcss"
+        "bradlc.vscode-tailwindcss",
+        "mongodb.mongodb-vscode"
       ],
       "settings": {
         "dotnet.defaultSolution": "disable"
@@ -41,14 +42,14 @@
 
   // ポートフォワーディング
   // 5173: Frontend (Vite dev server)
-  // 5010: Backend (ASP.NET Core WebAPI)
-  // 5432: PostgreSQL
+  // 8000: Backend (FastAPI)
+  // 27017: MongoDB
   // 9323: Playwright HTML report
-  "forwardPorts": [5173, 5010, 5432, 9323],
+  "forwardPorts": [5173, 8000, 27017, 9323],
   "portsAttributes": {
     "5173": { "label": "Frontend (Vite)", "onAutoForward": "notify" },
-    "5010": { "label": "Backend (API)", "onAutoForward": "notify" },
-    "5432": { "label": "PostgreSQL", "onAutoForward": "silent" },
+    "8000": { "label": "Backend (FastAPI)", "onAutoForward": "notify" },
+    "27017": { "label": "MongoDB", "onAutoForward": "silent" },
     "9323": { "label": "Playwright Report", "onAutoForward": "notify" }
   },
 

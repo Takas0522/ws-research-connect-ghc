@@ -1,0 +1,17 @@
+[project]
+name = "saas-management-backend"
+version = "0.1.0"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi[standard]>=0.115,<1",
+    "motor>=3.6,<4",
+    "pymongo>=4.9,<5",
+    "pydantic>=2.9,<3",
+    "pydantic-settings>=2.6,<3",
+    "python-jose[cryptography]>=3.3,<4",
+    "passlib[bcrypt]>=1.7,<2",
+    "python-multipart>=0.0.12",
+]
+
+[tool.uv]
+python-preference = "managed"
