@@ -190,10 +190,11 @@ dotnet run -- conversation start \
 
 ```bash
 dotnet run -- conversation start \
-  --theme ../scenario/企画.md \
+  --theme ../scenario/企画続.md \
   --persona 大川貴志 \
   --team-name "製品開発チーム" \
-  --channel-name "製品企画"
+  --channel-name "製品企画" \
+  --thread-id "1774423382495"
 ```
 
 複数回の会話を実行する場合は `--count` を指定します。それぞれ別のシナリオ・別スレッドとして作成されます。

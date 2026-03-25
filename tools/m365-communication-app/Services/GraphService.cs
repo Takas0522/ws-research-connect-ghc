@@ -112,6 +112,81 @@ public class GraphService
     }
 
     /// <summary>
+    /// チャネルのメッセージ一覧、またはスレッドの返信を取得します
+    /// </summary>
+    /// <param name="accessToken">アクセストークン</param>
+    /// <param name="teamId">チームID</param>
+    /// <param name="channelId">チャネルID</param>
+    /// <param name="threadMessageId">スレッドの最初のメッセージID（nullの場合はチャネルのトップレベルメッセージを取得）</param>
+    /// <param name="top">取得件数上限（デフォルト20）</param>
+    /// <returns>メッセージのリスト（送信者・本文・日時）</returns>
+    public async Task<IReadOnlyList<TeamsMessage>> GetChannelMessagesAsync(
+        string accessToken,
+        string teamId,
+        string channelId,
+        string? threadMessageId = null,
+        int top = 20)
+    {
+        SetAuth(accessToken);
+
+        string url;
+        if (threadMessageId != null)
+        {
+            // スレッドのルートメッセージ + 返信を取得（replies API は $orderby 非サポート）
+            url = $"{GraphBaseUrl}/teams/{teamId}/channels/{channelId}/messages/{threadMessageId}/replies?$top={top}";
+        }
+        else
+        {
+            // チャネルのトップレベルメッセージを取得（messages API は $orderby 非サポート）
+            url = $"{GraphBaseUrl}/teams/{teamId}/channels/{channelId}/messages?$top={top}";
+        }
+
+        var response = await _httpClient.GetAsync(url);
+        await EnsureSuccessAsync(response, "GetChannelMessages");
+
+        var result = await response.Content.ReadFromJsonAsync<GraphCollectionResponse<JsonElement>>();
+        var messages = new List<TeamsMessage>();
+
+        foreach (var item in result?.Value ?? [])
+        {
+            var sender = "";
+            if (item.TryGetProperty("from", out var from) &&
+                from.TryGetProperty("user", out var user) &&
+                user.TryGetProperty("displayName", out var displayName))
+            {
+                sender = displayName.GetString() ?? "";
+            }
+
+            var body = "";
+            if (item.TryGetProperty("body", out var bodyProp) &&
+                bodyProp.TryGetProperty("content", out var contentProp))
+            {
+                body = contentProp.GetString() ?? "";
+            }
+
+            var createdAt = "";
+            if (item.TryGetProperty("createdDateTime", out var createdDateTimeProp))
+            {
+                createdAt = createdDateTimeProp.GetString() ?? "";
+            }
+
+            var messageId = "";
+            if (item.TryGetProperty("id", out var idProp))
+            {
+                messageId = idProp.GetString() ?? "";
+            }
+
+            messages.Add(new TeamsMessage(messageId, sender, body, createdAt));
+        }
+
+        // チャネルメッセージはdesc順で取得したので昇順に並べ直す
+        if (threadMessageId == null)
+            messages.Reverse();
+
+        return messages;
+    }
+
+    /// <summary>
     /// チャネルに新しいメッセージを投稿、またはスレッドに返信します
     /// </summary>
     public async Task<string> PostChannelMessageAsync(

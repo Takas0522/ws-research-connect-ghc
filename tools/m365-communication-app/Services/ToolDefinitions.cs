@@ -219,6 +219,41 @@ public static class ToolDefinitions
             });
 
     /// <summary>
+    /// Teamsチャネルの過去メッセージ（またはスレッドの返信）を取得するツール
+    /// </summary>
+    public static AIFunction GetTeamsChannelMessagesTool(AuthService authService, GraphService graphService) =>
+        AIFunctionFactory.Create(
+            async (
+                [Description("ペルソナ名（大川貴志/ワタナベタナカ/サトウスズキ）")] string personaName,
+                [Description("チームID")] string teamId,
+                [Description("チャネルID")] string channelId,
+                [Description("スレッドのルートメッセージID（指定するとそのスレッドの返信を取得。省略するとチャネルのトップレベルメッセージを取得）")] string? threadMessageId,
+                [Description("取得する最大件数（デフォルト20）")] int top = 20) =>
+            {
+                var authResult = await authService.AcquireTokenAsync(personaName);
+                var threadId = string.IsNullOrEmpty(threadMessageId) ? null : threadMessageId;
+                var messages = await graphService.GetChannelMessagesAsync(
+                    authResult.AccessToken, teamId, channelId, threadId, top);
+                return new
+                {
+                    success = true,
+                    count = messages.Count,
+                    messages = messages.Select(m => new
+                    {
+                        id = m.Id,
+                        sender = m.Sender,
+                        body = m.Body,
+                        createdAt = m.CreatedAt
+                    }).ToArray()
+                };
+            },
+            new AIFunctionFactoryOptions
+            {
+                Name = "get_teams_channel_messages",
+                Description = "Teamsチャネルの過去メッセージを取得します。threadMessageIdを指定するとそのスレッドの返信一覧を取得し、省略するとチャネルのトップレベルメッセージ一覧を取得します。会話の文脈を把握するために使用してください。"
+            });
+
+    /// <summary>
     /// dotnet-script を使ってC#スクリプトを実行するツール（Excel/PowerPoint等のファイル生成・解析用）
     /// </summary>
     public static AIFunction RunDotnetScriptTool(string workingDirectory, ILogger? logger = null) =>

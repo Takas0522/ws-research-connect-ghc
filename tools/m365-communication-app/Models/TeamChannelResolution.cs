@@ -46,3 +46,12 @@ public sealed record TeamChannelResolution
     public string[] ChannelCandidates { get; init; } = [];
     public string? Message { get; init; }
 }
+
+/// <summary>
+/// Teamsチャネルから取得したメッセージ情報
+/// </summary>
+public sealed record TeamsMessage(
+    string Id,
+    string Sender,
+    string Body,
+    string CreatedAt);

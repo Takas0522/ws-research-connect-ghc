@@ -314,6 +314,7 @@ public class ConversationCommands
             ToolDefinitions.PostTeamsMessageTool(_authService, _graphService, id => lastPostedMessageId = id),
             ToolDefinitions.PostTeamsMessageWithAttachmentTool(_authService, _graphService, id => lastPostedMessageId = id, _logger),
             ToolDefinitions.GetPersonaInfoTool(_personaSettings.Directory),
+            ToolDefinitions.GetTeamsChannelMessagesTool(_authService, _graphService),
             ToolDefinitions.RunDotnetScriptTool(generatedDir, _logger),
             ToolDefinitions.UploadToChannelTool(_authService, _graphService, generatedDir, _logger),
         };
@@ -357,7 +358,7 @@ public class ConversationCommands
                     ? $"既存スレッドへの継続です。全てのラリーで replyToMessageId に \"{existingThreadId}\" を指定してください"
                     : "最初のラリー（rallyNumber=1）は新規スレッド作成（replyToMessageId は空文字列）")}
                 5. {(existingThreadId != null
-                    ? "既存スレッドの文脈を考慮し、会話の流れに自然に合うメッセージを作成してください"
+                    ? $"まず get_teams_channel_messages でスレッド（threadMessageId=\"{existingThreadId}\"）の過去メッセージを取得し、会話の流れを把握した上で返信してください"
                     : "2番目以降のラリーは最初のメッセージへの返信（replyToMessageId にスレッドのメッセージIDを指定）")}
                 6. attachFile=true の場合は以下の手順を必ず実行してください:
                    ① run_dotnet_script でファイルを生成（powerpoint-openxml スキルのサンプルコードを参考に）
@@ -438,6 +439,12 @@ public class ConversationCommands
             ? $"このメッセージはスレッドへの返信です。replyToMessageId には \"{threadMessageId}\" を使用してください。"
             : "これは新規スレッドの最初のメッセージです。replyToMessageId には空文字列を使用してください。投稿後、返されたmessageIdを報告してください。";
 
+        // 既存スレッド継続かつ最初のラリーのときに過去メッセージ取得ステップを挿入
+        var contextStep = (rally.RallyNumber == 1 && threadMessageId != null)
+            ? $"1. get_teams_channel_messages で threadMessageId=\"{threadMessageId}\" の過去メッセージを取得し、会話の流れを把握する\n"
+            : "";
+        var stepOffset = contextStep != "" ? 1 : 0;
+
         var fileInstruction = "";
         if (rally.AttachFile)
         {
@@ -466,12 +473,12 @@ public class ConversationCommands
                 {fileInstruction}
 
                 手順:
-                1. get_persona_info で「{rally.Speaker}」の情報を取得
-                2. ペルソナの口調に合わせた短いメッセージを生成（2〜4文、100〜200文字程度。チャットらしく簡潔に）
-                3. run_dotnet_script でファイルを生成
-                4. upload_to_channel でチャネルにアップロード
-                5. post_teams_message_with_attachment にペルソナ名「{rally.Speaker}」を指定して添付付きで投稿（認証は自動）
-                6. 投稿したメッセージIDを報告
+                {contextStep}{1 + stepOffset}. get_persona_info で「{rally.Speaker}」の情報を取得
+                {2 + stepOffset}. ペルソナの口調に合わせた短いメッセージを生成（2〜4文、100〜200文字程度。チャットらしく簡潔に）
+                {3 + stepOffset}. run_dotnet_script でファイルを生成
+                {4 + stepOffset}. upload_to_channel でチャネルにアップロード
+                {5 + stepOffset}. post_teams_message_with_attachment にペルソナ名「{rally.Speaker}」を指定して添付付きで投稿（認証は自動）
+                {6 + stepOffset}. 投稿したメッセージIDを報告
                 """;
         }
 
@@ -484,10 +491,10 @@ public class ConversationCommands
             {replyInstruction}
 
             手順:
-            1. get_persona_info で「{rally.Speaker}」の情報を取得
-            2. ペルソナの口調に合わせた短いメッセージを生成（2〜4文、100〜200文字程度。チャットらしく簡潔に）
-            3. post_teams_message にペルソナ名「{rally.Speaker}」を指定してTeamsに投稿（認証は自動）
-            4. 投稿したメッセージIDを報告
+            {contextStep}{1 + stepOffset}. get_persona_info で「{rally.Speaker}」の情報を取得
+            {2 + stepOffset}. ペルソナの口調に合わせた短いメッセージを生成（2〜4文、100〜200文字程度。チャットらしく簡潔に）
+            {3 + stepOffset}. post_teams_message にペルソナ名「{rally.Speaker}」を指定してTeamsに投稿（認証は自動）
+            {4 + stepOffset}. 投稿したメッセージIDを報告
             """;
     }
 
