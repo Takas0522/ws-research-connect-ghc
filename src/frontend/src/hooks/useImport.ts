@@ -17,8 +17,11 @@ export function useImport() {
       const data = await fetchImportHistory()
       setImportHistory(data)
     } catch (err) {
-      // 履歴取得エラーは静かに処理
-      console.error('履歴取得エラー:', err)
+      // 履歴取得エラーはユーザーには通知せず、開発環境でのみログ出力
+      if (process.env.NODE_ENV !== 'production') {
+        // eslint-disable-next-line no-console
+        console.error('履歴取得エラー:', err)
+      }
     } finally {
       setHistoryLoading(false)
     }
