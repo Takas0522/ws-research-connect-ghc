@@ -4,7 +4,8 @@ description: >-
   docs/specs/{feature}/ 配下の仕様ドキュメントを読み込み、ユースケースシナリオ単位の
   開発計画を策定するスキル。各タスクに Acceptance Criteria を定義し、依存関係・
   並行実行可否・実行順序を Mermaid 図付きで docs/specs/{feature}/plan/ に出力する。
-  パイプライン: [dev-plan] → dev-implement → dev-unit-test → playwright-generate-test
+  パイプライン: [dev-plan] → dev-implement → dev-unit-test → playwright-generate-test (Web)
+  パイプライン: [dev-plan] → mobile-implement → mobile-unit-test → maestro-generate-test (Mobile)
   ⚠ このスキルは「[dev-plan] {feature}」の形式で明示的に呼び出されたときだけ実行する。
   曖昧な指示や一般的な質問では実行しないこと。
   Keywords: dev-plan, docs/specs.
@@ -35,16 +36,26 @@ description: >-
 ## パイプラインにおける位置づけ
 
 ```
-[dev-plan] → dev-implement → dev-unit-test → playwright-generate-test
-     ↑ このスキル
+                    ┌─ dev-implement → dev-unit-test → playwright-generate-test      (Web)
+[dev-plan] ─────────┤
+    ↑ このスキル     └─ mobile-implement → mobile-unit-test → maestro-generate-test   (Mobile)
 ```
 
 1. **このスキル (dev-plan)**: `docs/specs/{feature}/` の仕様を読み、開発計画を策定する
-2. **dev-implement**: 計画をもとにバックエンド・フロントエンドを実装する
-3. **dev-unit-test**: 実装に対して単体テストを構築する
-4. **playwright-generate-test**: 計画の Acceptance Criteria をもとに E2E テストを構築する
+2. **dev-implement / mobile-implement**: 計画をもとに実装する
+3. **dev-unit-test / mobile-unit-test**: 実装に対して単体テストを構築する
+4. **playwright-generate-test / maestro-generate-test**: AC をもとに E2E テストを構築する
 
-`{feature}` はユーザーが指定する機能ディレクトリ名（例: `saas-management-app`）。
+`{feature}` はユーザーが指定する機能ディレクトリ名（例: `saas-management-app`, `saas-portal-mobile-app`）。
+
+### プラットフォーム判定
+
+`{feature}` の仕様ドキュメントに含まれるプラットフォーム情報に基づき、下流スキルが決まる。
+
+| feature の内容 | 下流パイプライン |
+|---|---|
+| React + FastAPI (Web アプリ) | dev-implement → dev-unit-test → playwright-generate-test |
+| Kotlin/Compose + Swift/SwiftUI (モバイルアプリ) | mobile-implement → mobile-unit-test → maestro-generate-test |
 
 ## このスキルを使うタイミング
 
@@ -110,9 +121,14 @@ docs/specs/{feature}/plan/
 - {実装する API エンドポイント}
 - {実装するサービス / スキーマ}
 
-### フロントエンド
+### フロントエンド（Web の場合）
 - {実装するページ / コンポーネント}
 - {実装するフック / API クライアント}
+
+### モバイル（Mobile の場合）
+- {Android: 実装する Screen / ViewModel / Repository}
+- {iOS: 実装する View / ViewModel / Service}
+- {testTag / accessibilityIdentifier の付与対象}
 
 ### データモデル
 - {使用するコレクション}
@@ -220,6 +236,8 @@ graph TD
 - `AC-01-01: 管理者が製品名「CloudCRM Pro」を登録すると、製品一覧に表示される`
 - `AC-03-02: 営業担当者が担当外の顧客を編集しようとすると、403エラーが返る`
 - `AC-05-01: 10件の月次実績CSVをアップロードすると、プレビュー画面に10件が表示される`
+- `AC-02-01: テナントユーザーがログインすると、ダッシュボードに利用状況サマリーが表示される`（Mobile）
+- `AC-04-03: サービス一覧画面でアプリをタップすると、アプリ起動画面に遷移する`（Mobile）
 
 **悪い AC:**
 - `製品マスタが動作する` → 何を確認するか不明
@@ -227,9 +245,17 @@ graph TD
 
 ## 下流スキルとの連携
 
-- **dev-implement** スキル: 各 task-NN ファイルのスコープを読み、実装を行う
+### Web パイプライン
+
+- **dev-implement** スキル: 各 task-NN ファイルのスコープを読み、FastAPI + React の実装を行う
 - **dev-unit-test** スキル: スコープのバックエンド/フロントエンドから単体テスト対象を特定する
-- **playwright-generate-test** スキル: Acceptance Criteria をテストシナリオに変換する
+- **playwright-generate-test** スキル: Acceptance Criteria を Web E2E テストシナリオに変換する
+
+### Mobile パイプライン
+
+- **mobile-implement** スキル: 各 task-NN ファイルのスコープを読み、Kotlin/Compose + Swift/SwiftUI + Portal Backend の実装を行う
+- **mobile-unit-test** スキル: スコープの Android/iOS/Backend から単体テスト対象を特定する
+- **maestro-generate-test** スキル: Acceptance Criteria を Maestro E2E テストフローに変換する
 
 ## チェックリスト
 

@@ -14,7 +14,8 @@
 | Backend | Python 3.12 + FastAPI + Pydantic v2 + Motor (MongoDB 非同期) |
 | Database | MongoDB 7 |
 | Auth | JWT (python-jose + passlib/bcrypt) |
-| E2E Tests | Playwright + TypeScript |
+| E2E Tests (Web) | Playwright + TypeScript |
+| E2E Tests (Mobile) | Maestro (YAML + GraalJS) |
 | Package Manager | uv (Python), npm (Node.js) |
 
 ## 仕様ドキュメント
@@ -77,6 +78,7 @@ DevContainer は **Docker Compose** で構成されている。
 | Backend | FastAPI + Motor (既存拡張、`/api/portal/` プレフィックス) |
 | Database | MongoDB 7 (ポータル専用コレクション `portal_*`) |
 | Auth | JWT (テナントスコープ認可、`tenant_id` 付きペイロード) |
+| E2E Tests (Mobile) | Maestro (YAML + GraalJS) |
 
 ### ポータル固有の規約
 
