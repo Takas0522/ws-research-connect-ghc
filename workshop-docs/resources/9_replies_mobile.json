@@ -1,0 +1,1364 @@
+{
+  "value": [
+    {
+      "id": "1774528556814",
+      "replyToId": "1774528325655",
+      "etag": "1774528556814",
+      "messageType": "message",
+      "createdDateTime": "2026-03-26T12:35:56.814Z",
+      "lastModifiedDateTime": "2026-03-26T12:35:56.814Z",
+      "lastEditedDateTime": null,
+      "deletedDateTime": null,
+      "subject": null,
+      "summary": null,
+      "chatId": null,
+      "importance": "normal",
+      "locale": "en-us",
+      "webUrl": "https://teams.microsoft.com/l/message/19%3Ae46d961d316c4cc599cc8692f82091d2%40thread.tacv2/1774528556814?groupId=00000000-0000-0000-0000-team00000001\u0026tenantId=00000000-0000-0000-0000-tenant000001\u0026createdTime=1774528556814\u0026parentMessageId=1774528325655",
+      "policyViolation": null,
+      "eventDetail": null,
+      "from": {
+        "application": null,
+        "device": null,
+        "user": {
+          "@odata.type": "#microsoft.graph.teamworkUserIdentity",
+          "id": "00000000-0000-0000-0000-user00000002",
+          "displayName": "\u30EF\u30BF\u30CA\u30D9 \u30BF\u30CA\u30AB",
+          "userIdentityType": "aadUser",
+          "tenantId": "00000000-0000-0000-0000-tenant000001"
+        }
+      },
+      "body": {
+        "contentType": "html",
+        "content": "\u3067\u306F\u65B9\u91DD\u78BA\u5B9A\u3067\u3002\u6280\u8853\u30B9\u30BF\u30C3\u30AF\u306FAndroid: Kotlin\u002BCompose\u3001\u30D0\u30C3\u30AF\u30A8\u30F3\u30C9: FastAPI\u002BMongoDB\u3002\u7740\u624B\u9806\u306F\u307E\u305A\u30C6\u30CA\u30F3\u30C8\u8A8D\u8A3C\u57FA\u76E4\u2192\u30C0\u30C3\u30B7\u30E5\u30DC\u30FC\u30C9API\u306E\u9806\u3067\u9032\u3081\u3088\u3046\u3002\u5927\u5DDD\u304F\u3093\u3001\u8A8D\u8A3C\u307E\u308F\u308A\u304B\u3089\u53D6\u308A\u304B\u304B\u3063\u3066\u304F\u308C\u3002\u30B5\u30C8\u30A6\u3055\u3093\u3001\u30C0\u30C3\u30B7\u30E5\u30DC\u30FC\u30C9\u306E\u8868\u793A\u9805\u76EE\u3067\u8FFD\u52A0\u8981\u671B\u3042\u308C\u3070\u968F\u6642\u5171\u6709\u304A\u9858\u3044\u3057\u307E\u3059\u3002"
+      },
+      "channelIdentity": {
+        "teamId": "00000000-0000-0000-0000-team00000001",
+        "channelId": "19:e46d961d316c4cc599cc8692f82091d2@thread.tacv2"
+      },
+      "attachments": [],
+      "mentions": [],
+      "reactions": []
+    },
+    {
+      "id": "1774528538626",
+      "replyToId": "1774528325655",
+      "etag": "1774528538626",
+      "messageType": "message",
+      "createdDateTime": "2026-03-26T12:35:38.626Z",
+      "lastModifiedDateTime": "2026-03-26T12:35:38.626Z",
+      "lastEditedDateTime": null,
+      "deletedDateTime": null,
+      "subject": null,
+      "summary": null,
+      "chatId": null,
+      "importance": "normal",
+      "locale": "en-us",
+      "webUrl": "https://teams.microsoft.com/l/message/19%3Ae46d961d316c4cc599cc8692f82091d2%40thread.tacv2/1774528538626?groupId=00000000-0000-0000-0000-team00000001\u0026tenantId=00000000-0000-0000-0000-tenant000001\u0026createdTime=1774528538626\u0026parentMessageId=1774528325655",
+      "policyViolation": null,
+      "eventDetail": null,
+      "from": {
+        "application": null,
+        "device": null,
+        "user": {
+          "@odata.type": "#microsoft.graph.teamworkUserIdentity",
+          "id": "00000000-0000-0000-0000-user00000002",
+          "displayName": "\u30EF\u30BF\u30CA\u30D9 \u30BF\u30CA\u30AB",
+          "userIdentityType": "aadUser",
+          "tenantId": "00000000-0000-0000-0000-tenant000001"
+        }
+      },
+      "body": {
+        "contentType": "html",
+        "content": "\u3053\u3053\u307E\u3067\u306E\u8A71\u3092\u6574\u7406\u3059\u308B\u3068\u3001PoC\u306E\u30B9\u30B3\u30FC\u30D7\u306F\u2460JWT\u8A8D\u8A3C\u57FA\u76E4\u3001\u2461\u30C6\u30CA\u30F3\u30C8\u5225\u30C0\u30C3\u30B7\u30E5\u30DC\u30FC\u30C9\uFF08\u30B0\u30E9\u30D5\u002B\u8868\uFF09\u3001\u2462Mock\u30A2\u30D7\u30EA\u8D77\u52D5\u306E3\u3064\u306B\u7D5E\u308D\u3046\u3002\u3042\u3068\u3001\u3044\u304D\u306A\u308A\u4E21OS\u540C\u6642\u306F\u91CD\u3044\u306E\u3067\u3001\u307E\u305AAndroid\u7248\u3067\u691C\u8A3C\u3057\u3066\u304B\u3089iOS\u306B\u5C55\u958B\u3059\u308B\u6BB5\u968E\u7684\u30A2\u30D7\u30ED\u30FC\u30C1\u3067\u3044\u304D\u305F\u3044\u3002\u5927\u5DDD\u304F\u3093\u3001\u307E\u305A\u306FAndroid\u5074\u306E\u30D7\u30ED\u30C8\u30BF\u30A4\u30D7\u304B\u3089\u9032\u3081\u3066\u304F\u308C\u308B\u304B\u306A\u3002"
+      },
+      "channelIdentity": {
+        "teamId": "00000000-0000-0000-0000-team00000001",
+        "channelId": "19:e46d961d316c4cc599cc8692f82091d2@thread.tacv2"
+      },
+      "attachments": [],
+      "mentions": [],
+      "reactions": []
+    },
+    {
+      "id": "1774528517506",
+      "replyToId": "1774528325655",
+      "etag": "1774528517506",
+      "messageType": "message",
+      "createdDateTime": "2026-03-26T12:35:17.506Z",
+      "lastModifiedDateTime": "2026-03-26T12:35:17.506Z",
+      "lastEditedDateTime": null,
+      "deletedDateTime": null,
+      "subject": null,
+      "summary": null,
+      "chatId": null,
+      "importance": "normal",
+      "locale": "en-us",
+      "webUrl": "https://teams.microsoft.com/l/message/19%3Ae46d961d316c4cc599cc8692f82091d2%40thread.tacv2/1774528517506?groupId=00000000-0000-0000-0000-team00000001\u0026tenantId=00000000-0000-0000-0000-tenant000001\u0026createdTime=1774528517506\u0026parentMessageId=1774528325655",
+      "policyViolation": null,
+      "eventDetail": null,
+      "from": {
+        "application": null,
+        "device": null,
+        "user": {
+          "@odata.type": "#microsoft.graph.teamworkUserIdentity",
+          "id": "00000000-0000-0000-0000-drive0000001",
+          "displayName": "\u5927\u5DDD\u8CB4\u5FD7",
+          "userIdentityType": "aadUser",
+          "tenantId": "00000000-0000-0000-0000-tenant000001"
+        }
+      },
+      "body": {
+        "contentType": "html",
+        "content": "PoC\u6BB5\u968E\u3067\u306F\u30A2\u30D7\u30EA\u8D77\u52D5\u306E\u3068\u3053\u308D\u306FMock\u3067\u5B9F\u88C5\u3057\u3066\u3001\u30C7\u30A3\u30FC\u30D7\u30EA\u30F3\u30AF\u9023\u643A\u306F\u6B21\u30D5\u30A7\u30FC\u30BA\u306B\u56DE\u3059\u65B9\u91DD\u3067\u3044\u304D\u305F\u3044\u3067\u3059\u3002\u30C7\u30FC\u30BF\u53EF\u8996\u5316\u306FRecharts\u30E9\u30A4\u30AF\u306A\u30CD\u30A4\u30C6\u30A3\u30D6\u5411\u3051\u30C1\u30E3\u30FC\u30C8\u30E9\u30A4\u30D6\u30E9\u30EA\u3092\u9078\u5B9A\u3059\u308B\u4E88\u5B9A\u3067\u3059\u3002\u753B\u9762\u9077\u79FB\u3068API\u8A2D\u8A08\u306E\u6982\u8981\u3092\u3056\u3063\u304F\u308A\u307E\u3068\u3081\u305F\u306E\u3067\u3001\u3053\u3061\u3089\u3054\u78BA\u8A8D\u304F\u3060\u3055\u3044\uFF01 \u003Cattachment id=\u002200000000-0000-0000-0000-user00000004\u0022\u003E\u003C/attachment\u003E"
+      },
+      "channelIdentity": {
+        "teamId": "00000000-0000-0000-0000-team00000001",
+        "channelId": "19:e46d961d316c4cc599cc8692f82091d2@thread.tacv2"
+      },
+      "attachments": [
+        {
+          "id": "00000000-0000-0000-0000-user00000004",
+          "contentType": "reference",
+          "contentUrl": "https://contoso.sharepoint.com/sites/msteams_xxxxxx/Shared%20Documents/%E8%A3%BD%E5%93%81%E4%BC%81%E7%94%BB/PoC_%E3%82%B9%E3%83%9E%E3%83%9B%E3%83%9D%E3%83%BC%E3%82%BF%E3%83%AB%E6%A7%8B%E6%88%90%E6%A1%88.pptx",
+          "content": null,
+          "name": "PoC_\u30B9\u30DE\u30DB\u30DD\u30FC\u30BF\u30EB\u69CB\u6210\u6848.pptx",
+          "thumbnailUrl": null,
+          "teamsAppId": null
+        }
+      ],
+      "mentions": [],
+      "reactions": []
+    },
+    {
+      "id": "1774528404304",
+      "replyToId": "1774528325655",
+      "etag": "1774528404304",
+      "messageType": "message",
+      "createdDateTime": "2026-03-26T12:33:24.304Z",
+      "lastModifiedDateTime": "2026-03-26T12:33:24.304Z",
+      "lastEditedDateTime": null,
+      "deletedDateTime": null,
+      "subject": null,
+      "summary": null,
+      "chatId": null,
+      "importance": "normal",
+      "locale": "en-us",
+      "webUrl": "https://teams.microsoft.com/l/message/19%3Ae46d961d316c4cc599cc8692f82091d2%40thread.tacv2/1774528404304?groupId=00000000-0000-0000-0000-team00000001\u0026tenantId=00000000-0000-0000-0000-tenant000001\u0026createdTime=1774528404304\u0026parentMessageId=1774528325655",
+      "policyViolation": null,
+      "eventDetail": null,
+      "from": {
+        "application": null,
+        "device": null,
+        "user": {
+          "@odata.type": "#microsoft.graph.teamworkUserIdentity",
+          "id": "00000000-0000-0000-0000-user00000001",
+          "displayName": "\u30B5\u30C8\u30A6 \u30B9\u30BA\u30AD",
+          "userIdentityType": "aadUser",
+          "tenantId": "00000000-0000-0000-0000-tenant000001"
+        }
+      },
+      "body": {
+        "contentType": "html",
+        "content": "\u88DC\u8DB3\u3055\u305B\u3066\u3044\u305F\u3060\u304F\u3068\u3001\u304A\u5BA2\u3055\u3093\u306E\u7ACB\u5834\u3067\u8A00\u3046\u3068\u898B\u305F\u3044\u306E\u306F\u30C6\u30CA\u30F3\u30C8\u3054\u3068\u306E\u5229\u7528\u8005\u6570\u306E\u63A8\u79FB\u3084\u3001\u3069\u3093\u306A\u76EE\u7684\u3067\u4F7F\u308F\u308C\u3066\u3044\u308B\u304B\u306E\u50BE\u5411\u5206\u6790\u306A\u3093\u3067\u3059\u3088\u306D\u3002\u6570\u5B57\u306E\u7F85\u5217\u3060\u3068\u73FE\u5834\u306E\u65B9\u306F\u898B\u3066\u304F\u308C\u306A\u3044\u306E\u3067\u3001\u30B0\u30E9\u30D5\u3068\u8868\u306E\u4E21\u65B9\u3067\u30D1\u30C3\u3068\u76F4\u611F\u7684\u306B\u628A\u63E1\u3067\u304D\u308BUI\u304C\u304B\u306A\u308A\u91CD\u8981\u306B\u306A\u308B\u3068\u601D\u3044\u307E\u3059\u3002"
+      },
+      "channelIdentity": {
+        "teamId": "00000000-0000-0000-0000-team00000001",
+        "channelId": "19:e46d961d316c4cc599cc8692f82091d2@thread.tacv2"
+      },
+      "attachments": [],
+      "mentions": [],
+      "reactions": []
+    },
+    {
+      "id": "1774528386546",
+      "replyToId": "1774528325655",
+      "etag": "1774528386546",
+      "messageType": "message",
+      "createdDateTime": "2026-03-26T12:33:06.546Z",
+      "lastModifiedDateTime": "2026-03-26T12:33:06.546Z",
+      "lastEditedDateTime": null,
+      "deletedDateTime": null,
+      "subject": null,
+      "summary": null,
+      "chatId": null,
+      "importance": "normal",
+      "locale": "en-us",
+      "webUrl": "https://teams.microsoft.com/l/message/19%3Ae46d961d316c4cc599cc8692f82091d2%40thread.tacv2/1774528386546?groupId=00000000-0000-0000-0000-team00000001\u0026tenantId=00000000-0000-0000-0000-tenant000001\u0026createdTime=1774528386546\u0026parentMessageId=1774528325655",
+      "policyViolation": null,
+      "eventDetail": null,
+      "from": {
+        "application": null,
+        "device": null,
+        "user": {
+          "@odata.type": "#microsoft.graph.teamworkUserIdentity",
+          "id": "00000000-0000-0000-0000-drive0000001",
+          "displayName": "\u5927\u5DDD\u8CB4\u5FD7",
+          "userIdentityType": "aadUser",
+          "tenantId": "00000000-0000-0000-0000-tenant000001"
+        }
+      },
+      "body": {
+        "contentType": "html",
+        "content": "\u30C6\u30CA\u30F3\u30C8\u306E\u4E0B\u306B\u30E6\u30FC\u30B6\u30FC\u304C\u7D10\u3065\u304F\u69CB\u9020\u3067\u3001JWT\u30D9\u30FC\u30B9\u306E\u8A8D\u8A3C\u3092\u8003\u3048\u3066\u3044\u307E\u3059\u3002\u793E\u5185\u7BA1\u7406\u5411\u3051\u3068\u306F\u5B8C\u5168\u306B\u30E6\u30FC\u30B6\u30FCDB\u3092\u5206\u96E2\u3057\u3066\u3001\u30DD\u30FC\u30BF\u30EB\u5C02\u7528\u306E\u30B5\u30A4\u30F3\u30A2\u30C3\u30D7\u30FB\u30ED\u30B0\u30A4\u30F3\u30D5\u30ED\u30FC\u3092\u7528\u610F\u3059\u308B\u30A4\u30E1\u30FC\u30B8\u3067\u3059\u3002\u30C8\u30FC\u30AF\u30F3\u306E\u30EA\u30D5\u30EC\u30C3\u30B7\u30E5\u307E\u308F\u308A\u3082\u542B\u3081\u3066\u3001\u65E2\u5B58\u306Esecurity\u30E2\u30B8\u30E5\u30FC\u30EB\u3092\u30D9\u30FC\u30B9\u306B\u62E1\u5F35\u3067\u304D\u308B\u3068\u601D\u3044\u307E\u3059\u3002"
+      },
+      "channelIdentity": {
+        "teamId": "00000000-0000-0000-0000-team00000001",
+        "channelId": "19:e46d961d316c4cc599cc8692f82091d2@thread.tacv2"
+      },
+      "attachments": [],
+      "mentions": [],
+      "reactions": []
+    },
+    {
+      "id": "1774528366494",
+      "replyToId": "1774528325655",
+      "etag": "1774528366494",
+      "messageType": "message",
+      "createdDateTime": "2026-03-26T12:32:46.494Z",
+      "lastModifiedDateTime": "2026-03-26T12:32:46.494Z",
+      "lastEditedDateTime": null,
+      "deletedDateTime": null,
+      "subject": null,
+      "summary": null,
+      "chatId": null,
+      "importance": "normal",
+      "locale": "en-us",
+      "webUrl": "https://teams.microsoft.com/l/message/19%3Ae46d961d316c4cc599cc8692f82091d2%40thread.tacv2/1774528366494?groupId=00000000-0000-0000-0000-team00000001\u0026tenantId=00000000-0000-0000-0000-tenant000001\u0026createdTime=1774528366494\u0026parentMessageId=1774528325655",
+      "policyViolation": null,
+      "eventDetail": null,
+      "from": {
+        "application": null,
+        "device": null,
+        "user": {
+          "@odata.type": "#microsoft.graph.teamworkUserIdentity",
+          "id": "00000000-0000-0000-0000-user00000002",
+          "displayName": "\u30EF\u30BF\u30CA\u30D9 \u30BF\u30CA\u30AB",
+          "userIdentityType": "aadUser",
+          "tenantId": "00000000-0000-0000-0000-tenant000001"
+        }
+      },
+      "body": {
+        "contentType": "html",
+        "content": "\u65B9\u5411\u6027\u3068\u3057\u3066\u306F\u3044\u3044\u3068\u601D\u3046\u3002\u305F\u3060\u4E00\u70B9\u78BA\u8A8D\u3057\u3066\u304A\u304D\u305F\u3044\u3093\u3060\u3051\u3069\u3001\u30A8\u30F3\u30C9\u30E6\u30FC\u30B6\u30FC\u5411\u3051\u3068\u3044\u3046\u3053\u3068\u306F\u793E\u5185\u7BA1\u7406\u7528\u3068\u306F\u5225\u306B\u8A8D\u8A3C\u57FA\u76E4\u3092\u7528\u610F\u3059\u308B\u5F62\u306B\u306A\u308B\u3088\u306D\uFF1F\u30C6\u30CA\u30F3\u30C8\u3068\u30E6\u30FC\u30B6\u30FC\u306E\u95A2\u4FC2\u8A2D\u8A08\u3084\u8A8D\u8A3C\u30D5\u30ED\u30FC\uFF08OAuth\u9023\u643A\u306B\u3059\u308B\u306E\u304B\u81EA\u524DJWT\u3067\u3044\u304F\u306E\u304B\uFF09\u306E\u65B9\u91DD\u3001\u5927\u5DDD\u304F\u3093\u3069\u3046\u8003\u3048\u3066\u308B\uFF1F"
+      },
+      "channelIdentity": {
+        "teamId": "00000000-0000-0000-0000-team00000001",
+        "channelId": "19:e46d961d316c4cc599cc8692f82091d2@thread.tacv2"
+      },
+      "attachments": [],
+      "mentions": [],
+      "reactions": []
+    },
+    {
+      "id": "1774528348583",
+      "replyToId": "1774528325655",
+      "etag": "1774528348583",
+      "messageType": "message",
+      "createdDateTime": "2026-03-26T12:32:28.583Z",
+      "lastModifiedDateTime": "2026-03-26T12:32:28.583Z",
+      "lastEditedDateTime": null,
+      "deletedDateTime": null,
+      "subject": null,
+      "summary": null,
+      "chatId": null,
+      "importance": "normal",
+      "locale": "en-us",
+      "webUrl": "https://teams.microsoft.com/l/message/19%3Ae46d961d316c4cc599cc8692f82091d2%40thread.tacv2/1774528348583?groupId=00000000-0000-0000-0000-team00000001\u0026tenantId=00000000-0000-0000-0000-tenant000001\u0026createdTime=1774528348583\u0026parentMessageId=1774528325655",
+      "policyViolation": null,
+      "eventDetail": null,
+      "from": {
+        "application": null,
+        "device": null,
+        "user": {
+          "@odata.type": "#microsoft.graph.teamworkUserIdentity",
+          "id": "00000000-0000-0000-0000-drive0000001",
+          "displayName": "\u5927\u5DDD\u8CB4\u5FD7",
+          "userIdentityType": "aadUser",
+          "tenantId": "00000000-0000-0000-0000-tenant000001"
+        }
+      },
+      "body": {
+        "contentType": "html",
+        "content": "\u3044\u3044\u3067\u3059\u306D\uFF01\u30E2\u30D0\u30A4\u30EB\u5074\u306FAndroid\u304CKotlin\u002BJetpack Compose\u3001iOS\u306FSwift\u002BSwiftUI\u3067\u7D44\u3080\u306E\u304C\u4ECA\u3060\u3068\u738B\u9053\u304B\u306A\u3068\u601D\u3044\u307E\u3059\u3002\u30D0\u30C3\u30AF\u30A8\u30F3\u30C9\u306F\u4ECA\u306EFastAPI\u002BMongoDB\u306E\u69CB\u6210\u3092\u305D\u306E\u307E\u307E\u6D3B\u304B\u305B\u308B\u306E\u3067\u3001API\u5C64\u306F\u304B\u306A\u308A\u30B9\u30E0\u30FC\u30BA\u306B\u3044\u3051\u308B\u306F\u305A\u3067\u3059\u3002\u3068\u308A\u3042\u3048\u305A\u6280\u8853\u691C\u8A3C\u304B\u3089\u59CB\u3081\u3066\u307F\u305F\u3044\u3067\u3059\u306D\uFF01"
+      },
+      "channelIdentity": {
+        "teamId": "00000000-0000-0000-0000-team00000001",
+        "channelId": "19:e46d961d316c4cc599cc8692f82091d2@thread.tacv2"
+      },
+      "attachments": [],
+      "mentions": [],
+      "reactions": []
+    },
+    {
+      "id": "1774524971643",
+      "replyToId": "1774524723343",
+      "etag": "1774527586732",
+      "messageType": "message",
+      "createdDateTime": "2026-03-26T11:36:11.643Z",
+      "lastModifiedDateTime": "2026-03-26T12:19:46.732Z",
+      "lastEditedDateTime": null,
+      "deletedDateTime": "2026-03-26T12:19:46.732Z",
+      "subject": null,
+      "summary": null,
+      "chatId": null,
+      "importance": "normal",
+      "locale": "en-us",
+      "webUrl": "https://teams.microsoft.com/l/message/19%3Ae46d961d316c4cc599cc8692f82091d2%40thread.tacv2/1774524971643?groupId=00000000-0000-0000-0000-team00000001\u0026tenantId=00000000-0000-0000-0000-tenant000001\u0026createdTime=1774524971643\u0026parentMessageId=1774524723343",
+      "policyViolation": null,
+      "eventDetail": null,
+      "from": {
+        "application": null,
+        "device": null,
+        "user": {
+          "@odata.type": "#microsoft.graph.teamworkUserIdentity",
+          "id": "00000000-0000-0000-0000-user00000003",
+          "displayName": "MOD Administrator",
+          "userIdentityType": "aadUser",
+          "tenantId": "00000000-0000-0000-0000-tenant000001"
+        }
+      },
+      "body": {
+        "contentType": "html",
+        "content": ""
+      },
+      "channelIdentity": {
+        "teamId": "00000000-0000-0000-0000-team00000001",
+        "channelId": "19:e46d961d316c4cc599cc8692f82091d2@thread.tacv2"
+      },
+      "attachments": [],
+      "mentions": [],
+      "reactions": []
+    },
+    {
+      "id": "1774524831593",
+      "replyToId": "1774524723343",
+      "etag": "1774527572709",
+      "messageType": "message",
+      "createdDateTime": "2026-03-26T11:33:51.593Z",
+      "lastModifiedDateTime": "2026-03-26T12:19:32.709Z",
+      "lastEditedDateTime": null,
+      "deletedDateTime": "2026-03-26T12:19:32.709Z",
+      "subject": null,
+      "summary": null,
+      "chatId": null,
+      "importance": "normal",
+      "locale": "en-us",
+      "webUrl": "https://teams.microsoft.com/l/message/19%3Ae46d961d316c4cc599cc8692f82091d2%40thread.tacv2/1774524831593?groupId=00000000-0000-0000-0000-team00000001\u0026tenantId=00000000-0000-0000-0000-tenant000001\u0026createdTime=1774524831593\u0026parentMessageId=1774524723343",
+      "policyViolation": null,
+      "eventDetail": null,
+      "from": {
+        "application": null,
+        "device": null,
+        "user": {
+          "@odata.type": "#microsoft.graph.teamworkUserIdentity",
+          "id": "00000000-0000-0000-0000-user00000003",
+          "displayName": "MOD Administrator",
+          "userIdentityType": "aadUser",
+          "tenantId": "00000000-0000-0000-0000-tenant000001"
+        }
+      },
+      "body": {
+        "contentType": "html",
+        "content": ""
+      },
+      "channelIdentity": {
+        "teamId": "00000000-0000-0000-0000-team00000001",
+        "channelId": "19:e46d961d316c4cc599cc8692f82091d2@thread.tacv2"
+      },
+      "attachments": [],
+      "mentions": [],
+      "reactions": []
+    },
+    {
+      "id": "1774524814109",
+      "replyToId": "1774524723343",
+      "etag": "1774527570408",
+      "messageType": "message",
+      "createdDateTime": "2026-03-26T11:33:34.109Z",
+      "lastModifiedDateTime": "2026-03-26T12:19:30.408Z",
+      "lastEditedDateTime": null,
+      "deletedDateTime": "2026-03-26T12:19:30.408Z",
+      "subject": null,
+      "summary": null,
+      "chatId": null,
+      "importance": "normal",
+      "locale": "en-us",
+      "webUrl": "https://teams.microsoft.com/l/message/19%3Ae46d961d316c4cc599cc8692f82091d2%40thread.tacv2/1774524814109?groupId=00000000-0000-0000-0000-team00000001\u0026tenantId=00000000-0000-0000-0000-tenant000001\u0026createdTime=1774524814109\u0026parentMessageId=1774524723343",
+      "policyViolation": null,
+      "eventDetail": null,
+      "from": {
+        "application": null,
+        "device": null,
+        "user": {
+          "@odata.type": "#microsoft.graph.teamworkUserIdentity",
+          "id": "00000000-0000-0000-0000-user00000003",
+          "displayName": "MOD Administrator",
+          "userIdentityType": "aadUser",
+          "tenantId": "00000000-0000-0000-0000-tenant000001"
+        }
+      },
+      "body": {
+        "contentType": "html",
+        "content": ""
+      },
+      "channelIdentity": {
+        "teamId": "00000000-0000-0000-0000-team00000001",
+        "channelId": "19:e46d961d316c4cc599cc8692f82091d2@thread.tacv2"
+      },
+      "attachments": [],
+      "mentions": [],
+      "reactions": []
+    },
+    {
+      "id": "1774524796436",
+      "replyToId": "1774524723343",
+      "etag": "1774527567305",
+      "messageType": "message",
+      "createdDateTime": "2026-03-26T11:33:16.436Z",
+      "lastModifiedDateTime": "2026-03-26T12:19:27.305Z",
+      "lastEditedDateTime": null,
+      "deletedDateTime": "2026-03-26T12:19:27.305Z",
+      "subject": null,
+      "summary": null,
+      "chatId": null,
+      "importance": "normal",
+      "locale": "en-us",
+      "webUrl": "https://teams.microsoft.com/l/message/19%3Ae46d961d316c4cc599cc8692f82091d2%40thread.tacv2/1774524796436?groupId=00000000-0000-0000-0000-team00000001\u0026tenantId=00000000-0000-0000-0000-tenant000001\u0026createdTime=1774524796436\u0026parentMessageId=1774524723343",
+      "policyViolation": null,
+      "eventDetail": null,
+      "from": {
+        "application": null,
+        "device": null,
+        "user": {
+          "@odata.type": "#microsoft.graph.teamworkUserIdentity",
+          "id": "00000000-0000-0000-0000-user00000003",
+          "displayName": "MOD Administrator",
+          "userIdentityType": "aadUser",
+          "tenantId": "00000000-0000-0000-0000-tenant000001"
+        }
+      },
+      "body": {
+        "contentType": "html",
+        "content": ""
+      },
+      "channelIdentity": {
+        "teamId": "00000000-0000-0000-0000-team00000001",
+        "channelId": "19:e46d961d316c4cc599cc8692f82091d2@thread.tacv2"
+      },
+      "attachments": [],
+      "mentions": [],
+      "reactions": []
+    },
+    {
+      "id": "1774524778691",
+      "replyToId": "1774524723343",
+      "etag": "1774528075257",
+      "messageType": "message",
+      "createdDateTime": "2026-03-26T11:32:58.691Z",
+      "lastModifiedDateTime": "2026-03-26T12:27:55.257Z",
+      "lastEditedDateTime": null,
+      "deletedDateTime": "2026-03-26T12:27:55.257Z",
+      "subject": null,
+      "summary": null,
+      "chatId": null,
+      "importance": "normal",
+      "locale": "en-us",
+      "webUrl": "https://teams.microsoft.com/l/message/19%3Ae46d961d316c4cc599cc8692f82091d2%40thread.tacv2/1774524778691?groupId=00000000-0000-0000-0000-team00000001\u0026tenantId=00000000-0000-0000-0000-tenant000001\u0026createdTime=1774524778691\u0026parentMessageId=1774524723343",
+      "policyViolation": null,
+      "eventDetail": null,
+      "from": {
+        "application": null,
+        "device": null,
+        "user": {
+          "@odata.type": "#microsoft.graph.teamworkUserIdentity",
+          "id": "00000000-0000-0000-0000-user00000001",
+          "displayName": "\u30B5\u30C8\u30A6 \u30B9\u30BA\u30AD",
+          "userIdentityType": "aadUser",
+          "tenantId": "00000000-0000-0000-0000-tenant000001"
+        }
+      },
+      "body": {
+        "contentType": "html",
+        "content": ""
+      },
+      "channelIdentity": {
+        "teamId": "00000000-0000-0000-0000-team00000001",
+        "channelId": "19:e46d961d316c4cc599cc8692f82091d2@thread.tacv2"
+      },
+      "attachments": [],
+      "mentions": [],
+      "reactions": []
+    },
+    {
+      "id": "1774524759983",
+      "replyToId": "1774524723343",
+      "etag": "1774527597660",
+      "messageType": "message",
+      "createdDateTime": "2026-03-26T11:32:39.983Z",
+      "lastModifiedDateTime": "2026-03-26T12:19:57.66Z",
+      "lastEditedDateTime": null,
+      "deletedDateTime": "2026-03-26T12:19:57.66Z",
+      "subject": null,
+      "summary": null,
+      "chatId": null,
+      "importance": "normal",
+      "locale": "en-us",
+      "webUrl": "https://teams.microsoft.com/l/message/19%3Ae46d961d316c4cc599cc8692f82091d2%40thread.tacv2/1774524759983?groupId=00000000-0000-0000-0000-team00000001\u0026tenantId=00000000-0000-0000-0000-tenant000001\u0026createdTime=1774524759983\u0026parentMessageId=1774524723343",
+      "policyViolation": null,
+      "eventDetail": null,
+      "from": {
+        "application": null,
+        "device": null,
+        "user": {
+          "@odata.type": "#microsoft.graph.teamworkUserIdentity",
+          "id": "00000000-0000-0000-0000-user00000003",
+          "displayName": "MOD Administrator",
+          "userIdentityType": "aadUser",
+          "tenantId": "00000000-0000-0000-0000-tenant000001"
+        }
+      },
+      "body": {
+        "contentType": "html",
+        "content": ""
+      },
+      "channelIdentity": {
+        "teamId": "00000000-0000-0000-0000-team00000001",
+        "channelId": "19:e46d961d316c4cc599cc8692f82091d2@thread.tacv2"
+      },
+      "attachments": [],
+      "mentions": [],
+      "reactions": []
+    },
+    {
+      "id": "1774524741438",
+      "replyToId": "1774524723343",
+      "etag": "1774527600128",
+      "messageType": "message",
+      "createdDateTime": "2026-03-26T11:32:21.438Z",
+      "lastModifiedDateTime": "2026-03-26T12:20:00.128Z",
+      "lastEditedDateTime": null,
+      "deletedDateTime": "2026-03-26T12:20:00.128Z",
+      "subject": null,
+      "summary": null,
+      "chatId": null,
+      "importance": "normal",
+      "locale": "en-us",
+      "webUrl": "https://teams.microsoft.com/l/message/19%3Ae46d961d316c4cc599cc8692f82091d2%40thread.tacv2/1774524741438?groupId=00000000-0000-0000-0000-team00000001\u0026tenantId=00000000-0000-0000-0000-tenant000001\u0026createdTime=1774524741438\u0026parentMessageId=1774524723343",
+      "policyViolation": null,
+      "eventDetail": null,
+      "from": {
+        "application": null,
+        "device": null,
+        "user": {
+          "@odata.type": "#microsoft.graph.teamworkUserIdentity",
+          "id": "00000000-0000-0000-0000-user00000003",
+          "displayName": "MOD Administrator",
+          "userIdentityType": "aadUser",
+          "tenantId": "00000000-0000-0000-0000-tenant000001"
+        }
+      },
+      "body": {
+        "contentType": "html",
+        "content": ""
+      },
+      "channelIdentity": {
+        "teamId": "00000000-0000-0000-0000-team00000001",
+        "channelId": "19:e46d961d316c4cc599cc8692f82091d2@thread.tacv2"
+      },
+      "attachments": [],
+      "mentions": [],
+      "reactions": []
+    },
+    {
+      "id": "1774447702029",
+      "replyToId": "1774423382495",
+      "etag": "1774447702029",
+      "messageType": "message",
+      "createdDateTime": "2026-03-25T14:08:22.029Z",
+      "lastModifiedDateTime": "2026-03-25T14:08:22.029Z",
+      "lastEditedDateTime": null,
+      "deletedDateTime": null,
+      "subject": null,
+      "summary": null,
+      "chatId": null,
+      "importance": "normal",
+      "locale": "en-us",
+      "webUrl": "https://teams.microsoft.com/l/message/19%3Ae46d961d316c4cc599cc8692f82091d2%40thread.tacv2/1774447702029?groupId=00000000-0000-0000-0000-team00000001\u0026tenantId=00000000-0000-0000-0000-tenant000001\u0026createdTime=1774447702029\u0026parentMessageId=1774423382495",
+      "policyViolation": null,
+      "eventDetail": null,
+      "from": {
+        "application": null,
+        "device": null,
+        "user": {
+          "@odata.type": "#microsoft.graph.teamworkUserIdentity",
+          "id": "00000000-0000-0000-0000-user00000002",
+          "displayName": "\u30EF\u30BF\u30CA\u30D9 \u30BF\u30CA\u30AB",
+          "userIdentityType": "aadUser",
+          "tenantId": "00000000-0000-0000-0000-tenant000001"
+        }
+      },
+      "body": {
+        "contentType": "html",
+        "content": "\u5927\u5DDD\u304F\u3093\u3001\u307E\u3068\u3081\u65E9\u3044\u306D\u3002\u3044\u3044\u611F\u3058\u3060\u3068\u601D\u3046\u3002\u6765\u9031\u982D\u306B\u3053\u306E\u8CC7\u6599\u30D9\u30FC\u30B9\u3067\u30EC\u30D3\u30E5\u30FC\u4F1A\u30BB\u30C3\u30C8\u3059\u308B\u306E\u3067\u3001\u30B5\u30C8\u30A6\u3055\u3093\u3082\u5927\u5DDD\u304F\u3093\u3082\u4E8B\u524D\u306B\u76EE\u3092\u901A\u3057\u3066\u304A\u3044\u3066\u304F\u3060\u3055\u3044\u3002\u7279\u306B\u512A\u5148\u5EA6\u3068\u904B\u7528\u30D5\u30ED\u30FC\u306E\u3068\u3053\u308D\u3001\u6C17\u306B\u306A\u308B\u70B9\u304C\u3042\u308C\u3070\u30B3\u30E1\u30F3\u30C8\u5165\u308C\u3066\u304A\u3044\u3066\u3082\u3089\u3048\u308B\u3068\u52A9\u304B\u308A\u307E\u3059\u3002"
+      },
+      "channelIdentity": {
+        "teamId": "00000000-0000-0000-0000-team00000001",
+        "channelId": "19:e46d961d316c4cc599cc8692f82091d2@thread.tacv2"
+      },
+      "attachments": [],
+      "mentions": [],
+      "reactions": []
+    },
+    {
+      "id": "1774447677271",
+      "replyToId": "1774423382495",
+      "etag": "1774447677271",
+      "messageType": "message",
+      "createdDateTime": "2026-03-25T14:07:57.271Z",
+      "lastModifiedDateTime": "2026-03-25T14:07:57.271Z",
+      "lastEditedDateTime": null,
+      "deletedDateTime": null,
+      "subject": null,
+      "summary": null,
+      "chatId": null,
+      "importance": "normal",
+      "locale": "en-us",
+      "webUrl": "https://teams.microsoft.com/l/message/19%3Ae46d961d316c4cc599cc8692f82091d2%40thread.tacv2/1774447677271?groupId=00000000-0000-0000-0000-team00000001\u0026tenantId=00000000-0000-0000-0000-tenant000001\u0026createdTime=1774447677271\u0026parentMessageId=1774423382495",
+      "policyViolation": null,
+      "eventDetail": null,
+      "from": {
+        "application": null,
+        "device": null,
+        "user": {
+          "@odata.type": "#microsoft.graph.teamworkUserIdentity",
+          "id": "00000000-0000-0000-0000-drive0000001",
+          "displayName": "\u5927\u5DDD\u8CB4\u5FD7",
+          "userIdentityType": "aadUser",
+          "tenantId": "00000000-0000-0000-0000-tenant000001"
+        }
+      },
+      "body": {
+        "contentType": "html",
+        "content": "\u8B70\u8AD6\u3044\u305F\u3060\u3044\u305F\u5185\u5BB9\u3092\u3082\u3068\u306B\u3001\u753B\u9762\u69CB\u6210\u6848\u30FB\u6A5F\u80FD\u8981\u4EF6\u30FB\u5F93\u91CF\u30C7\u30FC\u30BF\u306E\u66F4\u65B0\u30D5\u30ED\u30FC\u3092\u3056\u3063\u304F\u308A\u307E\u3068\u3081\u3066\u307F\u307E\u3057\u305F\u3002\u30B5\u30C8\u30A6\u3055\u3093\u306E\u904B\u7528\u30D5\u30ED\u30FC\u3082\u53CD\u6620\u3057\u3066\u307E\u3059\u3002Phase2\u3067API\u81EA\u52D5\u9023\u643A\u3082\u898B\u636E\u3048\u3066\u307E\u3059\u304C\u3001\u307E\u305A\u306FCSV\u53D6\u8FBC\u3067\u30D7\u30ED\u30C8\u4F5C\u3063\u3066\u307F\u307E\u3057\u3087\u3046\u304B\u3002 \u003Cattachment id=\u002200000000-0000-0000-0000-user00000008\u0022\u003E\u003C/attachment\u003E"
+      },
+      "channelIdentity": {
+        "teamId": "00000000-0000-0000-0000-team00000001",
+        "channelId": "19:e46d961d316c4cc599cc8692f82091d2@thread.tacv2"
+      },
+      "attachments": [
+        {
+          "id": "00000000-0000-0000-0000-user00000008",
+          "contentType": "reference",
+          "contentUrl": "https://contoso.sharepoint.com/sites/msteams_xxxxxx/Shared%20Documents/%E8%A3%BD%E5%93%81%E4%BC%81%E7%94%BB/SaaS%E7%AE%A1%E7%90%86%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E8%A8%AD%E8%A8%88%E6%A1%88.pptx",
+          "content": null,
+          "name": "SaaS\u7BA1\u7406\u30B7\u30B9\u30C6\u30E0\u8A2D\u8A08\u6848.pptx",
+          "thumbnailUrl": null,
+          "teamsAppId": null
+        }
+      ],
+      "mentions": [],
+      "reactions": []
+    },
+    {
+      "id": "1774447297167",
+      "replyToId": "1774423382495",
+      "etag": "1774447297167",
+      "messageType": "message",
+      "createdDateTime": "2026-03-25T14:01:37.167Z",
+      "lastModifiedDateTime": "2026-03-25T14:01:37.167Z",
+      "lastEditedDateTime": null,
+      "deletedDateTime": null,
+      "subject": null,
+      "summary": null,
+      "chatId": null,
+      "importance": "normal",
+      "locale": "en-us",
+      "webUrl": "https://teams.microsoft.com/l/message/19%3Ae46d961d316c4cc599cc8692f82091d2%40thread.tacv2/1774447297167?groupId=00000000-0000-0000-0000-team00000001\u0026tenantId=00000000-0000-0000-0000-tenant000001\u0026createdTime=1774447297167\u0026parentMessageId=1774423382495",
+      "policyViolation": null,
+      "eventDetail": null,
+      "from": {
+        "application": null,
+        "device": null,
+        "user": {
+          "@odata.type": "#microsoft.graph.teamworkUserIdentity",
+          "id": "00000000-0000-0000-0000-user00000001",
+          "displayName": "\u30B5\u30C8\u30A6 \u30B9\u30BA\u30AD",
+          "userIdentityType": "aadUser",
+          "tenantId": "00000000-0000-0000-0000-tenant000001"
+        }
+      },
+      "body": {
+        "contentType": "html",
+        "content": "\u73FE\u5834\u3060\u3068\u5B9F\u306F\u3053\u3046\u904B\u7528\u3057\u3066\u307E\u3057\u3066\u3001\u5404SaaS\u88FD\u54C1\u306E\u7BA1\u7406\u753B\u9762\u304B\u3089\u6708\u521D\u306B\u5229\u7528\u5B9F\u7E3E\u306ECSV\u3092\u30C0\u30A6\u30F3\u30ED\u30FC\u30C9\u3057\u3066\u3001\u62C5\u5F53\u8005\u304C\u624B\u52D5\u3067Excel\u306B\u8EE2\u8A18\u3057\u3066\u3044\u307E\u3059\u3002\u66F4\u65B0\u306F\u6708\u6B21\u3067\u3001\u3060\u3044\u305F\u3044\u6BCE\u67085\u55B6\u696D\u65E5\u76EE\u304F\u3089\u3044\u307E\u3067\u306B\u524D\u6708\u5206\u3092\u53D6\u308A\u307E\u3068\u3081\u308B\u6D41\u308C\u3067\u3059\u3002\u3053\u3053\u304C\u5C5E\u4EBA\u5316\u3057\u3066\u3044\u3066\u5F15\u304D\u7D99\u304E\u304C\u96E3\u3057\u3044\u3068\u3044\u3046\u58F0\u3082\u3042\u308A\u307E\u3059\u3002"
+      },
+      "channelIdentity": {
+        "teamId": "00000000-0000-0000-0000-team00000001",
+        "channelId": "19:e46d961d316c4cc599cc8692f82091d2@thread.tacv2"
+      },
+      "attachments": [],
+      "mentions": [],
+      "reactions": []
+    },
+    {
+      "id": "1774447277463",
+      "replyToId": "1774423382495",
+      "etag": "1774447277463",
+      "messageType": "message",
+      "createdDateTime": "2026-03-25T14:01:17.463Z",
+      "lastModifiedDateTime": "2026-03-25T14:01:17.463Z",
+      "lastEditedDateTime": null,
+      "deletedDateTime": null,
+      "subject": null,
+      "summary": null,
+      "chatId": null,
+      "importance": "normal",
+      "locale": "en-us",
+      "webUrl": "https://teams.microsoft.com/l/message/19%3Ae46d961d316c4cc599cc8692f82091d2%40thread.tacv2/1774447277463?groupId=00000000-0000-0000-0000-team00000001\u0026tenantId=00000000-0000-0000-0000-tenant000001\u0026createdTime=1774447277463\u0026parentMessageId=1774423382495",
+      "policyViolation": null,
+      "eventDetail": null,
+      "from": {
+        "application": null,
+        "device": null,
+        "user": {
+          "@odata.type": "#microsoft.graph.teamworkUserIdentity",
+          "id": "00000000-0000-0000-0000-user00000002",
+          "displayName": "\u30EF\u30BF\u30CA\u30D9 \u30BF\u30CA\u30AB",
+          "userIdentityType": "aadUser",
+          "tenantId": "00000000-0000-0000-0000-tenant000001"
+        }
+      },
+      "body": {
+        "contentType": "html",
+        "content": "\u753B\u9762\u69CB\u6210\u306E\u65B9\u5411\u306F\u3044\u3044\u3068\u601D\u3046\u3002\u305F\u3060\u2463\u306E\u5F93\u91CF\u30C7\u30FC\u30BF\u53D6\u8FBC\u3001\u30D7\u30ED\u30C8\u306B\u5165\u308B\u524D\u306B\u904B\u7528\u9762\u3092\u8A70\u3081\u3066\u304A\u304D\u305F\u3044\u3002\u8AB0\u304C\u3044\u3064\u66F4\u65B0\u3059\u308B\u306E\u304B\u3001\u6708\u6B21\u30D0\u30C3\u30C1\u306A\u306E\u304B\u624B\u52D5\u30A2\u30C3\u30D7\u30ED\u30FC\u30C9\u306A\u306E\u304B\u3001\u305D\u3053\u304C\u66D6\u6627\u3060\u3068\u4F5C\u308A\u76F4\u3057\u306B\u306A\u308B\u3088\u3002\u30B5\u30C8\u30A6\u3055\u3093\u3001\u4ECA\u306E\u73FE\u5834\u306E\u66F4\u65B0\u30D5\u30ED\u30FC\u3063\u3066\u3069\u3093\u306A\u611F\u3058\u3067\u3059\u304B\uFF1F"
+      },
+      "channelIdentity": {
+        "teamId": "00000000-0000-0000-0000-team00000001",
+        "channelId": "19:e46d961d316c4cc599cc8692f82091d2@thread.tacv2"
+      },
+      "attachments": [],
+      "mentions": [],
+      "reactions": []
+    },
+    {
+      "id": "1774447257597",
+      "replyToId": "1774423382495",
+      "etag": "1774447257597",
+      "messageType": "message",
+      "createdDateTime": "2026-03-25T14:00:57.597Z",
+      "lastModifiedDateTime": "2026-03-25T14:00:57.597Z",
+      "lastEditedDateTime": null,
+      "deletedDateTime": null,
+      "subject": null,
+      "summary": null,
+      "chatId": null,
+      "importance": "normal",
+      "locale": "en-us",
+      "webUrl": "https://teams.microsoft.com/l/message/19%3Ae46d961d316c4cc599cc8692f82091d2%40thread.tacv2/1774447257597?groupId=00000000-0000-0000-0000-team00000001\u0026tenantId=00000000-0000-0000-0000-tenant000001\u0026createdTime=1774447257597\u0026parentMessageId=1774423382495",
+      "policyViolation": null,
+      "eventDetail": null,
+      "from": {
+        "application": null,
+        "device": null,
+        "user": {
+          "@odata.type": "#microsoft.graph.teamworkUserIdentity",
+          "id": "00000000-0000-0000-0000-drive0000001",
+          "displayName": "\u5927\u5DDD\u8CB4\u5FD7",
+          "userIdentityType": "aadUser",
+          "tenantId": "00000000-0000-0000-0000-tenant000001"
+        }
+      },
+      "body": {
+        "contentType": "html",
+        "content": "\u753B\u9762\u69CB\u6210\u3068\u3057\u3066\u306F\u3056\u3063\u304F\u308A\u3053\u3093\u306A\u611F\u3058\u3067\u8003\u3048\u3066\u307E\u3059\u3002\u003Cbr\u003E\n\u2460 \u30C0\u30C3\u30B7\u30E5\u30DC\u30FC\u30C9\uFF08\u9867\u5BA2\u5225\u306E\u5229\u7528\u72B6\u6CC1\u30FB\u8D85\u904E\u30A2\u30E9\u30FC\u30C8\u4E00\u89A7\uFF09\u003Cbr\u003E\n\u2461 \u30DE\u30B9\u30BF\u7BA1\u7406\uFF08\u88FD\u54C1\u30FB\u30D7\u30E9\u30F3\u30FB\u30E1\u30C8\u30EA\u30AF\u30B9\u5B9A\u7FA9\u306ECRUD\uFF09\u003Cbr\u003E\n\u2462 \u5951\u7D04\u7BA1\u7406\uFF08\u9867\u5BA2\u3054\u3068\u306E\u5951\u7D04\u5185\u5BB9\u30FB\u66F4\u65B0\u6642\u671F\u306E\u7BA1\u7406\uFF09\u003Cbr\u003E\n\u2463 \u5F93\u91CF\u30C7\u30FC\u30BF\u53D6\u8FBC\uFF08CSV/API\u3067\u6708\u6B21\u30C7\u30FC\u30BF\u3092\u30A4\u30F3\u30DD\u30FC\u30C8\uFF09\u003Cbr\u003E\n\u3068\u308A\u3042\u3048\u305A\u2460\u3068\u2463\u3042\u305F\u308A\u304B\u3089\u30D7\u30ED\u30C8\u4F5C\u3063\u3066\u307F\u307E\u3057\u3087\u3046\u304B\uFF1F"
+      },
+      "channelIdentity": {
+        "teamId": "00000000-0000-0000-0000-team00000001",
+        "channelId": "19:e46d961d316c4cc599cc8692f82091d2@thread.tacv2"
+      },
+      "attachments": [],
+      "mentions": [],
+      "reactions": []
+    },
+    {
+      "id": "1774447239426",
+      "replyToId": "1774423382495",
+      "etag": "1774447239426",
+      "messageType": "message",
+      "createdDateTime": "2026-03-25T14:00:39.426Z",
+      "lastModifiedDateTime": "2026-03-25T14:00:39.426Z",
+      "lastEditedDateTime": null,
+      "deletedDateTime": null,
+      "subject": null,
+      "summary": null,
+      "chatId": null,
+      "importance": "normal",
+      "locale": "en-us",
+      "webUrl": "https://teams.microsoft.com/l/message/19%3Ae46d961d316c4cc599cc8692f82091d2%40thread.tacv2/1774447239426?groupId=00000000-0000-0000-0000-team00000001\u0026tenantId=00000000-0000-0000-0000-tenant000001\u0026createdTime=1774447239426\u0026parentMessageId=1774423382495",
+      "policyViolation": null,
+      "eventDetail": null,
+      "from": {
+        "application": null,
+        "device": null,
+        "user": {
+          "@odata.type": "#microsoft.graph.teamworkUserIdentity",
+          "id": "00000000-0000-0000-0000-user00000001",
+          "displayName": "\u30B5\u30C8\u30A6 \u30B9\u30BA\u30AD",
+          "userIdentityType": "aadUser",
+          "tenantId": "00000000-0000-0000-0000-tenant000001"
+        }
+      },
+      "body": {
+        "contentType": "html",
+        "content": "\u30DE\u30B9\u30BF\u306E\u6574\u7406\u3001\u3042\u308A\u304C\u3068\u3046\u3054\u3056\u3044\u307E\u3059\u3002\u52A0\u3048\u3066\u904B\u7528\u9762\u306E\u8996\u70B9\u306A\u306E\u3067\u3059\u304C\u3001\u73FE\u5834\u3060\u3068\u5F93\u91CF\u30C7\u30FC\u30BF\u306F\u6708\u6B21\u3067\u624B\u52D5\u66F4\u65B0\u3057\u3066\u3044\u308B\u30B1\u30FC\u30B9\u304C\u591A\u3044\u306E\u3067\u3001\u305D\u306E\u3042\u305F\u308A\u306E\u53D6\u308A\u8FBC\u307F\u30D5\u30ED\u30FC\u3082\u691C\u8A0E\u3044\u305F\u3060\u3051\u308B\u3068\u52A9\u304B\u308A\u307E\u3059\u3002\u3042\u3068\u3001\u55B6\u696D\u304C\u65E5\u5E38\u7684\u306B\u78BA\u8A8D\u3059\u308B\u753B\u9762\u3068\u3057\u3066\u306F\u3069\u3046\u3044\u3063\u305F\u3082\u306E\u304C\u60F3\u5B9A\u3055\u308C\u307E\u3059\u304B\uFF1F"
+      },
+      "channelIdentity": {
+        "teamId": "00000000-0000-0000-0000-team00000001",
+        "channelId": "19:e46d961d316c4cc599cc8692f82091d2@thread.tacv2"
+      },
+      "attachments": [],
+      "mentions": [],
+      "reactions": []
+    },
+    {
+      "id": "1774447221338",
+      "replyToId": "1774423382495",
+      "etag": "1774447221338",
+      "messageType": "message",
+      "createdDateTime": "2026-03-25T14:00:21.338Z",
+      "lastModifiedDateTime": "2026-03-25T14:00:21.338Z",
+      "lastEditedDateTime": null,
+      "deletedDateTime": null,
+      "subject": null,
+      "summary": null,
+      "chatId": null,
+      "importance": "normal",
+      "locale": "en-us",
+      "webUrl": "https://teams.microsoft.com/l/message/19%3Ae46d961d316c4cc599cc8692f82091d2%40thread.tacv2/1774447221338?groupId=00000000-0000-0000-0000-team00000001\u0026tenantId=00000000-0000-0000-0000-tenant000001\u0026createdTime=1774447221338\u0026parentMessageId=1774423382495",
+      "policyViolation": null,
+      "eventDetail": null,
+      "from": {
+        "application": null,
+        "device": null,
+        "user": {
+          "@odata.type": "#microsoft.graph.teamworkUserIdentity",
+          "id": "00000000-0000-0000-0000-drive0000001",
+          "displayName": "\u5927\u5DDD\u8CB4\u5FD7",
+          "userIdentityType": "aadUser",
+          "tenantId": "00000000-0000-0000-0000-tenant000001"
+        }
+      },
+      "body": {
+        "contentType": "html",
+        "content": "\u306F\u3044\u3001\u81EA\u5206\u3068\u3057\u3066\u306F\u3053\u306E4\u3064\u3092\u8003\u3048\u3066\u307E\u3059\u3002\u003Cbr\u003E\n\u2460 \u88FD\u54C1\u30DE\u30B9\u30BF\uFF08SaaS\u88FD\u54C1\u306E\u57FA\u672C\u60C5\u5831\uFF09\u003Cbr\u003E\n\u2461 \u8AB2\u91D1\u30D7\u30E9\u30F3\u30DE\u30B9\u30BF\uFF08\u30D7\u30E9\u30F3\u5225\u306E\u6599\u91D1\u30FB\u4E0A\u9650\u5024\uFF09\u003Cbr\u003E\n\u2462 \u9867\u5BA2\u30DE\u30B9\u30BF\uFF08\u5951\u7D04\u4E3B\u4F53\u306E\u60C5\u5831\uFF09\u003Cbr\u003E\n\u2463 \u30E1\u30C8\u30EA\u30AF\u30B9\u5B9A\u7FA9\u30DE\u30B9\u30BF\uFF08API\u547C\u51FA\u6570\u30FB\u30B9\u30C8\u30EC\u30FC\u30B8\u7B49\u306E\u5F93\u91CF\u9805\u76EE\u5B9A\u7FA9\uFF09\u003Cbr\u003E\n\u7279\u306B\u2463\u304C\u3042\u308B\u3068\u3001\u5C06\u6765\u7684\u306B\u65B0\u3057\u3044\u8AB2\u91D1\u6307\u6A19\u304C\u5897\u3048\u3066\u3082\u67D4\u8EDF\u306B\u5BFE\u5FDC\u3067\u304D\u308B\u304B\u306A\u3068\u3002"
+      },
+      "channelIdentity": {
+        "teamId": "00000000-0000-0000-0000-team00000001",
+        "channelId": "19:e46d961d316c4cc599cc8692f82091d2@thread.tacv2"
+      },
+      "attachments": [],
+      "mentions": [],
+      "reactions": []
+    },
+    {
+      "id": "1774447201429",
+      "replyToId": "1774423382495",
+      "etag": "1774447201429",
+      "messageType": "message",
+      "createdDateTime": "2026-03-25T14:00:01.429Z",
+      "lastModifiedDateTime": "2026-03-25T14:00:01.429Z",
+      "lastEditedDateTime": null,
+      "deletedDateTime": null,
+      "subject": null,
+      "summary": null,
+      "chatId": null,
+      "importance": "normal",
+      "locale": "en-us",
+      "webUrl": "https://teams.microsoft.com/l/message/19%3Ae46d961d316c4cc599cc8692f82091d2%40thread.tacv2/1774447201429?groupId=00000000-0000-0000-0000-team00000001\u0026tenantId=00000000-0000-0000-0000-tenant000001\u0026createdTime=1774447201429\u0026parentMessageId=1774423382495",
+      "policyViolation": null,
+      "eventDetail": null,
+      "from": {
+        "application": null,
+        "device": null,
+        "user": {
+          "@odata.type": "#microsoft.graph.teamworkUserIdentity",
+          "id": "00000000-0000-0000-0000-user00000002",
+          "displayName": "\u30EF\u30BF\u30CA\u30D9 \u30BF\u30CA\u30AB",
+          "userIdentityType": "aadUser",
+          "tenantId": "00000000-0000-0000-0000-tenant000001"
+        }
+      },
+      "body": {
+        "contentType": "html",
+        "content": "\u5927\u5DDD\u304F\u3093\u3001\u30DE\u30B9\u30BF\u306E\u6B63\u898F\u5316\u306F\u540C\u610F\u3002\u5177\u4F53\u7684\u306B\u3069\u306E\u3042\u305F\u308A\u306E\u30DE\u30B9\u30BF\u3092\u60F3\u5B9A\u3057\u3066\u308B\uFF1F\u88FD\u54C1\u30FB\u30D7\u30E9\u30F3\u30FB\u9867\u5BA2\u3042\u305F\u308A\u306F\u5F53\u7136\u3068\u3057\u3066\u3001\u8AB2\u91D1\u4F53\u7CFB\u306E\u5F93\u91CF\u90E8\u5206\u3082\u30DE\u30B9\u30BF\u5316\u3059\u308B\u30A4\u30E1\u30FC\u30B8\uFF1F\u5148\u306B\u30B9\u30B3\u30FC\u30D7\u6C7A\u3081\u3066\u304A\u304D\u305F\u3044\u306D\u3002"
+      },
+      "channelIdentity": {
+        "teamId": "00000000-0000-0000-0000-team00000001",
+        "channelId": "19:e46d961d316c4cc599cc8692f82091d2@thread.tacv2"
+      },
+      "attachments": [],
+      "mentions": [],
+      "reactions": []
+    },
+    {
+      "id": "1774447184322",
+      "replyToId": "1774423382495",
+      "etag": "1774447184322",
+      "messageType": "message",
+      "createdDateTime": "2026-03-25T13:59:44.322Z",
+      "lastModifiedDateTime": "2026-03-25T13:59:44.322Z",
+      "lastEditedDateTime": null,
+      "deletedDateTime": null,
+      "subject": null,
+      "summary": null,
+      "chatId": null,
+      "importance": "normal",
+      "locale": "en-us",
+      "webUrl": "https://teams.microsoft.com/l/message/19%3Ae46d961d316c4cc599cc8692f82091d2%40thread.tacv2/1774447184322?groupId=00000000-0000-0000-0000-team00000001\u0026tenantId=00000000-0000-0000-0000-tenant000001\u0026createdTime=1774447184322\u0026parentMessageId=1774423382495",
+      "policyViolation": null,
+      "eventDetail": null,
+      "from": {
+        "application": null,
+        "device": null,
+        "user": {
+          "@odata.type": "#microsoft.graph.teamworkUserIdentity",
+          "id": "00000000-0000-0000-0000-drive0000001",
+          "displayName": "\u5927\u5DDD\u8CB4\u5FD7",
+          "userIdentityType": "aadUser",
+          "tenantId": "00000000-0000-0000-0000-tenant000001"
+        }
+      },
+      "body": {
+        "contentType": "html",
+        "content": "\u30B5\u30C8\u30A6\u3055\u3093\u3001\u5171\u6709\u3042\u308A\u304C\u3068\u3046\u3054\u3056\u3044\u307E\u3059\u3002Excel\u898B\u307E\u3057\u305F\u3002\u30B7\u30B9\u30C6\u30E0\u5316\u3059\u308B\u306A\u3089\u3001\u307E\u305A\u88FD\u54C1\u540D\u3084\u30D7\u30E9\u30F3\u540D\u306E\u30DE\u30B9\u30BF\u30C7\u30FC\u30BF\u3092\u6B63\u898F\u5316\u3057\u306A\u3044\u3068\u3067\u3059\u306D\u3002\u4ECA\u306E\u307E\u307E\u3060\u3068\u8868\u8A18\u63FA\u308C\u304C\u8D77\u304D\u305F\u3068\u304D\u306B\u30C7\u30FC\u30BF\u4E0D\u6574\u5408\u306E\u539F\u56E0\u306B\u306A\u308B\u306E\u3067\u3001\u30DE\u30B9\u30BF\u30C6\u30FC\u30D6\u30EB\u306E\u8A2D\u8A08\u304B\u3089\u5165\u308A\u305F\u3044\u3067\u3059\u3002"
+      },
+      "channelIdentity": {
+        "teamId": "00000000-0000-0000-0000-team00000001",
+        "channelId": "19:e46d961d316c4cc599cc8692f82091d2@thread.tacv2"
+      },
+      "attachments": [],
+      "mentions": [],
+      "reactions": []
+    },
+    {
+      "id": "1774447156329",
+      "replyToId": "1774423382495",
+      "etag": "1774447156329",
+      "messageType": "message",
+      "createdDateTime": "2026-03-25T13:59:16.329Z",
+      "lastModifiedDateTime": "2026-03-25T13:59:16.329Z",
+      "lastEditedDateTime": null,
+      "deletedDateTime": null,
+      "subject": null,
+      "summary": null,
+      "chatId": null,
+      "importance": "normal",
+      "locale": "en-us",
+      "webUrl": "https://teams.microsoft.com/l/message/19%3Ae46d961d316c4cc599cc8692f82091d2%40thread.tacv2/1774447156329?groupId=00000000-0000-0000-0000-team00000001\u0026tenantId=00000000-0000-0000-0000-tenant000001\u0026createdTime=1774447156329\u0026parentMessageId=1774423382495",
+      "policyViolation": null,
+      "eventDetail": null,
+      "from": {
+        "application": null,
+        "device": null,
+        "user": {
+          "@odata.type": "#microsoft.graph.teamworkUserIdentity",
+          "id": "00000000-0000-0000-0000-user00000001",
+          "displayName": "\u30B5\u30C8\u30A6 \u30B9\u30BA\u30AD",
+          "userIdentityType": "aadUser",
+          "tenantId": "00000000-0000-0000-0000-tenant000001"
+        }
+      },
+      "body": {
+        "contentType": "html",
+        "content": "\u5148\u65E5\u304A\u8A71\u306B\u51FA\u3066\u3044\u305FSaaS\u7BA1\u7406\u8868\u3067\u3059\u304C\u3001\u73FE\u72B6\u306E\u5951\u7D04\u30FB\u8AB2\u91D1\u30D7\u30E9\u30F3\u30FB\u6708\u6B21\u5F93\u91CF\u5B9F\u7E3E\u3092\u307E\u3068\u3081\u305F\u3082\u306E\u3092\u5171\u6709\u3057\u307E\u3059\u3002\u76F4\u8FD13\u30F6\u6708\u3067\u898B\u308B\u3068\u3001ABC\u5546\u4E8B\u3055\u3093\u3084GHI\u30C6\u30AF\u30CE\u30ED\u30B8\u30FC\u30BA\u3055\u3093\u306A\u3069\u6570\u793E\u3067API\u547C\u51FA\u304C\u4E0A\u9650\u306B\u8FD1\u3065\u3044\u3066\u3044\u308B\u72B6\u6CC1\u3067\u3059\u3002\u304A\u5BA2\u3055\u3093\u306E\u7ACB\u5834\u3067\u8A00\u3046\u3068\u3001\u30D7\u30E9\u30F3\u306E\u898B\u76F4\u3057\u63D0\u6848\u306E\u30BF\u30A4\u30DF\u30F3\u30B0\u304B\u3082\u3057\u308C\u307E\u305B\u3093\u3002 \u003Cattachment id=\u002200000000-0000-0000-0000-user00000007\u0022\u003E\u003C/attachment\u003E"
+      },
+      "channelIdentity": {
+        "teamId": "00000000-0000-0000-0000-team00000001",
+        "channelId": "19:e46d961d316c4cc599cc8692f82091d2@thread.tacv2"
+      },
+      "attachments": [
+        {
+          "id": "00000000-0000-0000-0000-user00000007",
+          "contentType": "reference",
+          "contentUrl": "https://contoso.sharepoint.com/sites/msteams_xxxxxx/Shared%20Documents/%E8%A3%BD%E5%93%81%E4%BC%81%E7%94%BB/SaaS%E7%AE%A1%E7%90%86%E8%A1%A8_202603.xlsx",
+          "content": null,
+          "name": "SaaS\u7BA1\u7406\u8868_202603.xlsx",
+          "thumbnailUrl": null,
+          "teamsAppId": null
+        }
+      ],
+      "mentions": [],
+      "reactions": []
+    },
+    {
+      "id": "1774423765193",
+      "replyToId": "1774423382495",
+      "etag": "1774423765193",
+      "messageType": "message",
+      "createdDateTime": "2026-03-25T07:29:25.193Z",
+      "lastModifiedDateTime": "2026-03-25T07:29:25.193Z",
+      "lastEditedDateTime": null,
+      "deletedDateTime": null,
+      "subject": null,
+      "summary": null,
+      "chatId": null,
+      "importance": "normal",
+      "locale": "en-us",
+      "webUrl": "https://teams.microsoft.com/l/message/19%3Ae46d961d316c4cc599cc8692f82091d2%40thread.tacv2/1774423765193?groupId=00000000-0000-0000-0000-team00000001\u0026tenantId=00000000-0000-0000-0000-tenant000001\u0026createdTime=1774423765193\u0026parentMessageId=1774423382495",
+      "policyViolation": null,
+      "eventDetail": null,
+      "from": {
+        "application": null,
+        "device": null,
+        "user": {
+          "@odata.type": "#microsoft.graph.teamworkUserIdentity",
+          "id": "00000000-0000-0000-0000-user00000002",
+          "displayName": "\u30EF\u30BF\u30CA\u30D9 \u30BF\u30CA\u30AB",
+          "userIdentityType": "aadUser",
+          "tenantId": "00000000-0000-0000-0000-tenant000001"
+        }
+      },
+      "body": {
+        "contentType": "html",
+        "content": "\u3044\u3044\u8B70\u8AD6\u3060\u3063\u305F\u306D\u3002\u3058\u3083\u3042\u6574\u7406\u3059\u308B\u3068\u3001\u5927\u5DDD\u304F\u3093\u306F\u6B21\u56DE\u307E\u3067\u306B\u5F93\u91CF\u8AB2\u91D1\u306E\u66F4\u65B0\u30D5\u30ED\u30FC\uFF08\u6708\u4E2D\u306E\u5358\u4FA1\u5909\u66F4\u5BFE\u5FDC\u542B\u3080\uFF09\u3092\u4F01\u753B\u66F8\u306B\u8FFD\u8A18\u3057\u3066\u3082\u3089\u3048\u308B\u304B\u306A\u3002\u30B5\u30C8\u30A6\u3055\u3093\u306B\u3082\u904B\u7528\u9762\u3067\u30EC\u30D3\u30E5\u30FC\u3057\u3066\u3082\u3089\u3063\u3066\u3001\u305D\u308C\u3067\u65B9\u5411\u6027\u3092\u56FA\u3081\u3088\u3046\u3002"
+      },
+      "channelIdentity": {
+        "teamId": "00000000-0000-0000-0000-team00000001",
+        "channelId": "19:e46d961d316c4cc599cc8692f82091d2@thread.tacv2"
+      },
+      "attachments": [],
+      "mentions": [],
+      "reactions": []
+    },
+    {
+      "id": "1774423745280",
+      "replyToId": "1774423382495",
+      "etag": "1774423745280",
+      "messageType": "message",
+      "createdDateTime": "2026-03-25T07:29:05.28Z",
+      "lastModifiedDateTime": "2026-03-25T07:29:05.28Z",
+      "lastEditedDateTime": null,
+      "deletedDateTime": null,
+      "subject": null,
+      "summary": null,
+      "chatId": null,
+      "importance": "normal",
+      "locale": "en-us",
+      "webUrl": "https://teams.microsoft.com/l/message/19%3Ae46d961d316c4cc599cc8692f82091d2%40thread.tacv2/1774423745280?groupId=00000000-0000-0000-0000-team00000001\u0026tenantId=00000000-0000-0000-0000-tenant000001\u0026createdTime=1774423745280\u0026parentMessageId=1774423382495",
+      "policyViolation": null,
+      "eventDetail": null,
+      "from": {
+        "application": null,
+        "device": null,
+        "user": {
+          "@odata.type": "#microsoft.graph.teamworkUserIdentity",
+          "id": "00000000-0000-0000-0000-user00000001",
+          "displayName": "\u30B5\u30C8\u30A6 \u30B9\u30BA\u30AD",
+          "userIdentityType": "aadUser",
+          "tenantId": "00000000-0000-0000-0000-tenant000001"
+        }
+      },
+      "body": {
+        "contentType": "html",
+        "content": "\u5927\u5DDD\u3055\u3093\u3001\u65E9\u901F\u3042\u308A\u304C\u3068\u3046\u3054\u3056\u3044\u307E\u3059\u3002\u5168\u4F53\u306E\u69CB\u6210\u306F\u5206\u304B\u308A\u3084\u3059\u3044\u3067\u3059\u3002\u4E00\u70B9\u304A\u9858\u3044\u306A\u3093\u3067\u3059\u304C\u3001\u5F93\u91CF\u8AB2\u91D1\u30C7\u30FC\u30BF\u306E\u66F4\u65B0\u30D5\u30ED\u30FC\u3092\u3082\u3046\u5C11\u3057\u5177\u4F53\u5316\u3044\u305F\u3060\u3051\u307E\u3059\u304B\uFF1F\u73FE\u5834\u3060\u3068\u6708\u4E2D\u306B\u5358\u4FA1\u5909\u66F4\u304C\u5165\u308B\u3053\u3068\u3082\u3042\u3063\u3066\u3001\u305D\u306E\u3042\u305F\u308A\u306E\u904B\u7528\u30A4\u30E1\u30FC\u30B8\u304C\u898B\u3048\u308B\u3068\u5B89\u5FC3\u3067\u3059\u3002"
+      },
+      "channelIdentity": {
+        "teamId": "00000000-0000-0000-0000-team00000001",
+        "channelId": "19:e46d961d316c4cc599cc8692f82091d2@thread.tacv2"
+      },
+      "attachments": [],
+      "mentions": [],
+      "reactions": []
+    },
+    {
+      "id": "1774423721742",
+      "replyToId": "1774423382495",
+      "etag": "1774423721742",
+      "messageType": "message",
+      "createdDateTime": "2026-03-25T07:28:41.742Z",
+      "lastModifiedDateTime": "2026-03-25T07:28:41.742Z",
+      "lastEditedDateTime": null,
+      "deletedDateTime": null,
+      "subject": null,
+      "summary": null,
+      "chatId": null,
+      "importance": "normal",
+      "locale": "en-us",
+      "webUrl": "https://teams.microsoft.com/l/message/19%3Ae46d961d316c4cc599cc8692f82091d2%40thread.tacv2/1774423721742?groupId=00000000-0000-0000-0000-team00000001\u0026tenantId=00000000-0000-0000-0000-tenant000001\u0026createdTime=1774423721742\u0026parentMessageId=1774423382495",
+      "policyViolation": null,
+      "eventDetail": null,
+      "from": {
+        "application": null,
+        "device": null,
+        "user": {
+          "@odata.type": "#microsoft.graph.teamworkUserIdentity",
+          "id": "00000000-0000-0000-0000-drive0000001",
+          "displayName": "\u5927\u5DDD\u8CB4\u5FD7",
+          "userIdentityType": "aadUser",
+          "tenantId": "00000000-0000-0000-0000-tenant000001"
+        }
+      },
+      "body": {
+        "contentType": "html",
+        "content": "\u3053\u3053\u307E\u3067\u306E\u8B70\u8AD6\u3092\u3082\u3068\u306B\u4F01\u753B\u66F8\u3092\u30B5\u30AF\u30C3\u3068\u307E\u3068\u3081\u3066\u307F\u307E\u3057\u305F\uFF01\u80CC\u666F\u30FB\u69CB\u6210\u56F3\u30FB\u6A5F\u80FD\u4E00\u89A7\u30FB\u6280\u8853\u30B9\u30BF\u30C3\u30AF\u30FB\u8A8D\u8A3C\u65B9\u91DD\u30FB\u30B9\u30B1\u30B8\u30E5\u30FC\u30EB\u3042\u305F\u308A\u3092\u5165\u308C\u3066\u307E\u3059\u3002\u3068\u308A\u3042\u3048\u305A\u52D5\u304F\u3082\u306E\u4F5C\u308B\u524D\u306B\u30EC\u30D3\u30E5\u30FC\u3044\u305F\u3060\u3051\u308B\u3068\u52A9\u304B\u308A\u307E\u3059 \uD83D\uDE4F \u003Cattachment id=\u002200000000-0000-0000-0000-user00000006\u0022\u003E\u003C/attachment\u003E"
+      },
+      "channelIdentity": {
+        "teamId": "00000000-0000-0000-0000-team00000001",
+        "channelId": "19:e46d961d316c4cc599cc8692f82091d2@thread.tacv2"
+      },
+      "attachments": [
+        {
+          "id": "00000000-0000-0000-0000-user00000006",
+          "contentType": "reference",
+          "contentUrl": "https://contoso.sharepoint.com/sites/msteams_xxxxxx/Shared%20Documents/%E8%A3%BD%E5%93%81%E4%BC%81%E7%94%BB/SaaS%E7%AE%A1%E7%90%86%E3%82%A2%E3%83%97%E3%83%AA%E4%BC%81%E7%94%BB%E6%9B%B8.pptx",
+          "content": null,
+          "name": "SaaS\u7BA1\u7406\u30A2\u30D7\u30EA\u4F01\u753B\u66F8.pptx",
+          "thumbnailUrl": null,
+          "teamsAppId": null
+        }
+      ],
+      "mentions": [],
+      "reactions": []
+    },
+    {
+      "id": "1774423550981",
+      "replyToId": "1774423382495",
+      "etag": "1774423550981",
+      "messageType": "message",
+      "createdDateTime": "2026-03-25T07:25:50.981Z",
+      "lastModifiedDateTime": "2026-03-25T07:25:50.981Z",
+      "lastEditedDateTime": null,
+      "deletedDateTime": null,
+      "subject": null,
+      "summary": null,
+      "chatId": null,
+      "importance": "normal",
+      "locale": "en-us",
+      "webUrl": "https://teams.microsoft.com/l/message/19%3Ae46d961d316c4cc599cc8692f82091d2%40thread.tacv2/1774423550981?groupId=00000000-0000-0000-0000-team00000001\u0026tenantId=00000000-0000-0000-0000-tenant000001\u0026createdTime=1774423550981\u0026parentMessageId=1774423382495",
+      "policyViolation": null,
+      "eventDetail": null,
+      "from": {
+        "application": null,
+        "device": null,
+        "user": {
+          "@odata.type": "#microsoft.graph.teamworkUserIdentity",
+          "id": "00000000-0000-0000-0000-drive0000001",
+          "displayName": "\u5927\u5DDD\u8CB4\u5FD7",
+          "userIdentityType": "aadUser",
+          "tenantId": "00000000-0000-0000-0000-tenant000001"
+        }
+      },
+      "body": {
+        "contentType": "html",
+        "content": "\u8A8D\u8A3C\u306FFastAPI\u5074\u3067\u81EA\u524D\u306EJWT\u8A8D\u8A3C\u57FA\u76E4\u3092\u7D44\u3080\u306E\u304C\u67D4\u8EDF\u3067\u3044\u3044\u304B\u306A\u3068\u601D\u3063\u3066\u307E\u3059\u3002\u30ED\u30FC\u30EB\u306F\u55B6\u696D\u62C5\u5F53\u8005\uFF08\u95B2\u89A7\u30FB\u7DE8\u96C6\uFF09\u3068\u7BA1\u7406\u8005\uFF08\u5168\u6A29\u9650\uFF0B\u30E6\u30FC\u30B6\u30FC\u7BA1\u7406\uFF09\u306E2\u3064\u3067\u5206\u3051\u308B\u65B9\u91DD\u3067\u3069\u3046\u3067\u3057\u3087\u3046\uFF1F\u6280\u8853\u7684\u306B\u306F\u3053\u3063\u3061\u306E\u307B\u3046\u304C\u30AB\u30B9\u30BF\u30DE\u30A4\u30BA\u3057\u3084\u3059\u3044\u3067\u3059\u3057\u3002"
+      },
+      "channelIdentity": {
+        "teamId": "00000000-0000-0000-0000-team00000001",
+        "channelId": "19:e46d961d316c4cc599cc8692f82091d2@thread.tacv2"
+      },
+      "attachments": [],
+      "mentions": [],
+      "reactions": []
+    },
+    {
+      "id": "1774423533595",
+      "replyToId": "1774423382495",
+      "etag": "1774423533595",
+      "messageType": "message",
+      "createdDateTime": "2026-03-25T07:25:33.595Z",
+      "lastModifiedDateTime": "2026-03-25T07:25:33.595Z",
+      "lastEditedDateTime": null,
+      "deletedDateTime": null,
+      "subject": null,
+      "summary": null,
+      "chatId": null,
+      "importance": "normal",
+      "locale": "en-us",
+      "webUrl": "https://teams.microsoft.com/l/message/19%3Ae46d961d316c4cc599cc8692f82091d2%40thread.tacv2/1774423533595?groupId=00000000-0000-0000-0000-team00000001\u0026tenantId=00000000-0000-0000-0000-tenant000001\u0026createdTime=1774423533595\u0026parentMessageId=1774423382495",
+      "policyViolation": null,
+      "eventDetail": null,
+      "from": {
+        "application": null,
+        "device": null,
+        "user": {
+          "@odata.type": "#microsoft.graph.teamworkUserIdentity",
+          "id": "00000000-0000-0000-0000-user00000002",
+          "displayName": "\u30EF\u30BF\u30CA\u30D9 \u30BF\u30CA\u30AB",
+          "userIdentityType": "aadUser",
+          "tenantId": "00000000-0000-0000-0000-tenant000001"
+        }
+      },
+      "body": {
+        "contentType": "html",
+        "content": "\u30C0\u30C3\u30B7\u30E5\u30DC\u30FC\u30C9\u3044\u3044\u306D\u3002\u3042\u3068\u4E00\u70B9\u78BA\u8A8D\u3057\u3066\u304A\u304D\u305F\u3044\u3093\u3060\u3051\u3069\u3001\u3053\u308C\u793E\u5185\u7528\u30A2\u30D7\u30EA\u3060\u3088\u306D\uFF1F\u8A8D\u8A3C\u306FEntra ID\u3067SSO\u9023\u643A\u3059\u308B\u60F3\u5B9A\u3067\u3044\u3044\u304B\u306A\u3002\u3042\u3068\u30E6\u30FC\u30B6\u30FC\u6A29\u9650\u3082\u55B6\u696D\u62C5\u5F53\u3068\u7BA1\u7406\u8005\u3067\u5206\u3051\u308B\u306E\u304B\u3001\u305D\u306E\u3042\u305F\u308A\u306E\u65B9\u91DD\u3082\u6C7A\u3081\u3066\u304A\u304D\u305F\u3044\u3002"
+      },
+      "channelIdentity": {
+        "teamId": "00000000-0000-0000-0000-team00000001",
+        "channelId": "19:e46d961d316c4cc599cc8692f82091d2@thread.tacv2"
+      },
+      "attachments": [],
+      "mentions": [],
+      "reactions": []
+    },
+    {
+      "id": "1774423516204",
+      "replyToId": "1774423382495",
+      "etag": "1774423516204",
+      "messageType": "message",
+      "createdDateTime": "2026-03-25T07:25:16.204Z",
+      "lastModifiedDateTime": "2026-03-25T07:25:16.204Z",
+      "lastEditedDateTime": null,
+      "deletedDateTime": null,
+      "subject": null,
+      "summary": null,
+      "chatId": null,
+      "importance": "normal",
+      "locale": "en-us",
+      "webUrl": "https://teams.microsoft.com/l/message/19%3Ae46d961d316c4cc599cc8692f82091d2%40thread.tacv2/1774423516204?groupId=00000000-0000-0000-0000-team00000001\u0026tenantId=00000000-0000-0000-0000-tenant000001\u0026createdTime=1774423516204\u0026parentMessageId=1774423382495",
+      "policyViolation": null,
+      "eventDetail": null,
+      "from": {
+        "application": null,
+        "device": null,
+        "user": {
+          "@odata.type": "#microsoft.graph.teamworkUserIdentity",
+          "id": "00000000-0000-0000-0000-user00000001",
+          "displayName": "\u30B5\u30C8\u30A6 \u30B9\u30BA\u30AD",
+          "userIdentityType": "aadUser",
+          "tenantId": "00000000-0000-0000-0000-tenant000001"
+        }
+      },
+      "body": {
+        "contentType": "html",
+        "content": "\u5927\u5DDD\u3055\u3093\u3001\u3042\u308A\u304C\u3068\u3046\u3054\u3056\u3044\u307E\u3059\u3002\u52A0\u3048\u3066\u3053\u3046\u3044\u3046\u8996\u70B9\u3082\u3042\u308A\u307E\u3057\u3066\u3001\u5229\u7528\u8005\u6570\u306E\u63A8\u79FB\u3084\u5229\u7528\u76EE\u7684\u306E\u50BE\u5411\u3092\u30B0\u30E9\u30D5\u3067\u53EF\u8996\u5316\u3067\u304D\u308B\u3068\u55B6\u696D\u3068\u3057\u3066\u306F\u3059\u3054\u304F\u52A9\u304B\u308A\u307E\u3059\u3002\u304A\u5BA2\u3055\u3093\u3078\u306E\u63D0\u6848\u6642\u306B\u300C\u3053\u3046\u3044\u3046\u4F7F\u308F\u308C\u65B9\u3092\u3057\u3066\u307E\u3059\u300D\u3068\u30C7\u30FC\u30BF\u3067\u898B\u305B\u3089\u308C\u308B\u3068\u8AAC\u5F97\u529B\u304C\u5168\u7136\u9055\u3046\u306E\u3067\u3002"
+      },
+      "channelIdentity": {
+        "teamId": "00000000-0000-0000-0000-team00000001",
+        "channelId": "19:e46d961d316c4cc599cc8692f82091d2@thread.tacv2"
+      },
+      "attachments": [],
+      "mentions": [],
+      "reactions": []
+    },
+    {
+      "id": "1774423499910",
+      "replyToId": "1774423382495",
+      "etag": "1774423499910",
+      "messageType": "message",
+      "createdDateTime": "2026-03-25T07:24:59.91Z",
+      "lastModifiedDateTime": "2026-03-25T07:24:59.91Z",
+      "lastEditedDateTime": null,
+      "deletedDateTime": null,
+      "subject": null,
+      "summary": null,
+      "chatId": null,
+      "importance": "normal",
+      "locale": "en-us",
+      "webUrl": "https://teams.microsoft.com/l/message/19%3Ae46d961d316c4cc599cc8692f82091d2%40thread.tacv2/1774423499910?groupId=00000000-0000-0000-0000-team00000001\u0026tenantId=00000000-0000-0000-0000-tenant000001\u0026createdTime=1774423499910\u0026parentMessageId=1774423382495",
+      "policyViolation": null,
+      "eventDetail": null,
+      "from": {
+        "application": null,
+        "device": null,
+        "user": {
+          "@odata.type": "#microsoft.graph.teamworkUserIdentity",
+          "id": "00000000-0000-0000-0000-drive0000001",
+          "displayName": "\u5927\u5DDD\u8CB4\u5FD7",
+          "userIdentityType": "aadUser",
+          "tenantId": "00000000-0000-0000-0000-tenant000001"
+        }
+      },
+      "body": {
+        "contentType": "html",
+        "content": "\u305D\u308C\u9762\u767D\u3044\u3067\u3059\u306D\uFF01\u6280\u8853\u7684\u306B\u306F\u30D5\u30ED\u30F3\u30C8React\uFF0B\u30D0\u30C3\u30AF\u30A8\u30F3\u30C9FastAPI\uFF0BMongoDB\u306E\u69CB\u6210\u304C\u826F\u3055\u305D\u3046\u3067\u3059\u3002\u5F93\u91CF\u8AB2\u91D1\u307F\u305F\u3044\u306B\u9805\u76EE\u304C\u5909\u52D5\u3057\u3084\u3059\u3044\u30C7\u30FC\u30BF\u306FMongoDB\u306E\u30B9\u30AD\u30FC\u30DE\u30EC\u30B9\u304C\u76F8\u6027\u3044\u3044\u3067\u3059\u3057\u3001\u5229\u7528\u72B6\u6CC1\u306E\u30C0\u30C3\u30B7\u30E5\u30DC\u30FC\u30C9\u3082\u3053\u306E\u69CB\u6210\u306A\u3089\u5272\u3068\u30B5\u30AF\u30C3\u3068\u4F5C\u308C\u308B\u3068\u601D\u3044\u307E\u3059\u3002"
+      },
+      "channelIdentity": {
+        "teamId": "00000000-0000-0000-0000-team00000001",
+        "channelId": "19:e46d961d316c4cc599cc8692f82091d2@thread.tacv2"
+      },
+      "attachments": [],
+      "mentions": [],
+      "reactions": []
+    },
+    {
+      "id": "1774423483520",
+      "replyToId": "1774423382495",
+      "etag": "1774423483520",
+      "messageType": "message",
+      "createdDateTime": "2026-03-25T07:24:43.52Z",
+      "lastModifiedDateTime": "2026-03-25T07:24:43.52Z",
+      "lastEditedDateTime": null,
+      "deletedDateTime": null,
+      "subject": null,
+      "summary": null,
+      "chatId": null,
+      "importance": "normal",
+      "locale": "en-us",
+      "webUrl": "https://teams.microsoft.com/l/message/19%3Ae46d961d316c4cc599cc8692f82091d2%40thread.tacv2/1774423483520?groupId=00000000-0000-0000-0000-team00000001\u0026tenantId=00000000-0000-0000-0000-tenant000001\u0026createdTime=1774423483520\u0026parentMessageId=1774423382495",
+      "policyViolation": null,
+      "eventDetail": null,
+      "from": {
+        "application": null,
+        "device": null,
+        "user": {
+          "@odata.type": "#microsoft.graph.teamworkUserIdentity",
+          "id": "00000000-0000-0000-0000-user00000001",
+          "displayName": "\u30B5\u30C8\u30A6 \u30B9\u30BA\u30AD",
+          "userIdentityType": "aadUser",
+          "tenantId": "00000000-0000-0000-0000-tenant000001"
+        }
+      },
+      "body": {
+        "contentType": "html",
+        "content": "\u30EF\u30BF\u30CA\u30D9\u3055\u3093\u3001\u3042\u308A\u304C\u3068\u3046\u3054\u3056\u3044\u307E\u3059\u3002\u73FE\u5834\u3060\u3068\u5B9F\u306F\u3053\u3046\u3044\u3046\u9805\u76EE\u3092\u7BA1\u7406\u3057\u3066\u307E\u3057\u3066\u3001\u9867\u5BA2\u30B3\u30FC\u30C9\u30FB\u9867\u5BA2\u540D\u30FB\u5229\u7528\u958B\u59CB\u65E5\u30FB\u7D42\u4E86\u65E5\u30FB\u5F93\u91CF\u8AB2\u91D1\u306E\u5358\u4FA1\u3068\u6570\u91CF\u3042\u305F\u308A\u304C\u30E1\u30A4\u30F3\u3067\u3059\u3002\u3053\u308C\u304C\u62C5\u5F53\u8005\u3054\u3068\u306EExcel\u306B\u6563\u3089\u3070\u3063\u3066\u3044\u3066\u3001\u6708\u672B\u306E\u96C6\u8A08\u304C\u304B\u306A\u308A\u5927\u5909\u306A\u72B6\u6CC1\u3067\u3059\u3002"
+      },
+      "channelIdentity": {
+        "teamId": "00000000-0000-0000-0000-team00000001",
+        "channelId": "19:e46d961d316c4cc599cc8692f82091d2@thread.tacv2"
+      },
+      "attachments": [],
+      "mentions": [],
+      "reactions": []
+    },
+    {
+      "id": "1774423464436",
+      "replyToId": "1774423382495",
+      "etag": "1774423464436",
+      "messageType": "message",
+      "createdDateTime": "2026-03-25T07:24:24.436Z",
+      "lastModifiedDateTime": "2026-03-25T07:24:24.436Z",
+      "lastEditedDateTime": null,
+      "deletedDateTime": null,
+      "subject": null,
+      "summary": null,
+      "chatId": null,
+      "importance": "normal",
+      "locale": "en-us",
+      "webUrl": "https://teams.microsoft.com/l/message/19%3Ae46d961d316c4cc599cc8692f82091d2%40thread.tacv2/1774423464436?groupId=00000000-0000-0000-0000-team00000001\u0026tenantId=00000000-0000-0000-0000-tenant000001\u0026createdTime=1774423464436\u0026parentMessageId=1774423382495",
+      "policyViolation": null,
+      "eventDetail": null,
+      "from": {
+        "application": null,
+        "device": null,
+        "user": {
+          "@odata.type": "#microsoft.graph.teamworkUserIdentity",
+          "id": "00000000-0000-0000-0000-user00000002",
+          "displayName": "\u30EF\u30BF\u30CA\u30D9 \u30BF\u30CA\u30AB",
+          "userIdentityType": "aadUser",
+          "tenantId": "00000000-0000-0000-0000-tenant000001"
+        }
+      },
+      "body": {
+        "contentType": "html",
+        "content": "\u30B5\u30C8\u30A6\u3055\u3093\u3001\u78BA\u304B\u306BExcel\u904B\u7528\u306F\u305D\u308D\u305D\u308D\u53B3\u3057\u3044\u3067\u3059\u3088\u306D\u3002\u65B9\u5411\u6027\u3068\u3057\u3066\u306F\u30A2\u30EA\u3060\u3068\u601D\u3044\u307E\u3059\u3002\u3061\u306A\u307F\u306B\u7BA1\u7406\u3057\u305F\u3044\u60C5\u5831\u3063\u3066\u3001\u9867\u5BA2\u57FA\u672C\u60C5\u5831\u30FB\u5546\u8AC7\u5C65\u6B74\u30FB\u62C5\u5F53\u8005\u304F\u3089\u3044\u306E\u30A4\u30E1\u30FC\u30B8\u3067\u3059\u304B\uFF1F\u6700\u521D\u306E\u30B9\u30B3\u30FC\u30D7\u611F\u3060\u3051\u63C3\u3048\u3066\u304A\u304D\u305F\u304F\u3066\u3002"
+      },
+      "channelIdentity": {
+        "teamId": "00000000-0000-0000-0000-team00000001",
+        "channelId": "19:e46d961d316c4cc599cc8692f82091d2@thread.tacv2"
+      },
+      "attachments": [],
+      "mentions": [],
+      "reactions": []
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "@odata.context": "https://graph.microsoft.com/v1.0/$metadata#teams(\u002700000000-0000-0000-0000-team00000001\u0027)/channels",
+  "@odata.count": 3,
+  "value": [
+    {
+      "id": "19:1d5f14db5e1c49ecb9b55bc3a1f9eb6c@thread.tacv2",
+      "createdDateTime": "2026-03-21T02:14:14.812Z",
+      "displayName": "\u96D1\u8AC7",
+      "description": null,
+      "isFavoriteByDefault": null,
+      "email": null,
+      "tenantId": "00000000-0000-0000-0000-tenant000001",
+      "webUrl": "https://teams.cloud.microsoft/l/channel/19%3A1d5f14db5e1c49ecb9b55bc3a1f9eb6c%40thread.tacv2/%E9%9B%91%E8%AB%87?groupId=00000000-0000-0000-0000-team00000001\u0026tenantId=00000000-0000-0000-0000-tenant000001\u0026allowXTenantAccess=False",
+      "membershipType": "standard",
+      "isArchived": false
+    },
+    {
+      "id": "19:e46d961d316c4cc599cc8692f82091d2@thread.tacv2",
+      "createdDateTime": "2026-03-25T06:55:36.61Z",
+      "displayName": "\u88FD\u54C1\u4F01\u753B",
+      "description": null,
+      "isFavoriteByDefault": null,
+      "email": null,
+      "tenantId": "00000000-0000-0000-0000-tenant000001",
+      "webUrl": "https://teams.cloud.microsoft/l/channel/19%3Ae46d961d316c4cc599cc8692f82091d2%40thread.tacv2/%E8%A3%BD%E5%93%81%E4%BC%81%E7%94%BB?groupId=00000000-0000-0000-0000-team00000001\u0026tenantId=00000000-0000-0000-0000-tenant000001\u0026allowXTenantAccess=False",
+      "membershipType": "standard",
+      "isArchived": false
+    },
+    {
+      "id": "19:jmqtxeILo9eP3uT2FXXUOpmLALhYNHF7uGqC96KSDP01@thread.tacv2",
+      "createdDateTime": "2026-03-21T02:09:54.522Z",
+      "displayName": "\u4E00\u822C",
+      "description": "\u65B0\u88FD\u54C1\u958B\u767A\u30C1\u30FC\u30E0",
+      "isFavoriteByDefault": null,
+      "email": "msteams_xxxxxx@contoso.onmicrosoft.com",
+      "tenantId": "00000000-0000-0000-0000-tenant000001",
+      "webUrl": "https://teams.cloud.microsoft/l/channel/19%3AjmqtxeILo9eP3uT2FXXUOpmLALhYNHF7uGqC96KSDP01%40thread.tacv2/%E6%96%B0%E8%A3%BD%E5%93%81%E9%96%8B%E7%99%BA%E3%83%81%E3%83%BC%E3%83%A0?groupId=00000000-0000-0000-0000-team00000001\u0026tenantId=00000000-0000-0000-0000-tenant000001\u0026allowXTenantAccess=False",
+      "membershipType": "standard",
+      "isArchived": false
+    }
+  ]
+}
