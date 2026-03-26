@@ -1,0 +1,38 @@
+appId: ${APP_ID}
+tags:
+  - services
+onFlowStart:
+  - runScript: ../../scripts/seed-data.js
+onFlowComplete:
+  - runScript: ../../scripts/cleanup-data.js
+---
+- runFlow:
+    file: ../../subflows/load-elements.yaml
+
+- launchApp
+
+- runFlow:
+    file: ../../subflows/login.yaml
+    env:
+      EMAIL: "e2e-admin@test.example.com"
+      PASSWORD: "TestPassword123!"
+
+- assertVisible:
+    id: ${output.dashboard.heading}
+
+- tapOn: "サービス"
+
+- assertVisible:
+    id: ${output.services.heading}
+
+- tapOn:
+    id: ${output.services.itemConnectChat}
+
+- assertVisible:
+    id: ${output.services.detailHeading}
+
+- assertVisible:
+    id: ${output.services.detailPlan}
+
+- assertVisible:
+    id: ${output.services.detailUsageTable}

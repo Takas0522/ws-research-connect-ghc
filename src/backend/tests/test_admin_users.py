@@ -13,9 +13,7 @@ USER_CREATE_DATA = {
 
 
 @pytest.mark.anyio
-async def test_list_users_admin(
-    test_client: AsyncClient, admin_token: str
-) -> None:
+async def test_list_users_admin(test_client: AsyncClient, admin_token: str) -> None:
     """管理者がユーザー一覧を取得できる。"""
     response = await test_client.get(
         "/api/admin/users/",
@@ -28,9 +26,7 @@ async def test_list_users_admin(
 
 
 @pytest.mark.anyio
-async def test_create_user_admin(
-    test_client: AsyncClient, admin_token: str
-) -> None:
+async def test_create_user_admin(test_client: AsyncClient, admin_token: str) -> None:
     """管理者がユーザーを作成できる。"""
     response = await test_client.post(
         "/api/admin/users/",
@@ -63,9 +59,7 @@ async def test_create_user_duplicate_email_returns_409(
 
 
 @pytest.mark.anyio
-async def test_update_user(
-    test_client: AsyncClient, admin_token: str
-) -> None:
+async def test_update_user(test_client: AsyncClient, admin_token: str) -> None:
     """管理者がユーザーを更新できる。"""
     create_resp = await test_client.post(
         "/api/admin/users/",

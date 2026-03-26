@@ -29,9 +29,7 @@ METRIC_DATA = {
 
 
 @pytest.mark.anyio
-async def test_get_metrics_empty(
-    test_client: AsyncClient, admin_token: str
-) -> None:
+async def test_get_metrics_empty(test_client: AsyncClient, admin_token: str) -> None:
     """メトリクス未登録時に空リストを返す。"""
     product_id = await _create_product(test_client, admin_token)
     response = await test_client.get(

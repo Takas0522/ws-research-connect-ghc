@@ -1,0 +1,26 @@
+appId: ${APP_ID}
+tags:
+  - auth
+onFlowStart:
+  - runScript: ../../scripts/seed-data.js
+onFlowComplete:
+  - runScript: ../../scripts/cleanup-data.js
+---
+- runFlow:
+    file: ../../subflows/load-elements.yaml
+
+- launchApp
+
+- tapOn:
+    id: ${output.login.emailInput}
+- inputText: "e2e-admin@test.example.com"
+
+- tapOn:
+    id: ${output.login.passwordInput}
+- inputText: "WrongPassword!"
+
+- tapOn:
+    id: ${output.login.loginButton}
+
+- assertVisible:
+    id: ${output.login.errorMessage}

@@ -33,7 +33,11 @@ async def _setup_master_data(client: AsyncClient, token: str) -> dict:
             "monthly_base_fee": 5000.0,
             "alert_threshold_pct": 80,
             "metric_limits": [
-                {"metric_code": "USERS", "limit_value": 100.0, "overage_unit_price": 50.0}
+                {
+                    "metric_code": "USERS",
+                    "limit_value": 100.0,
+                    "overage_unit_price": 50.0,
+                }
             ],
         },
         headers={"Authorization": f"Bearer {token}"},
@@ -110,9 +114,7 @@ async def test_create_contract_success(
 
 
 @pytest.mark.anyio
-async def test_get_contract_by_id(
-    test_client: AsyncClient, admin_token: str
-) -> None:
+async def test_get_contract_by_id(test_client: AsyncClient, admin_token: str) -> None:
     """ID で契約を取得できる。"""
     master = await _setup_master_data(test_client, admin_token)
     create_resp = await test_client.post(

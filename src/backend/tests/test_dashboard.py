@@ -1,6 +1,5 @@
 """ダッシュボードエンドポイントのテスト。"""
 
-import io
 from datetime import datetime, timezone
 
 import pytest
@@ -13,8 +12,10 @@ async def _setup_dashboard_data(client: AsyncClient, token: str, test_db) -> dic
     # 現在月を使用（トレンドは直近12ヶ月を参照するため）
     from dateutil.relativedelta import relativedelta
 
-    current_month = datetime.now(timezone.utc).strftime("%Y-%m")
-    last_month = (datetime.now(timezone.utc) - relativedelta(months=1)).strftime("%Y-%m")
+    datetime.now(timezone.utc).strftime("%Y-%m")
+    last_month = (datetime.now(timezone.utc) - relativedelta(months=1)).strftime(
+        "%Y-%m"
+    )
     # 製品作成
     prod_resp = await client.post(
         "/api/products/",
@@ -48,7 +49,11 @@ async def _setup_dashboard_data(client: AsyncClient, token: str, test_db) -> dic
             "monthly_base_fee": 3000.0,
             "alert_threshold_pct": 80,
             "metric_limits": [
-                {"metric_code": "STORAGE", "limit_value": 100.0, "overage_unit_price": 5.0}
+                {
+                    "metric_code": "STORAGE",
+                    "limit_value": 100.0,
+                    "overage_unit_price": 5.0,
+                }
             ],
         },
         headers={"Authorization": f"Bearer {token}"},

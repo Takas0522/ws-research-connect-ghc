@@ -61,6 +61,37 @@ blob-report/
 .playwright/.cache/
 .playwright/.auth/
 
+# === Android / Gradle ===
+.gradle/
+**/build/
+!**/src/**/build/
+local.properties
+*.apk
+*.aab
+*.ap_
+*.dex
+captures/
+.cxx/
+*.hprof
+
+# === iOS / Xcode / SwiftPM ===
+DerivedData/
+*.xcodeproj/xcuserdata/
+*.xcworkspace/xcuserdata/
+*.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist
+xcuserdata/
+*.ipa
+*.dSYM.zip
+*.dSYM
+.build/
+.swiftpm/
+Pods/
+Package.resolved
+
+# === Maestro ===
+.maestro/tests/
+screenshots/
+
 # === Database ===
 mongodata/
 

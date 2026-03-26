@@ -1,0 +1,37 @@
+appId: ${APP_ID}
+tags:
+  - smoke
+  - dashboard
+onFlowStart:
+  - runScript: ../../scripts/seed-data.js
+onFlowComplete:
+  - runScript: ../../scripts/cleanup-data.js
+---
+- runFlow:
+    file: ../../subflows/load-elements.yaml
+
+- launchApp
+
+- runFlow:
+    file: ../../subflows/login.yaml
+    env:
+      EMAIL: "e2e-admin@test.example.com"
+      PASSWORD: "TestPassword123!"
+
+- assertVisible:
+    id: ${output.dashboard.heading}
+
+- assertVisible:
+    id: ${output.dashboard.tenantName}
+
+- assertVisible:
+    id: ${output.dashboard.usageCardConnectChat}
+
+- assertVisible:
+    id: ${output.dashboard.usageCardConnectMeet}
+
+- assertVisible:
+    id: ${output.dashboard.usageCardConnectStore}
+
+- assertVisible:
+    id: ${output.dashboard.usageProgressConnectChat}

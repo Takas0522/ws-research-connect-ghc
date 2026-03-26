@@ -1,0 +1,17 @@
+appId: ${APP_ID}
+---
+- runScript: ../elements/signup.js
+- tapOn:
+    id: ${output.signup.emailInput}
+- inputText: ${EMAIL}
+- tapOn:
+    id: ${output.signup.passwordInput}
+- inputText: ${PASSWORD}
+- tapOn:
+    id: ${output.signup.displayNameInput}
+- inputText: ${DISPLAY_NAME}
+- tapOn:
+    id: ${output.signup.tenantCodeInput}
+- inputText: ${TENANT_CODE}
+- tapOn:
+    id: ${output.signup.signupButton}

@@ -1,0 +1,29 @@
+appId: ${APP_ID}
+tags:
+  - dashboard
+onFlowStart:
+  - runScript: ../../scripts/seed-data.js
+onFlowComplete:
+  - runScript: ../../scripts/cleanup-data.js
+---
+- runFlow:
+    file: ../../subflows/load-elements.yaml
+
+- launchApp
+
+- runFlow:
+    file: ../../subflows/login.yaml
+    env:
+      EMAIL: "e2e-admin@test.example.com"
+      PASSWORD: "TestPassword123!"
+
+- assertVisible:
+    id: ${output.dashboard.heading}
+
+- scroll
+
+- retry:
+    times: 3
+    commands:
+      - assertVisible:
+          id: ${output.dashboard.trendChart}

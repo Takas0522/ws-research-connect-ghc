@@ -50,9 +50,7 @@ async def test_create_customer_success(
 
 
 @pytest.mark.anyio
-async def test_get_customer_by_id(
-    test_client: AsyncClient, admin_token: str
-) -> None:
+async def test_get_customer_by_id(test_client: AsyncClient, admin_token: str) -> None:
     """ID で顧客を取得できる。"""
     created = await _create_customer(test_client, admin_token)
     response = await test_client.get(
@@ -64,9 +62,7 @@ async def test_get_customer_by_id(
 
 
 @pytest.mark.anyio
-async def test_update_customer(
-    test_client: AsyncClient, admin_token: str
-) -> None:
+async def test_update_customer(test_client: AsyncClient, admin_token: str) -> None:
     """顧客情報を更新できる。"""
     created = await _create_customer(test_client, admin_token)
     response = await test_client.put(
@@ -79,9 +75,7 @@ async def test_update_customer(
 
 
 @pytest.mark.anyio
-async def test_delete_customer(
-    test_client: AsyncClient, admin_token: str
-) -> None:
+async def test_delete_customer(test_client: AsyncClient, admin_token: str) -> None:
     """顧客を論理削除できる。"""
     created = await _create_customer(test_client, admin_token)
     response = await test_client.delete(

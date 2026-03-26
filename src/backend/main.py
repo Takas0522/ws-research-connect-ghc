@@ -17,6 +17,9 @@ from app.routers.products import router as products_router
 from app.routers.dashboard import router as dashboard_router
 from app.routers.imports import router as imports_router
 from app.routers.portal_auth import router as portal_auth_router
+from app.routers.portal_services import router as portal_services_router
+from app.routers.portal_dashboard import router as portal_dashboard_router
+from app.routers.test_helpers import router as test_helpers_router
 from app.routers.users import router as users_router
 from app.services.user_service import create_initial_admin
 
@@ -57,6 +60,9 @@ app.include_router(dashboard_router)
 app.include_router(imports_router)
 app.include_router(users_router)
 app.include_router(portal_auth_router)
+app.include_router(portal_dashboard_router)
+app.include_router(portal_services_router)
+app.include_router(test_helpers_router)
 
 
 @app.get("/health")
