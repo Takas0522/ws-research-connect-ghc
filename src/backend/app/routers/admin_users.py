@@ -63,6 +63,12 @@ async def update_existing_user(
     # 変更前の状態を取得
     from bson import ObjectId
 
+    # ObjectId が不正な場合は 400 を返す
+    if not ObjectId.is_valid(user_id):
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="不正なユーザーIDです",
+        )
     before_doc = await db["users"].find_one(
         {"_id": ObjectId(user_id)}, {"password_hash": 0}
     )
