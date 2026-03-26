@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">SaaS Portal</string>
+    <string name="login_title">ログイン</string>
+    <string name="signup_title">アカウント作成</string>
+    <string name="email_label">メールアドレス</string>
+    <string name="password_label">パスワード</string>
+    <string name="display_name_label">表示名</string>
+    <string name="tenant_code_label">テナントコード</string>
+    <string name="login_button">ログイン</string>
+    <string name="signup_button">登録</string>
+    <string name="create_account_link">アカウント作成</string>
+    <string name="have_account_link">アカウントをお持ちの方</string>
+    <string name="dashboard_tab">ダッシュボード</string>
+    <string name="services_tab">アプリ</string>
+    <string name="settings_tab">設定</string>
+    <string name="loading">読み込み中…</string>
+    <string name="retry_button">再試行</string>
+    <string name="email_invalid">有効なメールアドレスを入力してください</string>
+    <string name="password_too_short">パスワードは8文字以上で入力してください</string>
+    <string name="field_required">この項目は必須です</string>
+</resources>
