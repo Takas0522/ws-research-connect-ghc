@@ -24,3 +24,7 @@ npm install -g @playwright/cli@latest
 if [ -d "src/e2e" ]; then
   cd src/e2e && npm install && npx playwright install --with-deps chromium && cd ../..
 fi
+
+# ── Seed data ──
+echo "MongoDB シードデータを投入します..."
+cd src/backend && uv run python ../database/seed/seed_data.py && cd ../..
