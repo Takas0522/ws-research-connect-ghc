@@ -34,6 +34,7 @@ import com.example.saasportal.R
 import com.example.saasportal.ui.auth.AuthViewModel
 import com.example.saasportal.ui.auth.LoginScreen
 import com.example.saasportal.ui.auth.SignUpScreen
+import com.example.saasportal.ui.dashboard.DashboardScreen
 import com.example.saasportal.ui.services.ServiceDetailScreen
 import com.example.saasportal.ui.services.ServiceListScreen
 import com.example.saasportal.ui.settings.SettingsScreen
@@ -173,10 +174,7 @@ private fun MainScreen(
             modifier = Modifier.padding(innerPadding),
         ) {
             composable(Routes.DASHBOARD) {
-                PlaceholderScreen(
-                    title = "ダッシュボード",
-                    testTag = "dashboard_heading",
-                )
+                DashboardScreen()
             }
             composable(Routes.SERVICES) {
                 ServiceListScreen(

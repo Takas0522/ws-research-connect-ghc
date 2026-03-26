@@ -2,6 +2,7 @@ package com.example.saasportal.di
 
 import com.example.saasportal.BuildConfig
 import com.example.saasportal.data.remote.api.AuthApi
+import com.example.saasportal.data.remote.api.DashboardApi
 import com.example.saasportal.data.remote.api.ServiceApi
 import com.example.saasportal.data.remote.interceptor.AuthInterceptor
 import dagger.Module
@@ -66,5 +67,11 @@ object NetworkModule {
     @Singleton
     fun provideServiceApi(retrofit: Retrofit): ServiceApi {
         return retrofit.create(ServiceApi::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideDashboardApi(retrofit: Retrofit): DashboardApi {
+        return retrofit.create(DashboardApi::class.java)
     }
 }
