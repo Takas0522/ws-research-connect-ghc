@@ -31,7 +31,7 @@ test.describe('プラン管理', () => {
 
     await test.step('プランタブに切り替え', async () => {
       await master.switchToTab('プラン')
-      await expect(page.getByText('プラン')).toBeVisible()
+      await expect(page.getByRole('heading', { name: 'プラン' })).toBeVisible()
     })
 
     await test.step('プランを新規登録', async () => {

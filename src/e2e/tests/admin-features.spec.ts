@@ -61,7 +61,7 @@ test.describe('管理者機能', () => {
 
     await test.step('ステータスが無効に変わる', async () => {
       const row = master.getTableRow('deactivate@example.com')
-      await expect(row.getByText('無効')).toBeVisible()
+      await expect(row.getByText('無効', { exact: true })).toBeVisible()
     })
   })
 

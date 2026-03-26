@@ -92,7 +92,7 @@ test.describe('契約管理', () => {
       await createContract(token, {
         customer_id: customer.id,
         product_id: product.id,
-        plan_id: plan.id,
+        current_plan_id: plan.id,
         license_count: 10,
         contract_start_date: '2024-01-01',
         contract_renewal_date: '2025-01-01',
@@ -146,7 +146,7 @@ test.describe('契約管理', () => {
       await createContract(token, {
         customer_id: customer.id,
         product_id: product.id,
-        plan_id: plan.id,
+        current_plan_id: plan.id,
         license_count: 5,
         contract_start_date: '2024-01-01',
         contract_renewal_date: '2025-01-01',
