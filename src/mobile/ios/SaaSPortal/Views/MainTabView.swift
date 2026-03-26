@@ -27,9 +27,7 @@ struct MainTabView: View {
 
     private var servicesTab: some View {
         NavigationStack {
-            Text("サービス一覧")
-                .font(.title)
-                .navigationTitle("サービス")
+            ServiceListView()
         }
         .tabItem {
             Label("サービス", systemImage: "square.grid.2x2.fill")
