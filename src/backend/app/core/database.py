@@ -19,6 +19,9 @@ def get_database() -> AsyncIOMotorDatabase:
 async def connect_db() -> None:
     """MongoDB クライアントを初期化する。"""
     global _client
+    # すでにクライアントが設定されている場合（例: テストで注入された場合）は再初期化しない
+    if _client is not None:
+        return
     _client = AsyncIOMotorClient(settings.MONGO_URI)
 
 
