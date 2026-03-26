@@ -59,7 +59,7 @@ export async function createPlan(
     plan_code: string
     plan_name: string
     monthly_base_fee: number
-    alert_threshold_percent: number
+    alert_threshold_pct: number
     metric_limits?: Array<{ metric_code: string; limit_value: number; overage_unit_price: number }>
   }
 ): Promise<{ id: string }> {
