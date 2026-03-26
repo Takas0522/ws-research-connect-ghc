@@ -1,7 +1,9 @@
 package com.example.saasportal.di
 
 import com.example.saasportal.data.repository.AuthRepositoryImpl
+import com.example.saasportal.data.repository.PortalRepositoryImpl
 import com.example.saasportal.domain.repository.AuthRepository
+import com.example.saasportal.domain.repository.PortalRepository
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -17,4 +19,10 @@ abstract class AppModule {
     abstract fun bindAuthRepository(
         authRepositoryImpl: AuthRepositoryImpl,
     ): AuthRepository
+
+    @Binds
+    @Singleton
+    abstract fun bindPortalRepository(
+        portalRepositoryImpl: PortalRepositoryImpl,
+    ): PortalRepository
 }
