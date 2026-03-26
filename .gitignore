@@ -14,6 +14,11 @@ Thumbs.db
 !.vscode/settings.json
 !.vscode/extensions.json
 
+# === Environment / Secrets ===
+.env
+.env.*
+!.env.example
+
 # === Node.js ===
 node_modules/
 npm-debug.log*
@@ -29,6 +34,11 @@ __pycache__/
 *.egg
 .python-version
 uv.lock
+.pytest_cache/
+.ruff_cache/
+
+# === TypeScript ===
+tsconfig.tsbuildinfo
 
 # === .NET (tools/m365-communication-app, dotnet-script) ===
 bin/
@@ -48,6 +58,8 @@ test-results/
 playwright-report/
 blob-report/
 .playwright-cli/
+.playwright/.cache/
+.playwright/.auth/
 
 # === Database ===
 mongodata/
@@ -58,9 +70,3 @@ logs/
 
 # === Temp / analysis output ===
 /temp/
-
-# Playwright
-/playwright-report/
-/blob-report/
-/playwright/.cache/
-/playwright/.auth/
