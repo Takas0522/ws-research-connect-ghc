@@ -10,6 +10,14 @@ Thumbs.db
 *.sln
 *.sw?
 *.user
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+
+# === Environment / Secrets ===
+.env
+.env.*
+!.env.example
 
 # === Node.js ===
 node_modules/
@@ -17,17 +25,30 @@ npm-debug.log*
 yarn-debug.log*
 pnpm-debug.log*
 
-# === .NET ===
+# === Python / uv ===
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.venv/
+*.egg
+.python-version
+uv.lock
+.pytest_cache/
+.ruff_cache/
+
+# === TypeScript ===
+tsconfig.tsbuildinfo
+
+# === .NET (tools/m365-communication-app, dotnet-script) ===
 bin/
 obj/
-*.user
-*.suo
 *.userosscache
 *.sln.docstates
 [Dd]ebug/
 [Rr]elease/
 
-# === Frontend (Vite) ===
+# === Frontend (Vite / React) ===
 dist/
 dist-ssr/
 *.local
@@ -36,12 +57,16 @@ dist-ssr/
 test-results/
 playwright-report/
 blob-report/
+.playwright-cli/
+.playwright/.cache/
+.playwright/.auth/
 
 # === Database ===
-pgdata/
+mongodata/
 
 # === Logs ===
 logs/
 *.log
 
-.playwright-cli/
+# === Temp / analysis output ===
+/temp/
