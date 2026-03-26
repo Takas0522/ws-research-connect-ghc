@@ -40,6 +40,10 @@ data class UserResponse(
     val tenantId: String,
     @SerializedName("tenant_code")
     val tenantCode: String,
+    @SerializedName("tenant_name")
+    val tenantName: String,
+    @SerializedName("plan_tier")
+    val planTier: String,
     @SerializedName("is_active")
     val isActive: Boolean,
 )

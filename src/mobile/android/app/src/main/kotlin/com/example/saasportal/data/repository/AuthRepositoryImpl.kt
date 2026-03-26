@@ -60,6 +60,8 @@ class AuthRepositoryImpl @Inject constructor(
                 role = response.role,
                 tenantId = response.tenantId,
                 tenantCode = response.tenantCode,
+                tenantName = response.tenantName,
+                planTier = response.planTier,
                 isActive = response.isActive,
             )
         }

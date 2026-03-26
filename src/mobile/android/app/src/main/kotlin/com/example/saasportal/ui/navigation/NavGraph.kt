@@ -24,14 +24,19 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import com.example.saasportal.R
 import com.example.saasportal.ui.auth.AuthViewModel
 import com.example.saasportal.ui.auth.LoginScreen
 import com.example.saasportal.ui.auth.SignUpScreen
+import com.example.saasportal.ui.services.ServiceDetailScreen
+import com.example.saasportal.ui.services.ServiceListScreen
+import com.example.saasportal.ui.settings.SettingsScreen
 
 object Routes {
     const val LOGIN = "login"
@@ -39,7 +44,10 @@ object Routes {
     const val MAIN = "main"
     const val DASHBOARD = "dashboard"
     const val SERVICES = "services"
+    const val SERVICE_DETAIL = "services/{serviceCode}"
     const val SETTINGS = "settings"
+
+    fun serviceDetail(serviceCode: String): String = "services/$serviceCode"
 }
 
 enum class BottomNavItem(
@@ -108,13 +116,21 @@ fun SaaSPortalNavHost(
         }
 
         composable(Routes.MAIN) {
-            MainScreen()
+            MainScreen(
+                onLogout = {
+                    navController.navigate(Routes.LOGIN) {
+                        popUpTo(Routes.MAIN) { inclusive = true }
+                    }
+                },
+            )
         }
     }
 }
 
 @Composable
-private fun MainScreen() {
+private fun MainScreen(
+    onLogout: () -> Unit,
+) {
     val navController = rememberNavController()
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentDestination = navBackStackEntry?.destination
@@ -163,16 +179,24 @@ private fun MainScreen() {
                 )
             }
             composable(Routes.SERVICES) {
-                PlaceholderScreen(
-                    title = "アプリ",
-                    testTag = "services_heading",
+                ServiceListScreen(
+                    onServiceClick = { serviceCode ->
+                        navController.navigate(Routes.serviceDetail(serviceCode))
+                    },
+                )
+            }
+            composable(
+                route = Routes.SERVICE_DETAIL,
+                arguments = listOf(
+                    navArgument("serviceCode") { type = NavType.StringType },
+                ),
+            ) {
+                ServiceDetailScreen(
+                    onNavigateBack = { navController.popBackStack() },
                 )
             }
             composable(Routes.SETTINGS) {
-                PlaceholderScreen(
-                    title = "設定",
-                    testTag = "settings_heading",
-                )
+                SettingsScreen(onLogout = onLogout)
             }
         }
     }

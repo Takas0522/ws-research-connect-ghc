@@ -7,6 +7,8 @@ data class PortalUser(
     val role: String,
     val tenantId: String,
     val tenantCode: String,
+    val tenantName: String,
+    val planTier: String,
     val isActive: Boolean,
 ) {
     companion object {
@@ -17,6 +19,8 @@ data class PortalUser(
             role = "admin",
             tenantId = "tenant-1",
             tenantCode = "TEST_TENANT",
+            tenantName = "テスト企業",
+            planTier = "enterprise",
             isActive = true,
         )
     }
