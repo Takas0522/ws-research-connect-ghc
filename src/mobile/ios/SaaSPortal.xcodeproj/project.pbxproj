@@ -1,0 +1,677 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		FA1000000000000000000001 /* SaaSPortalApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0000000000000000000001 /* SaaSPortalApp.swift */; };
+		FA1000000000000000000002 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0000000000000000000002 /* ContentView.swift */; };
+		FA1000000000000000000003 /* DashboardSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0000000000000000000003 /* DashboardSummary.swift */; };
+		FA1000000000000000000004 /* PortalUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0000000000000000000004 /* PortalUser.swift */; };
+		FA1000000000000000000005 /* ServiceLaunchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0000000000000000000005 /* ServiceLaunchResult.swift */; };
+		FA1000000000000000000006 /* ServiceUsageDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0000000000000000000006 /* ServiceUsageDetail.swift */; };
+		FA1000000000000000000007 /* Subscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0000000000000000000007 /* Subscription.swift */; };
+		FA1000000000000000000008 /* Tenant.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0000000000000000000008 /* Tenant.swift */; };
+		FA1000000000000000000009 /* UsageTrend.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0000000000000000000009 /* UsageTrend.swift */; };
+		FA100000000000000000000A /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA000000000000000000000A /* APIClient.swift */; };
+		FA100000000000000000000B /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA000000000000000000000B /* AuthService.swift */; };
+		FA100000000000000000000C /* PortalService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA000000000000000000000C /* PortalService.swift */; };
+		FA100000000000000000000D /* KeychainHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA000000000000000000000D /* KeychainHelper.swift */; };
+		FA100000000000000000000E /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA000000000000000000000E /* AuthViewModel.swift */; };
+		FA100000000000000000000F /* DashboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA000000000000000000000F /* DashboardViewModel.swift */; };
+		FA1000000000000000000010 /* ServiceListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0000000000000000000010 /* ServiceListViewModel.swift */; };
+		FA1000000000000000000011 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0000000000000000000011 /* SettingsViewModel.swift */; };
+		FA1000000000000000000012 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0000000000000000000012 /* LoginView.swift */; };
+		FA1000000000000000000013 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0000000000000000000013 /* SignUpView.swift */; };
+		FA1000000000000000000014 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0000000000000000000014 /* ErrorView.swift */; };
+		FA1000000000000000000015 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0000000000000000000015 /* LoadingView.swift */; };
+		FA1000000000000000000016 /* UsageBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0000000000000000000016 /* UsageBadge.swift */; };
+		FA1000000000000000000017 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0000000000000000000017 /* DashboardView.swift */; };
+		FA1000000000000000000018 /* UsageSummaryCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0000000000000000000018 /* UsageSummaryCard.swift */; };
+		FA1000000000000000000019 /* UsageTrendChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0000000000000000000019 /* UsageTrendChart.swift */; };
+		FA100000000000000000001A /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA000000000000000000001A /* MainTabView.swift */; };
+		FA100000000000000000001B /* ServiceDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA000000000000000000001B /* ServiceDetailView.swift */; };
+		FA100000000000000000001C /* ServiceListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA000000000000000000001C /* ServiceListView.swift */; };
+		FA100000000000000000001D /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA000000000000000000001D /* SettingsView.swift */; };
+		FA100000000000000000001E /* MockAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA000000000000000000001E /* MockAuthService.swift */; };
+		FA100000000000000000001F /* MockPortalService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA000000000000000000001F /* MockPortalService.swift */; };
+		FA1000000000000000000020 /* AuthViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0000000000000000000020 /* AuthViewModelTests.swift */; };
+		FA1000000000000000000021 /* DashboardViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0000000000000000000021 /* DashboardViewModelTests.swift */; };
+		FA1000000000000000000022 /* ServiceListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0000000000000000000022 /* ServiceListViewModelTests.swift */; };
+		FA1000000000000000000023 /* SettingsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0000000000000000000023 /* SettingsViewModelTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		AD0000000000000000000001 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AC0000000000000000000001 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FD0000000000000000000001;
+			remoteInfo = SaaSPortal;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		FA0000000000000000000001 /* SaaSPortalApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaaSPortalApp.swift; sourceTree = "<group>"; };
+		FA0000000000000000000002 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		FA0000000000000000000003 /* DashboardSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardSummary.swift; sourceTree = "<group>"; };
+		FA0000000000000000000004 /* PortalUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortalUser.swift; sourceTree = "<group>"; };
+		FA0000000000000000000005 /* ServiceLaunchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceLaunchResult.swift; sourceTree = "<group>"; };
+		FA0000000000000000000006 /* ServiceUsageDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceUsageDetail.swift; sourceTree = "<group>"; };
+		FA0000000000000000000007 /* Subscription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Subscription.swift; sourceTree = "<group>"; };
+		FA0000000000000000000008 /* Tenant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tenant.swift; sourceTree = "<group>"; };
+		FA0000000000000000000009 /* UsageTrend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsageTrend.swift; sourceTree = "<group>"; };
+		FA000000000000000000000A /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		FA000000000000000000000B /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		FA000000000000000000000C /* PortalService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortalService.swift; sourceTree = "<group>"; };
+		FA000000000000000000000D /* KeychainHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainHelper.swift; sourceTree = "<group>"; };
+		FA000000000000000000000E /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
+		FA000000000000000000000F /* DashboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewModel.swift; sourceTree = "<group>"; };
+		FA0000000000000000000010 /* ServiceListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceListViewModel.swift; sourceTree = "<group>"; };
+		FA0000000000000000000011 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		FA0000000000000000000012 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		FA0000000000000000000013 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		FA0000000000000000000014 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
+		FA0000000000000000000015 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		FA0000000000000000000016 /* UsageBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsageBadge.swift; sourceTree = "<group>"; };
+		FA0000000000000000000017 /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
+		FA0000000000000000000018 /* UsageSummaryCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsageSummaryCard.swift; sourceTree = "<group>"; };
+		FA0000000000000000000019 /* UsageTrendChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsageTrendChart.swift; sourceTree = "<group>"; };
+		FA000000000000000000001A /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
+		FA000000000000000000001B /* ServiceDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceDetailView.swift; sourceTree = "<group>"; };
+		FA000000000000000000001C /* ServiceListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceListView.swift; sourceTree = "<group>"; };
+		FA000000000000000000001D /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		FA000000000000000000001E /* MockAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAuthService.swift; sourceTree = "<group>"; };
+		FA000000000000000000001F /* MockPortalService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockPortalService.swift; sourceTree = "<group>"; };
+		FA0000000000000000000020 /* AuthViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModelTests.swift; sourceTree = "<group>"; };
+		FA0000000000000000000021 /* DashboardViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewModelTests.swift; sourceTree = "<group>"; };
+		FA0000000000000000000022 /* ServiceListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceListViewModelTests.swift; sourceTree = "<group>"; };
+		FA0000000000000000000023 /* SettingsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModelTests.swift; sourceTree = "<group>"; };
+		FF0000000000000000000001 /* SaaSPortal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SaaSPortal.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FF0000000000000000000002 /* SaaSPortalTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SaaSPortalTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FE0000000000000000000002 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FE0000000000000000000005 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		FC0000000000000000000011 /* root */ = {
+			isa = PBXGroup;
+			children = (
+				FC0000000000000000000001 /* SaaSPortal */,
+				FC000000000000000000000C /* Tests */,
+				FC0000000000000000000010 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		FC0000000000000000000001 /* SaaSPortal */ = {
+			isa = PBXGroup;
+			children = (
+				FA0000000000000000000001 /* SaaSPortalApp.swift */,
+				FA0000000000000000000002 /* ContentView.swift */,
+				FC0000000000000000000002 /* Models */,
+				FC0000000000000000000003 /* Services */,
+				FC0000000000000000000004 /* Utilities */,
+				FC0000000000000000000005 /* ViewModels */,
+				FC0000000000000000000006 /* Views */,
+			);
+			path = SaaSPortal;
+			sourceTree = "<group>";
+		};
+		FC0000000000000000000002 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				FA0000000000000000000003 /* DashboardSummary.swift */,
+				FA0000000000000000000004 /* PortalUser.swift */,
+				FA0000000000000000000005 /* ServiceLaunchResult.swift */,
+				FA0000000000000000000006 /* ServiceUsageDetail.swift */,
+				FA0000000000000000000007 /* Subscription.swift */,
+				FA0000000000000000000008 /* Tenant.swift */,
+				FA0000000000000000000009 /* UsageTrend.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		FC0000000000000000000003 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				FA000000000000000000000A /* APIClient.swift */,
+				FA000000000000000000000B /* AuthService.swift */,
+				FA000000000000000000000C /* PortalService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		FC0000000000000000000004 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				FA000000000000000000000D /* KeychainHelper.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		FC0000000000000000000005 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				FA000000000000000000000E /* AuthViewModel.swift */,
+				FA000000000000000000000F /* DashboardViewModel.swift */,
+				FA0000000000000000000010 /* ServiceListViewModel.swift */,
+				FA0000000000000000000011 /* SettingsViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		FC0000000000000000000006 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				FA000000000000000000001A /* MainTabView.swift */,
+				FC0000000000000000000007 /* Auth */,
+				FC0000000000000000000008 /* Components */,
+				FC0000000000000000000009 /* Dashboard */,
+				FC000000000000000000000A /* Services */,
+				FC000000000000000000000B /* Settings */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		FC0000000000000000000007 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				FA0000000000000000000012 /* LoginView.swift */,
+				FA0000000000000000000013 /* SignUpView.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		FC0000000000000000000008 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				FA0000000000000000000014 /* ErrorView.swift */,
+				FA0000000000000000000015 /* LoadingView.swift */,
+				FA0000000000000000000016 /* UsageBadge.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		FC0000000000000000000009 /* Dashboard */ = {
+			isa = PBXGroup;
+			children = (
+				FA0000000000000000000017 /* DashboardView.swift */,
+				FA0000000000000000000018 /* UsageSummaryCard.swift */,
+				FA0000000000000000000019 /* UsageTrendChart.swift */,
+			);
+			path = Dashboard;
+			sourceTree = "<group>";
+		};
+		FC000000000000000000000A /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				FA000000000000000000001B /* ServiceDetailView.swift */,
+				FA000000000000000000001C /* ServiceListView.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		FC000000000000000000000B /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				FA000000000000000000001D /* SettingsView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		FC000000000000000000000C /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				FC000000000000000000000D /* SaaSPortalTests */,
+			);
+			path = "SaaSPortal/Tests";
+			sourceTree = "<group>";
+		};
+		FC000000000000000000000D /* SaaSPortalTests */ = {
+			isa = PBXGroup;
+			children = (
+				FC000000000000000000000E /* Mocks */,
+				FC000000000000000000000F /* ViewModels */,
+			);
+			path = SaaSPortalTests;
+			sourceTree = "<group>";
+		};
+		FC000000000000000000000E /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				FA000000000000000000001E /* MockAuthService.swift */,
+				FA000000000000000000001F /* MockPortalService.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
+		FC000000000000000000000F /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				FA0000000000000000000020 /* AuthViewModelTests.swift */,
+				FA0000000000000000000021 /* DashboardViewModelTests.swift */,
+				FA0000000000000000000022 /* ServiceListViewModelTests.swift */,
+				FA0000000000000000000023 /* SettingsViewModelTests.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		FC0000000000000000000010 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FF0000000000000000000001 /* SaaSPortal.app */,
+				FF0000000000000000000002 /* SaaSPortalTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		FD0000000000000000000001 /* SaaSPortal */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AB0000000000000000000002 /* Build configuration list for PBXNativeTarget "SaaSPortal" */;
+			buildPhases = (
+				FE0000000000000000000001 /* Sources */,
+				FE0000000000000000000002 /* Frameworks */,
+				FE0000000000000000000003 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SaaSPortal;
+			productName = SaaSPortal;
+			productReference = FF0000000000000000000001 /* SaaSPortal.app */;
+			productType = "com.apple.product-type.application";
+		};
+		FD0000000000000000000002 /* SaaSPortalTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AB0000000000000000000003 /* Build configuration list for PBXNativeTarget "SaaSPortalTests" */;
+			buildPhases = (
+				FE0000000000000000000004 /* Sources */,
+				FE0000000000000000000005 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AE0000000000000000000001 /* PBXTargetDependency */,
+			);
+			name = SaaSPortalTests;
+			productName = SaaSPortalTests;
+			productReference = FF0000000000000000000002 /* SaaSPortalTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AC0000000000000000000001 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1600;
+				LastUpgradeCheck = 1600;
+				TargetAttributes = {
+					FD0000000000000000000001 = {
+						CreatedOnToolsVersion = 16.0;
+					};
+					FD0000000000000000000002 = {
+						CreatedOnToolsVersion = 16.0;
+						TestTargetID = FD0000000000000000000001;
+					};
+				};
+			};
+			buildConfigurationList = AB0000000000000000000001 /* Build configuration list for PBXProject "SaaSPortal" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = ja;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				ja,
+				Base,
+			);
+			mainGroup = FC0000000000000000000011 /* root */;
+			productRefGroup = FC0000000000000000000010 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FD0000000000000000000001 /* SaaSPortal */,
+				FD0000000000000000000002 /* SaaSPortalTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		FE0000000000000000000003 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FE0000000000000000000001 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA1000000000000000000001 /* SaaSPortalApp.swift in Sources */,
+				FA1000000000000000000002 /* ContentView.swift in Sources */,
+				FA1000000000000000000003 /* DashboardSummary.swift in Sources */,
+				FA1000000000000000000004 /* PortalUser.swift in Sources */,
+				FA1000000000000000000005 /* ServiceLaunchResult.swift in Sources */,
+				FA1000000000000000000006 /* ServiceUsageDetail.swift in Sources */,
+				FA1000000000000000000007 /* Subscription.swift in Sources */,
+				FA1000000000000000000008 /* Tenant.swift in Sources */,
+				FA1000000000000000000009 /* UsageTrend.swift in Sources */,
+				FA100000000000000000000A /* APIClient.swift in Sources */,
+				FA100000000000000000000B /* AuthService.swift in Sources */,
+				FA100000000000000000000C /* PortalService.swift in Sources */,
+				FA100000000000000000000D /* KeychainHelper.swift in Sources */,
+				FA100000000000000000000E /* AuthViewModel.swift in Sources */,
+				FA100000000000000000000F /* DashboardViewModel.swift in Sources */,
+				FA1000000000000000000010 /* ServiceListViewModel.swift in Sources */,
+				FA1000000000000000000011 /* SettingsViewModel.swift in Sources */,
+				FA1000000000000000000012 /* LoginView.swift in Sources */,
+				FA1000000000000000000013 /* SignUpView.swift in Sources */,
+				FA1000000000000000000014 /* ErrorView.swift in Sources */,
+				FA1000000000000000000015 /* LoadingView.swift in Sources */,
+				FA1000000000000000000016 /* UsageBadge.swift in Sources */,
+				FA1000000000000000000017 /* DashboardView.swift in Sources */,
+				FA1000000000000000000018 /* UsageSummaryCard.swift in Sources */,
+				FA1000000000000000000019 /* UsageTrendChart.swift in Sources */,
+				FA100000000000000000001A /* MainTabView.swift in Sources */,
+				FA100000000000000000001B /* ServiceDetailView.swift in Sources */,
+				FA100000000000000000001C /* ServiceListView.swift in Sources */,
+				FA100000000000000000001D /* SettingsView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FE0000000000000000000004 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA100000000000000000001E /* MockAuthService.swift in Sources */,
+				FA100000000000000000001F /* MockPortalService.swift in Sources */,
+				FA1000000000000000000020 /* AuthViewModelTests.swift in Sources */,
+				FA1000000000000000000021 /* DashboardViewModelTests.swift in Sources */,
+				FA1000000000000000000022 /* ServiceListViewModelTests.swift in Sources */,
+				FA1000000000000000000023 /* SettingsViewModelTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		AE0000000000000000000001 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FD0000000000000000000001 /* SaaSPortal */;
+			targetProxy = AD0000000000000000000001 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		AA0000000000000000000001 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		AA0000000000000000000002 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		AA0000000000000000000003 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "SaaS Portal";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.saasportal;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		AA0000000000000000000004 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "SaaS Portal";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.saasportal;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		AA0000000000000000000005 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.saasportal.tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SaaSPortal.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/SaaSPortal";
+			};
+			name = Debug;
+		};
+		AA0000000000000000000006 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.saasportal.tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SaaSPortal.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/SaaSPortal";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AB0000000000000000000001 /* Build configuration list for PBXProject "SaaSPortal" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA0000000000000000000001 /* Debug */,
+				AA0000000000000000000002 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AB0000000000000000000002 /* Build configuration list for PBXNativeTarget "SaaSPortal" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA0000000000000000000003 /* Debug */,
+				AA0000000000000000000004 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AB0000000000000000000003 /* Build configuration list for PBXNativeTarget "SaaSPortalTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA0000000000000000000005 /* Debug */,
+				AA0000000000000000000006 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = AC0000000000000000000001 /* Project object */;
+}
