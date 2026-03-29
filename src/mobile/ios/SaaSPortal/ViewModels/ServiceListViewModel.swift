@@ -1,4 +1,7 @@
 import Foundation
+import os
+
+private let logger = Logger(subsystem: "com.example.SaaSPortal", category: "ServiceListViewModel")
 
 /// サービス一覧画面の UI 状態。
 enum ServiceListUiState {
@@ -28,6 +31,7 @@ final class ServiceListViewModel {
             let response = try await portalService.getSubscriptions()
             uiState = .success(response.subscriptions)
         } catch {
+            logger.error("❌ loadServices failed: \(error.localizedDescription, privacy: .public)")
             uiState = .error(errorMessage(from: error))
         }
     }
@@ -41,6 +45,7 @@ final class ServiceListViewModel {
             launchResult = result
             showLaunchAlert = true
         } catch {
+            logger.error("❌ launchService(\(serviceCode, privacy: .public)) failed: \(error.localizedDescription, privacy: .public)")
             launchResult = nil
             showLaunchAlert = true
         }

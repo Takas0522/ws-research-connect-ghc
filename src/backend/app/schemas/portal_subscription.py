@@ -10,7 +10,7 @@ class SubscriptionResponse(BaseModel):
 
     model_config = ConfigDict(populate_by_name=True)
 
-    id: str = Field(alias="_id", description="サブスクリプション ID")
+    id: str = Field(validation_alias="_id", description="サブスクリプション ID")
     service_code: str = Field(..., description="サービスコード")
     service_name: str = Field(..., description="サービス名")
     plan_name: str = Field(..., description="プラン名")

@@ -1,4 +1,7 @@
 import SwiftUI
+import os
+
+private let logger = Logger(subsystem: "com.example.SaaSPortal", category: "ServiceDetailViewModel")
 
 /// サービス利用詳細画面の UI 状態。
 enum ServiceDetailUiState {
@@ -25,6 +28,7 @@ final class ServiceDetailViewModel {
             let response = try await portalService.getServiceUsage(serviceCode: serviceCode)
             uiState = .success(response)
         } catch {
+            logger.error("❌ loadUsage(\(serviceCode, privacy: .public)) failed: \(error.localizedDescription, privacy: .public)")
             if let apiError = error as? APIError {
                 uiState = .error(apiError.localizedDescription)
             } else {

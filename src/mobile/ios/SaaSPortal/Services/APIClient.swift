@@ -1,4 +1,7 @@
 import Foundation
+import os
+
+private let logger = Logger(subsystem: "com.example.SaaSPortal", category: "APIClient")
 
 /// API 通信エラー。
 enum APIError: LocalizedError {
@@ -86,19 +89,50 @@ final class APIClient {
     }
 
     private func perform<T: Decodable>(_ request: URLRequest) async throws -> T {
+        logger.debug("➡️ \(request.httpMethod ?? "?", privacy: .public) \(request.url?.absoluteString ?? "", privacy: .public)")
+
         let (data, response) = try await session.data(for: request)
 
         guard let httpResponse = response as? HTTPURLResponse else {
+            logger.error("❌ Invalid response (not HTTPURLResponse)")
             throw APIError.invalidResponse
         }
 
+        logger.debug("⬅️ \(httpResponse.statusCode, privacy: .public) \(request.url?.absoluteString ?? "", privacy: .public) (\(data.count, privacy: .public) bytes)")
+
         guard (200...299).contains(httpResponse.statusCode) else {
+            if let bodyString = String(data: data, encoding: .utf8) {
+                logger.error("❌ HTTP \(httpResponse.statusCode, privacy: .public) body: \(bodyString, privacy: .public)")
+            }
             throw APIError.httpError(statusCode: httpResponse.statusCode)
         }
 
+        #if DEBUG
+        if let bodyString = String(data: data, encoding: .utf8) {
+            logger.debug("📦 Response body: \(bodyString, privacy: .public)")
+        }
+        #endif
+
         do {
             return try decoder.decode(T.self, from: data)
+        } catch let decodingError as DecodingError {
+            let detail: String
+            switch decodingError {
+            case .keyNotFound(let key, let context):
+                detail = "Key '\(key.stringValue)' not found: \(context.debugDescription), path: \(context.codingPath.map(\.stringValue).joined(separator: "."))"
+            case .typeMismatch(let type, let context):
+                detail = "Type mismatch for \(type): \(context.debugDescription), path: \(context.codingPath.map(\.stringValue).joined(separator: "."))"
+            case .valueNotFound(let type, let context):
+                detail = "Value of type \(type) not found: \(context.debugDescription), path: \(context.codingPath.map(\.stringValue).joined(separator: "."))"
+            case .dataCorrupted(let context):
+                detail = "Data corrupted: \(context.debugDescription), path: \(context.codingPath.map(\.stringValue).joined(separator: "."))"
+            @unknown default:
+                detail = decodingError.localizedDescription
+            }
+            logger.error("❌ Decoding failed for \(String(describing: T.self), privacy: .public): \(detail, privacy: .public)")
+            throw APIError.decodingError(decodingError)
         } catch {
+            logger.error("❌ Unexpected decode error: \(error.localizedDescription, privacy: .public)")
             throw APIError.decodingError(error)
         }
     }
