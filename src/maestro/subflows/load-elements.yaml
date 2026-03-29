@@ -1,0 +1,7 @@
+appId: ${APP_ID}
+---
+- runScript: ../elements/login.js
+- runScript: ../elements/signup.js
+- runScript: ../elements/dashboard.js
+- runScript: ../elements/services.js
+- runScript: ../elements/settings.js

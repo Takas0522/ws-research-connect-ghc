@@ -36,9 +36,7 @@ PLAN_DATA = {
 
 
 @pytest.mark.anyio
-async def test_get_plans_empty(
-    test_client: AsyncClient, admin_token: str
-) -> None:
+async def test_get_plans_empty(test_client: AsyncClient, admin_token: str) -> None:
     """プラン未登録時に空リストを返す。"""
     product_id = await _create_product(test_client, admin_token)
     response = await test_client.get(
@@ -50,9 +48,7 @@ async def test_get_plans_empty(
 
 
 @pytest.mark.anyio
-async def test_create_plan_success(
-    test_client: AsyncClient, admin_token: str
-) -> None:
+async def test_create_plan_success(test_client: AsyncClient, admin_token: str) -> None:
     """プランを正常に作成できる。"""
     product_id = await _create_product(test_client, admin_token)
     response = await test_client.post(
@@ -70,9 +66,7 @@ async def test_create_plan_success(
 
 
 @pytest.mark.anyio
-async def test_get_plan_by_id(
-    test_client: AsyncClient, admin_token: str
-) -> None:
+async def test_get_plan_by_id(test_client: AsyncClient, admin_token: str) -> None:
     """ID でプランを取得できる。"""
     product_id = await _create_product(test_client, admin_token)
     create_resp = await test_client.post(
@@ -90,9 +84,7 @@ async def test_get_plan_by_id(
 
 
 @pytest.mark.anyio
-async def test_update_plan(
-    test_client: AsyncClient, admin_token: str
-) -> None:
+async def test_update_plan(test_client: AsyncClient, admin_token: str) -> None:
     """プランを更新できる。"""
     product_id = await _create_product(test_client, admin_token)
     create_resp = await test_client.post(
@@ -113,9 +105,7 @@ async def test_update_plan(
 
 
 @pytest.mark.anyio
-async def test_delete_plan(
-    test_client: AsyncClient, admin_token: str
-) -> None:
+async def test_delete_plan(test_client: AsyncClient, admin_token: str) -> None:
     """プランを論理削除できる。"""
     product_id = await _create_product(test_client, admin_token)
     create_resp = await test_client.post(

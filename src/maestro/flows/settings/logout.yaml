@@ -1,0 +1,34 @@
+appId: ${APP_ID}
+tags:
+  - settings
+onFlowStart:
+  - runScript: ../../scripts/seed-data.js
+onFlowComplete:
+  - runScript: ../../scripts/cleanup-data.js
+---
+- runFlow:
+    file: ../../subflows/load-elements.yaml
+
+- launchApp
+
+- runFlow:
+    file: ../../subflows/login.yaml
+    env:
+      EMAIL: "e2e-admin@test.example.com"
+      PASSWORD: "TestPassword123!"
+
+- assertVisible:
+    id: ${output.dashboard.heading}
+
+- tapOn: "設定"
+
+- assertVisible:
+    id: ${output.settings.heading}
+
+- tapOn:
+    id: ${output.settings.logoutButton}
+
+- tapOn: "ログアウト"
+
+- assertVisible:
+    id: ${output.login.loginButton}

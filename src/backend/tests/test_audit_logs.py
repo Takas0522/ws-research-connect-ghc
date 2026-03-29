@@ -5,9 +5,7 @@ from httpx import AsyncClient
 
 
 @pytest.mark.anyio
-async def test_get_audit_logs_admin(
-    test_client: AsyncClient, admin_token: str
-) -> None:
+async def test_get_audit_logs_admin(test_client: AsyncClient, admin_token: str) -> None:
     """管理者が監査ログを取得できる（初期状態は空リスト）。"""
     response = await test_client.get(
         "/api/audit-logs/",

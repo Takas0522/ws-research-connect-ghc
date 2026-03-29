@@ -1,0 +1,48 @@
+appId: ${APP_ID}
+tags:
+  - smoke
+  - settings
+onFlowStart:
+  - runScript: ../../scripts/seed-data.js
+onFlowComplete:
+  - runScript: ../../scripts/cleanup-data.js
+---
+- runFlow:
+    file: ../../subflows/load-elements.yaml
+
+- launchApp
+
+- runFlow:
+    file: ../../subflows/login.yaml
+    env:
+      EMAIL: "e2e-admin@test.example.com"
+      PASSWORD: "TestPassword123!"
+
+- assertVisible:
+    id: ${output.dashboard.heading}
+
+- tapOn: "設定"
+
+- assertVisible:
+    id: ${output.settings.heading}
+
+- assertVisible:
+    id: ${output.settings.userName}
+
+- assertVisible:
+    id: ${output.settings.userEmail}
+
+- assertVisible:
+    id: ${output.settings.userRole}
+
+- assertVisible:
+    id: ${output.settings.tenantName}
+
+- assertVisible:
+    id: ${output.settings.tenantCode}
+
+- assertVisible:
+    id: ${output.settings.planTier}
+
+- assertVisible:
+    id: ${output.settings.logoutButton}

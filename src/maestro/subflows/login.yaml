@@ -1,0 +1,11 @@
+appId: ${APP_ID}
+---
+- runScript: ../elements/login.js
+- tapOn:
+    id: ${output.login.emailInput}
+- inputText: ${EMAIL}
+- tapOn:
+    id: ${output.login.passwordInput}
+- inputText: ${PASSWORD}
+- tapOn:
+    id: ${output.login.loginButton}

@@ -11,7 +11,9 @@ PRODUCT_DATA = {
 }
 
 
-async def _create_product(client: AsyncClient, token: str, data: dict | None = None) -> dict:
+async def _create_product(
+    client: AsyncClient, token: str, data: dict | None = None
+) -> dict:
     """テスト用製品を作成し、レスポンスを返すヘルパー。"""
     payload = data or PRODUCT_DATA
     resp = await client.post(
@@ -65,9 +67,7 @@ async def test_get_products_returns_products_after_creation(
 
 
 @pytest.mark.anyio
-async def test_get_product_by_id(
-    test_client: AsyncClient, admin_token: str
-) -> None:
+async def test_get_product_by_id(test_client: AsyncClient, admin_token: str) -> None:
     """ID で製品を取得できる。"""
     created = await _create_product(test_client, admin_token)
     product_id = created["id"]
@@ -80,9 +80,7 @@ async def test_get_product_by_id(
 
 
 @pytest.mark.anyio
-async def test_update_product(
-    test_client: AsyncClient, admin_token: str
-) -> None:
+async def test_update_product(test_client: AsyncClient, admin_token: str) -> None:
     """管理者が製品を更新できる。"""
     created = await _create_product(test_client, admin_token)
     product_id = created["id"]
@@ -96,9 +94,7 @@ async def test_update_product(
 
 
 @pytest.mark.anyio
-async def test_delete_product(
-    test_client: AsyncClient, admin_token: str
-) -> None:
+async def test_delete_product(test_client: AsyncClient, admin_token: str) -> None:
     """管理者が製品を論理削除できる。"""
     created = await _create_product(test_client, admin_token)
     product_id = created["id"]

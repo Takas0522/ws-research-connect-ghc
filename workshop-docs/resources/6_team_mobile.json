@@ -1,0 +1,48 @@
+{
+  "@odata.context": "https://graph.microsoft.com/v1.0/$metadata#teams/$entity",
+  "id": "00000000-0000-0000-0000-team00000001",
+  "createdDateTime": "2026-03-21T02:09:54.522Z",
+  "displayName": "\u65B0\u88FD\u54C1\u958B\u767A\u30C1\u30FC\u30E0",
+  "description": "\u65B0\u88FD\u54C1\u958B\u767A\u30C1\u30FC\u30E0",
+  "internalId": "19:jmqtxeILo9eP3uT2FXXUOpmLALhYNHF7uGqC96KSDP01@thread.tacv2",
+  "classification": null,
+  "specialization": "none",
+  "visibility": "private",
+  "webUrl": "https://teams.microsoft.com/l/team/19%3ajmqtxeILo9eP3uT2FXXUOpmLALhYNHF7uGqC96KSDP01%40thread.tacv2/conversations?groupId=00000000-0000-0000-0000-team00000001\u0026tenantId=00000000-0000-0000-0000-tenant000001",
+  "isArchived": false,
+  "isMembershipLimitedToOwners": false,
+  "discoverySettings": {
+    "showInTeamsSearchAndSuggestions": false
+  },
+  "tagSettings": null,
+  "memberSettings": {
+    "allowCreateUpdateChannels": true,
+    "allowCreatePrivateChannels": true,
+    "allowDeleteChannels": true,
+    "allowAddRemoveApps": true,
+    "allowCreateUpdateRemoveTabs": true,
+    "allowCreateUpdateRemoveConnectors": true
+  },
+  "guestSettings": {
+    "allowCreateUpdateChannels": false,
+    "allowDeleteChannels": false
+  },
+  "messagingSettings": {
+    "allowUserEditMessages": true,
+    "allowUserDeleteMessages": true,
+    "allowOwnerDeleteMessages": true,
+    "allowTeamMentions": true,
+    "allowChannelMentions": true
+  },
+  "funSettings": {
+    "allowGiphy": true,
+    "giphyContentRating": "moderate",
+    "allowStickersAndMemes": true,
+    "allowCustomMemes": true
+  },
+  "summary": {
+    "ownersCount": 1,
+    "membersCount": 4,
+    "guestsCount": 0
+  }
+}

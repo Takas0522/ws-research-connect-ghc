@@ -14,19 +14,30 @@
 | Backend | Python 3.12 + FastAPI + Pydantic v2 + Motor (MongoDB 非同期) |
 | Database | MongoDB 7 |
 | Auth | JWT (python-jose + passlib/bcrypt) |
-| E2E Tests | Playwright + TypeScript |
+| E2E Tests (Web) | Playwright + TypeScript |
+| E2E Tests (Mobile) | Maestro (YAML + GraalJS) |
 | Package Manager | uv (Python), npm (Node.js) |
 
 ## 仕様ドキュメント
 
-機能仕様・データモデル・画面設計は `docs/specs/saas-management-app/` を参照する。
+機能仕様・データモデル・画面設計は `docs/specs/` 配下を参照する。
 実装前に必ず対応する仕様書を確認すること。
+
+### SaaS 管理アプリ (Web)
 
 | ドキュメント | パス |
 |------------|------|
 | 画面構成・機能要件 | `docs/specs/saas-management-app/system/02-screen-design.md` |
 | データモデル | `docs/specs/saas-management-app/system/03-data-model.md` |
 | 認証・権限設計 | `docs/specs/saas-management-app/system/04-auth-and-operations.md` |
+
+### SaaS ポータル スマホアプリ (Mobile)
+
+| ドキュメント | パス |
+|------------|------|
+| 画面構成 | `docs/specs/saas-portal-mobile-app/system/02-screen-design.md` |
+| データモデル | `docs/specs/saas-portal-mobile-app/system/03-data-model.md` |
+| 認証・テナント設計 | `docs/specs/saas-portal-mobile-app/system/04-auth-design.md` |
 
 ## DevContainer 構成
 
@@ -55,6 +66,28 @@ DevContainer は **Docker Compose** で構成されている。
 - ユーザー入力は Pydantic の `Field` 制約で必ずバリデーションする
 - CORS は本番環境で許可オリジンを明示する
 - 依存パッケージは定期的に `uv lock --upgrade` / `npm audit` で脆弱性チェックする
+
+## SaaS ポータル スマホアプリ
+
+**SaaS ポータル スマホアプリ** — エンドユーザー向け SaaS 利用状況可視化・アプリ起動ポータル。
+
+| レイヤー | 技術スタック |
+|---------|------------|
+| Android | Kotlin + Jetpack Compose (PoC) |
+| iOS | Swift + SwiftUI (Phase 1) |
+| Backend | FastAPI + Motor (既存拡張、`/api/portal/` プレフィックス) |
+| Database | MongoDB 7 (ポータル専用コレクション `portal_*`) |
+| Auth | JWT (テナントスコープ認可、`tenant_id` 付きペイロード) |
+| E2E Tests (Mobile) | Maestro (YAML + GraalJS) |
+
+### ポータル固有の規約
+
+- ポータル API エンドポイントは `/api/portal/` プレフィックスを使用する
+- MongoDB コレクション名は `portal_` プレフィックスを付ける (`portal_tenants`, `portal_users` 等)
+- テナントスコープ: すべての API で JWT 内の `tenant_id` によるフィルタリングを行う
+- 社内管理アプリ (saas-management-app) とはユーザー DB を完全に分離する
+- Backend ファイルは `portal_` プレフィックスで命名する (`portal_auth.py`, `portal_dashboard.py` 等)
+- 認証依存: `get_current_portal_user` / `require_portal_admin` を使用する (管理アプリの `get_current_user` とは別)
 
 ## Git 規約
 

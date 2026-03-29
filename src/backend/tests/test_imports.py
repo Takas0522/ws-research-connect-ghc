@@ -46,7 +46,11 @@ async def _setup_import_data(client: AsyncClient, token: str, test_db) -> dict:
             "monthly_base_fee": 5000.0,
             "alert_threshold_pct": 80,
             "metric_limits": [
-                {"metric_code": "API_CALLS", "limit_value": 1000.0, "overage_unit_price": 10.0}
+                {
+                    "metric_code": "API_CALLS",
+                    "limit_value": 1000.0,
+                    "overage_unit_price": 10.0,
+                }
             ],
         },
         headers={"Authorization": f"Bearer {token}"},
@@ -108,7 +112,15 @@ async def test_upload_csv_valid_data(
     """有効な CSV をアップロードして検証プレビューを取得できる。"""
     master = await _setup_import_data(test_client, admin_token, test_db)
     csv_data = _make_csv(
-        [[master["customer_code"], master["product_code"], "2024-06", "API_CALLS", "500"]]
+        [
+            [
+                master["customer_code"],
+                master["product_code"],
+                "2024-06",
+                "API_CALLS",
+                "500",
+            ]
+        ]
     )
     response = await test_client.post(
         "/api/imports/upload",
@@ -131,9 +143,7 @@ async def test_upload_csv_invalid_customer_code(
 ) -> None:
     """存在しない customer_code でエラーレコードが返される。"""
     await _setup_import_data(test_client, admin_token, test_db)
-    csv_data = _make_csv(
-        [["UNKNOWN_CUST", "PROD-IMP", "2024-06", "API_CALLS", "500"]]
-    )
+    csv_data = _make_csv([["UNKNOWN_CUST", "PROD-IMP", "2024-06", "API_CALLS", "500"]])
     response = await test_client.post(
         "/api/imports/upload",
         files={"file": ("test.csv", io.BytesIO(csv_data), "text/csv")},
@@ -152,7 +162,15 @@ async def test_confirm_import_success(
     """検証済みインポートを確定できる。"""
     master = await _setup_import_data(test_client, admin_token, test_db)
     csv_data = _make_csv(
-        [[master["customer_code"], master["product_code"], "2024-06", "API_CALLS", "500"]]
+        [
+            [
+                master["customer_code"],
+                master["product_code"],
+                "2024-06",
+                "API_CALLS",
+                "500",
+            ]
+        ]
     )
     upload_resp = await test_client.post(
         "/api/imports/upload",
@@ -183,7 +201,15 @@ async def test_get_import_history(
     """取込履歴一覧を取得できる。"""
     master = await _setup_import_data(test_client, admin_token, test_db)
     csv_data = _make_csv(
-        [[master["customer_code"], master["product_code"], "2024-06", "API_CALLS", "300"]]
+        [
+            [
+                master["customer_code"],
+                master["product_code"],
+                "2024-06",
+                "API_CALLS",
+                "300",
+            ]
+        ]
     )
     await test_client.post(
         "/api/imports/upload",

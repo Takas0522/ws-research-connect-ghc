@@ -1,0 +1,38 @@
+appId: ${APP_ID}
+tags:
+  - smoke
+  - navigation
+onFlowStart:
+  - runScript: ../../scripts/seed-data.js
+onFlowComplete:
+  - runScript: ../../scripts/cleanup-data.js
+---
+- runFlow:
+    file: ../../subflows/load-elements.yaml
+
+- launchApp
+
+- runFlow:
+    file: ../../subflows/login.yaml
+    env:
+      EMAIL: "e2e-admin@test.example.com"
+      PASSWORD: "TestPassword123!"
+
+# Dashboard tab (default after login)
+- assertVisible:
+    id: ${output.dashboard.heading}
+
+# Switch to Services tab
+- tapOn: "サービス"
+- assertVisible:
+    id: ${output.services.heading}
+
+# Switch to Settings tab
+- tapOn: "設定"
+- assertVisible:
+    id: ${output.settings.heading}
+
+# Switch back to Dashboard tab
+- tapOn: "ダッシュボード"
+- assertVisible:
+    id: ${output.dashboard.heading}

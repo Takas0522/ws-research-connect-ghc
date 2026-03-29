@@ -1,0 +1,9 @@
+flows:
+  - "flows/**/*.yaml"
+
+executionOrder:
+  continueOnFailure: false
+
+excludeTags:
+  - wip
+  - skip

@@ -80,7 +80,64 @@ npm install
 npx playwright test
 ```
 
+---
+
+## SaaS ポータル スマホアプリ
+
+エンドユーザー向け SaaS 利用状況可視化・アプリ起動ポータル。
+
+| レイヤー | 技術 |
+|---------|------|
+| Android | Kotlin + Jetpack Compose + Hilt + Retrofit |
+| iOS | Swift + SwiftUI |
+| Backend | FastAPI（既存拡張、`/api/portal/` プレフィックス） |
+| E2E Tests | Maestro (YAML + GraalJS) |
+
+### ポータル用シードデータ投入（初回のみ）
+
+```bash
+cd src/backend
+uv run python ../database/portal/seed/seed_portal_data.py
+```
+
+### ポータル初期ログイン情報
+
+| 項目 | Admin | Member |
+|------|-------|--------|
+| メールアドレス | `admin@alpha.example.com` | `member@alpha.example.com` |
+| パスワード | `Password123!` | `Password123!` |
+| テナント | アルファ株式会社 | アルファ株式会社 |
+
+> ポータル用シードデータ投入後に利用可能。
+
+### Android
+
+> **前提:** Android Studio をインストール済みであること。バックエンドが起動していること。
+
+```bash
+cd src/mobile/android
+./gradlew assembleDebug
+```
+
+Android Studio で `src/mobile/android` を開き、エミュレータまたは実機で実行する。
+API 接続先はエミュレータの場合 `http://10.0.2.2:8000` が設定済み。
+
+### iOS
+
+> **前提:** Xcode をインストール済みであること（macOS 必須）。バックエンドが起動していること。
+
+Xcode で `src/mobile/ios/SaaSPortal` を開き、シミュレータまたは実機で実行する。
+
+### モバイル E2E テスト (Maestro)
+
+```bash
+cd src/maestro
+maestro test
+```
+
 ## ドキュメント
+
+### SaaS 管理アプリ (Web)
 
 詳細仕様は `docs/specs/saas-management-app/` を参照。
 
@@ -89,3 +146,13 @@ npx playwright test
 | [system/02-screen-design.md](docs/specs/saas-management-app/system/02-screen-design.md) | 画面構成・機能要件 |
 | [system/03-data-model.md](docs/specs/saas-management-app/system/03-data-model.md) | データモデル |
 | [system/04-auth-and-operations.md](docs/specs/saas-management-app/system/04-auth-and-operations.md) | 認証・権限設計 |
+
+### SaaS ポータル スマホアプリ (Mobile)
+
+詳細仕様は `docs/specs/saas-portal-mobile-app/` を参照。
+
+| ドキュメント | 内容 |
+|------------|------|
+| [system/02-screen-design.md](docs/specs/saas-portal-mobile-app/system/02-screen-design.md) | 画面構成・画面遷移 |
+| [system/03-data-model.md](docs/specs/saas-portal-mobile-app/system/03-data-model.md) | データモデル |
+| [system/04-auth-design.md](docs/specs/saas-portal-mobile-app/system/04-auth-design.md) | 認証・テナント設計 |

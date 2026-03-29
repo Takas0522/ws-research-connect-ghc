@@ -24,12 +24,6 @@ def _get_test_database():
     return _test_client[TEST_DATABASE_NAME]
 
 
-@pytest.fixture(scope="session")
-def anyio_backend():
-    """anyio バックエンド指定。"""
-    return "asyncio"
-
-
 @pytest.fixture(scope="session", autouse=True)
 async def _setup_test_db():
     """セッション全体でテスト用 MongoDB クライアントを管理する。"""
@@ -43,9 +37,7 @@ async def _setup_test_db():
     await db["metrics_definitions"].create_index(
         [("product_id", 1), ("metric_code", 1)], unique=True
     )
-    await db["plans"].create_index(
-        [("product_id", 1), ("plan_code", 1)], unique=True
-    )
+    await db["plans"].create_index([("product_id", 1), ("plan_code", 1)], unique=True)
     await db["customers"].create_index("customer_code", unique=True)
     await db["monthly_usage"].create_index(
         [("contract_id", 1), ("billing_month", 1), ("metric_code", 1)], unique=True
@@ -132,3 +124,157 @@ async def sales_token(test_db) -> str:
         display_name="テスト営業",
     )
     return create_access_token({"sub": user["email"]})
+
+
+# ====== Portal テスト用フィクスチャ ======
+
+
+@pytest.fixture()
+async def portal_tenant(test_db):
+    """ポータルテナントを作成する。"""
+    from bson import ObjectId
+
+    tenant_id = ObjectId()
+    await test_db["portal_tenants"].insert_one({
+        "_id": tenant_id,
+        "tenant_code": "TEST_TENANT",
+        "tenant_name": "テスト企業",
+        "contact_email": "contact@test.com",
+        "plan_tier": "enterprise",
+        "status": "active",
+        "subscribed_services": ["CONNECT_CHAT", "CONNECT_MEET"],
+        "created_at": datetime.now(timezone.utc),
+        "updated_at": datetime.now(timezone.utc),
+    })
+    return {"_id": tenant_id, "tenant_code": "TEST_TENANT", "tenant_name": "テスト企業", "plan_tier": "enterprise"}
+
+
+@pytest.fixture()
+async def portal_admin_user(test_db, portal_tenant):
+    """ポータル管理者ユーザーを作成する。"""
+    from bson import ObjectId
+
+    user_id = ObjectId()
+    await test_db["portal_users"].insert_one({
+        "_id": user_id,
+        "tenant_id": portal_tenant["_id"],
+        "email": "admin@test.example.com",
+        "hashed_password": hash_password("Password123!"),
+        "display_name": "テスト管理者",
+        "role": "admin",
+        "is_active": True,
+        "last_login_at": None,
+        "created_at": datetime.now(timezone.utc),
+        "updated_at": datetime.now(timezone.utc),
+    })
+    return {"_id": user_id, "tenant_id": portal_tenant["_id"], "email": "admin@test.example.com", "role": "admin"}
+
+
+@pytest.fixture()
+async def portal_member_user(test_db, portal_tenant):
+    """ポータル一般ユーザーを作成する。"""
+    from bson import ObjectId
+
+    user_id = ObjectId()
+    await test_db["portal_users"].insert_one({
+        "_id": user_id,
+        "tenant_id": portal_tenant["_id"],
+        "email": "member@test.example.com",
+        "hashed_password": hash_password("Password123!"),
+        "display_name": "テストメンバー",
+        "role": "member",
+        "is_active": True,
+        "last_login_at": None,
+        "created_at": datetime.now(timezone.utc),
+        "updated_at": datetime.now(timezone.utc),
+    })
+    return {"_id": user_id, "tenant_id": portal_tenant["_id"], "email": "member@test.example.com", "role": "member"}
+
+
+@pytest.fixture()
+async def portal_admin_token(portal_admin_user, portal_tenant) -> str:
+    """ポータル管理者の JWT トークンを返す。"""
+    return create_access_token({
+        "sub": str(portal_admin_user["_id"]),
+        "tenant_id": str(portal_admin_user["tenant_id"]),
+        "tenant_code": portal_tenant["tenant_code"],
+        "role": "admin",
+    })
+
+
+@pytest.fixture()
+async def portal_member_token(portal_member_user, portal_tenant) -> str:
+    """ポータル一般ユーザーの JWT トークンを返す。"""
+    return create_access_token({
+        "sub": str(portal_member_user["_id"]),
+        "tenant_id": str(portal_member_user["tenant_id"]),
+        "tenant_code": portal_tenant["tenant_code"],
+        "role": "member",
+    })
+
+
+@pytest.fixture()
+async def portal_subscriptions(test_db, portal_tenant):
+    """ポータルテナントの契約サービスを作成する。"""
+    from bson import ObjectId
+
+    subs = []
+    for code, name, plan, price, metric, limit, overage in [
+        ("CONNECT_CHAT", "ConnectChat", "Enterprise", 50000, "messages", 10000, 5),
+        ("CONNECT_MEET", "ConnectMeet", "Pro", 30000, "minutes", 5000, 10),
+        ("CONNECT_STORE", "ConnectStore", "Standard", 20000, "storage_gb", 100, 200),
+    ]:
+        sub_id = ObjectId()
+        doc = {
+            "_id": sub_id,
+            "tenant_id": portal_tenant["_id"],
+            "service_code": code,
+            "service_name": name,
+            "plan_name": plan,
+            "status": "active",
+            "base_price": price,
+            "metric_name": metric,
+            "free_tier_limit": limit,
+            "overage_unit_price": overage,
+            "contract_start_date": datetime(2025, 4, 1, tzinfo=timezone.utc),
+            "contract_end_date": None,
+            "created_at": datetime.now(timezone.utc),
+            "updated_at": datetime.now(timezone.utc),
+        }
+        await test_db["portal_subscriptions"].insert_one(doc)
+        subs.append({"_id": sub_id, "service_code": code, **doc})
+    return subs
+
+
+@pytest.fixture()
+async def portal_usage_metrics(test_db, portal_tenant, portal_subscriptions):
+    """ポータルテナントの利用実績を作成する（3サービス×3ヶ月）。"""
+    from bson import ObjectId
+
+    import random
+
+    metrics = []
+    use_cases = ["社内コミュニケーション", "顧客対応", "プロジェクト管理", None]
+    for sub in portal_subscriptions:
+        for ym in ["2026-01", "2026-02", "2026-03"]:
+            limit = sub.get("free_tier_limit", 100)
+            qty = int(limit * random.uniform(0.5, 1.2))
+            rate = round(qty / limit * 100, 1)
+            overage = max(0, qty - limit) * sub.get("overage_unit_price", 0)
+            billed = sub.get("base_price", 0) + overage
+            doc = {
+                "_id": ObjectId(),
+                "tenant_id": portal_tenant["_id"],
+                "subscription_id": sub["_id"],
+                "service_code": sub["service_code"],
+                "year_month": ym,
+                "metric_name": sub.get("metric_name", "units"),
+                "quantity": qty,
+                "usage_rate": rate,
+                "billed_amount": billed,
+                "primary_use_case": random.choice(use_cases),
+                "recorded_at": datetime.now(timezone.utc),
+            }
+            await test_db["portal_usage_metrics"].insert_one(doc)
+            metrics.append(doc)
+    return metrics
